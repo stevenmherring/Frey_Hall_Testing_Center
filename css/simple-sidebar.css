@@ -1,3 +1,7 @@
+ul#snav li {
+    display: inline;
+}
+
 .navbar-student {
 
   background-color: #c50000;
