@@ -58,7 +58,7 @@ Shi Lin Lu -->
     </div>
   </div>
 
- <div id="content">
+ <div id="content" class="content">
  <?php include('student-landing.php');?>
  </div>
 <!-- Bootstrap Core JavaScript -->
