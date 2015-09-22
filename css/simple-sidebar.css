@@ -6,6 +6,8 @@ ul#snav li {
 
   background-color: #c50000;
   border-color: #9a0700;
+  margin-top:50px;
+  height:50px;
 }
 .navbar-student .navbar-brand {
   color: #000000;
