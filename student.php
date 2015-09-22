@@ -35,17 +35,17 @@ Shi Lin Lu -->
 
 <body>
 
-  <nav class="navbar navbar-student navbar-lower" role="navigation" style="margin-top:50px;">
+  <nav class="navbar navbar-student" role="navigation">
     <div class="container">
-      <a class="navbar-brand topnav" href="#" rel="home" title="Stony Brook Testing Center" text-align="center-center">
+      <a class="navbar-brand" href="#" rel="home" title="Stony Brook Testing Center" >
         <b>Welcome, Student!</b>
       </a>
       <div class="collapse navbar-collapse collapse-buttons">
         <form class="navbar-form navbar-right" role="search">
-          <ul id="snav">
+          <ul id="snav" class="navbar-right">
           <li><a href="student-exams.php" class="btn btn-danger">Available Exams</a></li>
           <li><a href="student-exams.php" class="btn btn-danger">Enrolled Schedule</a></li>
-          <li><a href="student-sched.php" class="btn btn-danger">Sched</a></li>
+          <li><a href="student-sched.html" class="btn btn-danger">Sched</a></li>
         </ul>
         </form>
       </div>
