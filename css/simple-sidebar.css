@@ -2,6 +2,10 @@ ul#snav li {
     display: inline;
 }
 
+.content {
+  min-height: 795px;
+}
+
 .navbar-student {
   border-radius: 0 !important;
   background-color: #c50000;
