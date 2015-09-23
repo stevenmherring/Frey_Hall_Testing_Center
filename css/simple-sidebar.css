@@ -7,6 +7,7 @@ ul#anav li {
 }
 .content {
   min-height: 795px;
+  padding-top: 150px;
 }
 
 .navbar-student {
