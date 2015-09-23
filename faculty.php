@@ -22,23 +22,52 @@ Shi Lin Lu -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="css/landing-page.css" rel="stylesheet">
+    <link href="css/simple-sidebar.css" rel="stylesheet">
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 
+    <!-- Navigation -->     <!-- Header -->
+    <?php include("includes/header.html");?>
+    <!--END NAV-->
+
+   <!-- INTRO PAGE -->
 </head>
 
 <body>
 
-    <!-- Navigation -->     <!-- Header -->
-<?php include("includes/header.html");?>
-   <!--END NAV-->
+  <nav class="navbar navbar-student" role="navigation">
+    <div class="container">
+      <a class="navbar-brand" href="#" rel="home" title="Stony Brook Testing Center" >
+        <b>Welcome, Faculty!</b>
+      </a>
+      <div class="collapse navbar-collapse collapse-buttons">
+        <form class="navbar-form navbar-right" role="search">
+          <ul id="snav" class="navbar-right">
+          <li><a href="student-exams.php" class="btn btn-danger">Classes</a></li>
+          <li><a href="student-sched.html" class="btn btn-danger">Create an exam</a></li>
+          <li><a href="student-avail.html" class="btn btn-danger">Month view</a></li>
+          <li><a href="student-pref.html" class="btn btn-danger">Contact Students</a></li>
+          <li><a href="student-pref.html" class="btn btn-danger">My Exams</a></li>
+        </ul>
+        </form>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="row">
+      <div class="filler"></div>
+    </div>
+  </div>
 
-   <!-- INTRO PAGE -->
-<?php include("includes/intro.html");?>
-  <!-- END INTRO-->
-<?php include("includes/intro-content.html");?>
+ <div id="content" class="content">
+ <?php include('student-landing.php');?>
+ </div>
 
+
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript"></script>
     <!-- Footer -->
 <?php include("includes/footer.html");?>
     <!-- END FOOTER-->
@@ -50,11 +79,6 @@ Shi Lin Lu -->
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-    <script type="text/javascript">
-
-    </script>
 
 </body>
 
