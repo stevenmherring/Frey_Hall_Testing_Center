@@ -2,6 +2,9 @@ ul#snav li {
     display: inline;
 }
 
+ul#anav li {
+    display: inline;
+}
 .content {
   min-height: 795px;
 }
