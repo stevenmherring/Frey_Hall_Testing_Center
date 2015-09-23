@@ -42,7 +42,7 @@ Shi Lin Lu -->
       </a>
       <div class="collapse navbar-collapse collapse-buttons">
         <form class="navbar-form navbar-right" role="search">
-          <ul id="snav" class="navbar-right">
+        <ul id="snav" class="navbar-right">
           <li><a href="student-exams.php" class="btn btn-danger">Schedule Exam</a></li>
           <li><a href="student-sched.html" class="btn btn-danger">View Scheduled Exams</a></li>
           <li><a href="student-avail.html" class="btn btn-danger">View Available Exams</a></li>
