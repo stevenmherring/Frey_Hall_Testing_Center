@@ -35,7 +35,7 @@ Shi Lin Lu -->
 
 <body>
 
-  <nav class="navbar navbar-student navbar-fixed-top" role="navigation">
+  <nav class="navbar navbar-student" role="navigation">
     <div class="container">
       <a class="navbar-brand" href="#" rel="home" title="Stony Brook Testing Center" >
         <b>Welcome, Student!</b>
