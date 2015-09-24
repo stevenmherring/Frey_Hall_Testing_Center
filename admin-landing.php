@@ -7,8 +7,10 @@
 function checkInStudent() {
     /* To Do*/
 }
+</script>
 
 <script>
 function scheduleStudent() {
     /* To Do*/
 }
+</script>
