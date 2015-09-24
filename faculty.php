@@ -63,7 +63,7 @@ Shi Lin Lu -->
   </div>
 
  <div id="content" class="content">
- <?php include('student-landing.php');?>
+ <?php include('faculty-landing.php');?>
  </div>
 
 
