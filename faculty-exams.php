@@ -1,5 +1,5 @@
 <br>
-<h1><center> Exams </center></h1>
+<h1><center> Exams   </center></h1>
 <style>
 table {
     width:75%;
