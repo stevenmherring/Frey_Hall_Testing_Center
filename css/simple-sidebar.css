@@ -5,6 +5,10 @@ ul#snav li {
 ul#anav li {
     display: inline;
 }
+ul#fnav li {
+    display: inline;
+}
+
 .content {
   min-height: 795px;
   padding-top: 150px;

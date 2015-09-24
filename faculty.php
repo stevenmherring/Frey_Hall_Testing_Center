@@ -45,12 +45,12 @@ Shi Lin Lu -->
       </a>
       <div class="collapse navbar-collapse collapse-buttons">
         <form class="navbar-form navbar-right" role="search">
-          <ul id="snav" class="navbar-right">
-          <li><a href="student-exams.php" class="btn btn-danger">Classes</a></li>
-          <li><a href="student-sched.html" class="btn btn-danger">Create an exam</a></li>
-          <li><a href="student-avail.html" class="btn btn-danger">Month view</a></li>
+          <ul id="fnav" class="navbar-right">
+          <li><a href="faculty-classes.php" class="btn btn-danger">Classes</a></li>
+          <li><a href="faculty-landing.php" class="btn btn-danger">Create an exam</a></li>
+          <li><a href="faculty-month.php" class="btn btn-danger">Month view</a></li>
           <li><a href="student-pref.html" class="btn btn-danger">Contact Students</a></li>
-          <li><a href="student-pref.html" class="btn btn-danger">My Exams</a></li>
+          <li><a href="faculty-exams.php" class="btn btn-danger">My Exams</a></li>
         </ul>
         </form>
       </div>
