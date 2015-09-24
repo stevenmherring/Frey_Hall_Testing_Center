@@ -26,6 +26,8 @@ Shi Lin Lu -->
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
 
     <!-- Navigation -->     <!-- Header -->
     <?php include("includes/header.html");?>
@@ -67,7 +69,7 @@ Shi Lin Lu -->
 
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>
-<script type="text/javascript"></script>
+<script src="js/loader.js"></script>
     <!-- Footer -->
 <?php include("includes/footer.html");?>
     <!-- END FOOTER-->
@@ -75,11 +77,6 @@ Shi Lin Lu -->
     <!-- MODALS -->
 <?php include("includes/modals.html");?>
     <!-- END MODALS -->
-
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-
-
 </body>
 
 </html>
