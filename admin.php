@@ -70,7 +70,7 @@ Shi Lin Lu -->
     </div>
   </div>
 
- <div id="acontent" class="content">
+ <div id="acontent" class="content container">
  <?php include('admin-landing.php');?>
  </div>
 <!-- Bootstrap Core JavaScript -->
