@@ -34,11 +34,11 @@ The installer will just check a few PHP settings and then download composer.phar
 directory. This file is the Composer binary. It is a PHAR (PHP archive), which is an archive 
 format for PHP which can be run on the command line, amongst other things.
 
-Now just run
+Now just run this command in order to run Composer.
 
 
 ```shell
-$ php composer.phar in order to run Composer.
+$ php composer.phar 
 ```
 
 ### Installing Composer Walkthrough  - Windows       ###
