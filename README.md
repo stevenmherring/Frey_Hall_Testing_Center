@@ -37,7 +37,9 @@ format for PHP which can be run on the command line, amongst other things.
 Now just run
 
 
-'''<code>$ php composer.phar in order to run Composer.</code>'''
+```shell
+$ php composer.phar in order to run Composer.
+```
 
 ### Installing Composer Walkthrough  - Windows       ###
 
