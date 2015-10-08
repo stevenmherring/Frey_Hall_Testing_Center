@@ -12,13 +12,13 @@ All they need is their own html, headers/footers all other main features persist
 pages are named "student-*.html/php"*
 
 
-######################## website https://getcomposer.org/doc/00-intro.md ########################
-######################## Installing Composer Walkthrough  - UNIX         ########################
+## website https://getcomposer.org/doc/00-intro.md ##
+### Installing Composer Walkthrough  - UNIX         ###
 
---Local Install--
+**Local Install**
 Installing Composer locally is a matter of just running the installer in your project directory:
 
-curl -sS https://getcomposer.org/installer | php
+<code>$curl -sS https://getcomposer.org/installer | php</code>
 
 Note: If the above fails for some reason, you can download the installer with php instead:
 php -r "readfile('https://getcomposer.org/installer');" | php
@@ -29,7 +29,7 @@ format for PHP which can be run on the command line, amongst other things.
 
 Now just run php composer.phar in order to run Composer.
 
-######################## Installing Composer Walkthrough  - Windows       ########################
+### Installing Composer Walkthrough  - Windows       ###
 
 Using the Installer#
 
