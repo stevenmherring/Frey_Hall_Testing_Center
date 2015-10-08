@@ -16,18 +16,23 @@ pages are named "student-*.html/php"*
 ### Installing Composer Walkthrough  - UNIX         ###
 
 **Local Install**
-Installing Composer locally is a matter of just running the installer in your project directory:
+Installing Composer locally is a matter of just running the installer in your project directory:\\
 
-<code>$curl -sS https://getcomposer.org/installer | php</code>
+'''<code>$ curl -sS https://getcomposer.org/installer | php</code>'''
 
 Note: If the above fails for some reason, you can download the installer with php instead:
-php -r "readfile('https://getcomposer.org/installer');" | php
+
+
+'''<code>'''$ php -r "readfile('https://getcomposer.org/installer');" | php'''</code>'''
 
 The installer will just check a few PHP settings and then download composer.phar to your working 
 directory. This file is the Composer binary. It is a PHAR (PHP archive), which is an archive 
 format for PHP which can be run on the command line, amongst other things.
 
-Now just run php composer.phar in order to run Composer.
+Now just run
+
+
+'''<code>$ php composer.phar in order to run Composer.</code>'''
 
 ### Installing Composer Walkthrough  - Windows       ###
 
