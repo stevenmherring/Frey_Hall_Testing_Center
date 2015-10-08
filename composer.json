@@ -1,0 +1,9 @@
+{
+	
+        "require": {
+		"monolog/monolog": "1.0.*"
+		"propel/propel": "~2.0@dev"
+		"tedivm/jshrink": "~1.0"
+	}	
+}
+
