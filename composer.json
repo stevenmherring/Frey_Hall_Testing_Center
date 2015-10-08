@@ -1,9 +1,59 @@
 {
-	
+	"name": "Frey Hall Testing Center"
+}
+
+{
+	"description": "A web based application geared towards the Testing Center in Frey Hall at Stony Brook University. The goal is to allow teachers to schedule exams for the future based on availability in the Testing Center. Scheduled exams may have appointments made for eligible students. This project will use a mixture HTML/CSS and PHP primarily, subsidizing some work to Javascript and JQuery."
+}
+{
+	"version": "0.6.01"
+}
+
+
+{
+	"homepage": "http://www.snowlives.com"
+}
+
+{
+    		"support": {
+        "email": "stevenmherring@gmail.com",
+        "wiki": "http://www.snowlives.com/wiki",
+				"source": "https://github.com/ChrisJohnRyan/Frey_Hall_Testing_Center"
+    }
+}
+
+{
+    "authors": [
+        {
+            "name": "Steven Herring",
+            "email": "stevenmherring@gmail.com",
+            "homepage": "https://github.com/lamirp",
+            "role": "Master Chief Developer"
+        },
+        {
+            "name": "Christopher J Ryan",
+            "email": "chris.john.ryan93@gmail.com",
+            "homepage": "https://github.com/ChrisJohnRyan",
+            "role": "Cortana Developer"
+        }
+				{
+						"name": "Steven Chin",
+						"email": "steven.chin@stonybrook.edu",
+						"homepage": "http://lmgtfy.com",
+						"role": "Rando Soldier Developer"
+				}
+				{
+						"name": "Shi Lin Lu",
+						"email": "shilin.lu@stonybrook.edu",
+						"homepage": "http://lmgtfy.com",
+						"role": "TBD"
+				}
+    ]
+}
+{
         "require": {
 		"monolog/monolog": "1.0.*",
 		"propel/propel": "~2.0@dev",
 		"tedivm/jshrink": "~1.0"
-	}	
+	}
 }
-
