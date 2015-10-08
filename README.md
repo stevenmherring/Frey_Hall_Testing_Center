@@ -19,7 +19,7 @@ pages are named "student-*.html/php"*
 Installing Composer locally is a matter of just running the installer in your project directory:\\
 
 ```shell
-<code>$ curl -sS https://getcomposer.org/installer | php</code>
+$ curl -sS https://getcomposer.org/installer | php
 ```
 
 
