@@ -1,11 +1,12 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "onepiecefan";
-$dbname = "shilin";
+$servername = "mysql2.cs.stonybrook.edu";
+$username = "sachin";
+$password = "108610059";
+$dbname = "sachin";
 
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);
+//$link = mysql_connect('mysql2.cs.stonybrook.edu', 'sachin', '108610059');
 // Check connection
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
@@ -33,3 +34,4 @@ if (mysqli_num_rows($result) > 0) {
 
 mysqli_close($conn);
 ?>
+
