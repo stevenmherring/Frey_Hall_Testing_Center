@@ -20,4 +20,5 @@ function scheduleStudent() {
 function modifyTimeRange() {
     /* To Do*/
 }
+
 </script>

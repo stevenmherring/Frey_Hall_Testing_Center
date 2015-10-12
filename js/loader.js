@@ -9,13 +9,22 @@ $('ul#snav li a').click(function(){
   return false;
 });
 
+$('ul#anav li a').click(function(){
+  var page = $(this).attr('href');
+  $('#adminContent').load(page)
+
+  return false;
+});
+
 $(document).ready(function (){
   $("#fcontent").load("faculty-landing.php");
 });
 
-$('ul#fnav li a').click(function(){
-  var page = $(this).attr('href');
-  $('#fcontent').load(page)
+$(document).ready(function (){
+  $("#datepicker").datepicker();
+})
 
-  return false;
-});
+
+$(document).ready(function (){
+  $('.datepicker').datepicker();
+})
