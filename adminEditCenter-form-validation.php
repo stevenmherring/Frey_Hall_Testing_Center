@@ -16,38 +16,6 @@ include("dbQueries.php");
                         var datePick_ReservedTimePeriodTo = document.forms["adminEditCenterForm"]["datePick_ReservedTimePeriodTo"].value;
                             var reminderChoice = document.forms["adminEditCenterForm"]["reminderChoice"].value;
 */
-$numseats = $_POST['numberOfSeats'];
-echo "<script type='text/javascript'>alert('$numseats');</script>";
-$numseats = strip_tags($numseats);
-echo "<script type='text/javascript'>alert('$numseats');</script>";
-$numseats = mysql_real_escape_string($numseats);
-echo "<script type='text/javascript'>alert('$numseats');</script>";
-//$numseats = mysql_real_escape_string(strip_tags(($_POST['numberOfSeats'])));
-$numsetasideseats = mysql_real_escape_string(strip_tags(($_POST['inputSetasideSeats'])));
-$hours_openfrom = mysql_real_escape_string(strip_tags(($_POST['hours_openfrom'])));
-$hours_openuntil = mysql_real_escape_string(strip_tags(($_POST['hours_openuntil'])));
-$gaptime = $_POST['gaptime'];
-/* to do
-$datePick_RangeClosedFrom = $_POST['datePick_RangeClosedFrom'];
-$datePick_RangeClosedTo = $_POST['datePick_RangeClosedTo'];
-$datePick_ReservedTimePeriodFrom = $_POST['datePick_ReservedTimePeriodFrom'];
-$datePick_ReservedTimePeriodTo = $_POST['datePick_ReservedTimePeriodTo'];
-*/
-$servername = "localhost";
-$username = "root";
-$password = "physics123";
-$dbname = "FreyHallTestingCenter";
-/*
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-if (!$conn) {
-  $message = "Couldnt connect to db.";
-  echo '<script type="text/javascript">alert("'.$message.'");</script>';
-  die("Connection failed: " . mysqli_connect_error());
-} else {
-  $success = "Successfully connected to db.";
-  echo '<script type="text/javascript">alert("'.$success.'");</script>';
-}
-*/
 
 try {
        $dbh=new PDO("mysql:host=localhost;dbname=FreyHallTestingCenter","root","physics123");
@@ -57,7 +25,32 @@ try {
   echo "<script type='text/javascript'>alert('$message');</script>";
 }
 
-//mysql_select_db($db_name) OR die(mysql_error());
+/**************************************************************************
+*********************Getting all of the form information*******************
+/* Grabbing the form value of numberOfSeats from our adminEditCenterForm */
+$numseats = $_POST['numberOfSeats'];
+/*Strip tags- This function tries to return a string with all NULL bytes, HTML and PHP tags stripped from a given str.
+It uses the same tag stripping state machine as the fgetss() function.*/
+$numseats = strip_tags($numseats);
+
+$numsetasideseats = $_POST['inputSeatasideSeats'];
+$numsetasideseats = strip_tags($numseats);
+
+$hours_openfrom = $_POST['hours_openfrom'];
+$hours_openfrom = strip_tags($hours_openfrom);
+
+$hours_openuntil = $_POST['hours_openuntil'];
+$hours_openuntil = strip_tags($hours_openuntil);
+
+$gaptime = $_POST['gaptime'];
+$gaptime = strip_tags($gaptime);
+
+/* to do these fields are not defined in the XML
+$datePick_RangeClosedFrom = $_POST['datePick_RangeClosedFrom'];
+$datePick_RangeClosedTo = $_POST['datePick_RangeClosedTo'];
+$datePick_ReservedTimePeriodFrom = $_POST['datePick_ReservedTimePeriodFrom'];
+$datePick_ReservedTimePeriodTo = $_POST['datePick_ReservedTimePeriodTo'];
+*/
 
 $dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 $dbh->beginTransaction();
@@ -76,9 +69,6 @@ $result = $dbh->prepare($query, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
 $result->execute(array($roomInfo));
 
 */
-$num = $result->rowCount();
-echo "<script type='text/javascript'>alert('$num');</script>";
-
   $dbh->commit();
   $dbh = null;
 ?>
