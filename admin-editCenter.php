@@ -14,12 +14,24 @@
     <form name="adminEditCenterForm" method = "post" action="adminEditCenter-form-validation.php" onsubmit="return validateForm()">
     <form class="form-horizontal">
         <div class="form-group">
+            <label for="gaptime">Gap Time (hh:mm) :</label>
+                <input name="gaptime" type="text" class="form-control" id="gaptime" placeholder="0015">
+            </div>
+        <div class="form-group">
             <label for="inputNumberSeats">Number of seats:</label>
                 <input name="numberOfSeats" type="text" class="form-control" id="inputNumberSeats" placeholder="64">
             </div>
         <div class="form-group">
             <label for="inputSetasideSeats">Number of setaside Seats:</label>
-                <input name="inputSetasideSeats" type="text" class="form-control" id="inputSetasideSeats" placeholder="Password">
+                <input name="inputSetasideSeats" type="text" class="form-control" id="inputSetasideSeats" placeholder="3">
+            </div>
+        <div class="form-group">
+            <label for="hours_openfrom">Testing Center Opens at (hh:mm) :</label>
+                <input name="hours_openfrom" type="text" class="form-control" id="hours_openfrom" placeholder="0800">
+            </div>
+        <div class="form-group">
+            <label for="hours_openuntil">Testing Center Closes at (hh:mm):</label>
+                <input name="hours_openuntil" type="text" class="form-control" id="hours_openuntil" placeholder="0500">
             </div>
         <div class="form-group">
             <label for="inputDateRangeClosedFrom">Date Testing Center Closed From:</label>

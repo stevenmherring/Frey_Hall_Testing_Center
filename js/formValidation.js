@@ -1,14 +1,26 @@
 
 function validateForm() {
-    var numberOfSeats = document.forms["adminEditCenterForm"]["numberOfSeats"].value;
+    var gaptime = document.forms["adminEditCenterForm"]["gaptime"].value;
+      var numberOfSeats = document.forms["adminEditCenterForm"]["numberOfSeats"].value;
         var inputSetasideSeats = document.forms["adminEditCenterForm"]["inputSetasideSeats"].value;
             var datePick_RangeClosedFrom = document.forms["adminEditCenterForm"]["datePick_RangeClosedFrom"].value;
                 var datePick_RangeClosedTo = document.forms["adminEditCenterForm"]["datePick_RangeClosedTo"].value;
                     var datePick_ReservedTimePeriodFrom = document.forms["adminEditCenterForm"]["datePick_ReservedTimePeriodFrom"].value;
                         var datePick_ReservedTimePeriodTo = document.forms["adminEditCenterForm"]["datePick_ReservedTimePeriodTo"].value;
                             var reminderChoice = document.forms["adminEditCenterForm"]["reminderChoice"].value;
-    if (numberOfSeats == null || numberOfSeats == "") {
+                                var hours_openfrom = document.forms["adminEditCenterForm"]["hours_openfrom"].value;
+                                    var hours_openuntil = document.forms["adminEditCenterForm"]["hours_openuntil"].value;
+    if (gaptime == null || gaptime == "") {
+        alert("Gaptime must be filled out");
+        return false;
+    } if (numberOfSeats == null || numberOfSeats == "") {
         alert("Number of seats must be filled out");
+        return false;
+    }  if (hours_openfrom == null || hours_openfrom == "") {
+        alert("Open hours must be filled out");
+        return false;
+    }  if (hours_openuntil == null || hours_openuntil == "") {
+        alert("Closing hoursmust be filled out");
         return false;
     } if (inputSetasideSeats == null || inputSetasideSeats == "") {
         alert("Number of SetasideSeats must be filled out");
