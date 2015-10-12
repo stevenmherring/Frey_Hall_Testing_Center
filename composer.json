@@ -38,7 +38,12 @@
         "require": {
 		"monolog/monolog": "1.0.*",
 		"propel/propel": "~2.0@dev",
+		"propel/propel-bundle": "~2.0@dev",
 		"tedivm/jshrink": "~1.0",
-		"phing/phing": "2.*"
-	}
-}
+		"phing/phing": "2.*",
+		"symfony/finder": "^2.7"
+	},
+    "autoload": {
+         "classmap": ["base"]
+    }
+ }

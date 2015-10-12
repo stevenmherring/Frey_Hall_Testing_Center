@@ -19,17 +19,17 @@ use Propel\Runtime\Exception\PropelException;
  *
  *
  *
- * @method     ChildClassQuery orderByClassID($order = Criteria::ASC) Order by the classID column
+ * @method     ChildClassQuery orderByClassid($order = Criteria::ASC) Order by the classID column
  * @method     ChildClassQuery orderBySubject($order = Criteria::ASC) Order by the subject column
- * @method     ChildClassQuery orderByCategory($order = Criteria::ASC) Order by the catalogNumber column
+ * @method     ChildClassQuery orderByCatalognumber($order = Criteria::ASC) Order by the catalogNumber column
  * @method     ChildClassQuery orderBySection($order = Criteria::ASC) Order by the section column
- * @method     ChildClassQuery orderByClassID($order = Criteria::ASC) Order by the InstructorNetID column
+ * @method     ChildClassQuery orderByInstructornetid($order = Criteria::ASC) Order by the InstructorNetID column
  *
- * @method     ChildClassQuery groupByClassID() Group by the classID column
+ * @method     ChildClassQuery groupByClassid() Group by the classID column
  * @method     ChildClassQuery groupBySubject() Group by the subject column
- * @method     ChildClassQuery groupByCategory() Group by the catalogNumber column
+ * @method     ChildClassQuery groupByCatalognumber() Group by the catalogNumber column
  * @method     ChildClassQuery groupBySection() Group by the section column
- * @method     ChildClassQuery groupByClassID() Group by the InstructorNetID column
+ * @method     ChildClassQuery groupByInstructornetid() Group by the InstructorNetID column
  *
  * @method     ChildClassQuery leftJoin($relation) Adds a LEFT JOIN clause to the query
  * @method     ChildClassQuery rightJoin($relation) Adds a RIGHT JOIN clause to the query
@@ -42,27 +42,27 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildClass findOne(ConnectionInterface $con = null) Return the first ChildClass matching the query
  * @method     ChildClass findOneOrCreate(ConnectionInterface $con = null) Return the first ChildClass matching the query, or a new ChildClass object populated from the query conditions when no match is found
  *
- * @method     ChildClass findOneByClassID(string $classID) Return the first ChildClass filtered by the classID column
+ * @method     ChildClass findOneByClassid(string $classID) Return the first ChildClass filtered by the classID column
  * @method     ChildClass findOneBySubject(string $subject) Return the first ChildClass filtered by the subject column
- * @method     ChildClass findOneByCategory(int $catalogNumber) Return the first ChildClass filtered by the catalogNumber column
+ * @method     ChildClass findOneByCatalognumber(int $catalogNumber) Return the first ChildClass filtered by the catalogNumber column
  * @method     ChildClass findOneBySection(string $section) Return the first ChildClass filtered by the section column
- * @method     ChildClass findOneByClassID(string $InstructorNetID) Return the first ChildClass filtered by the InstructorNetID column *
+ * @method     ChildClass findOneByInstructornetid(string $InstructorNetID) Return the first ChildClass filtered by the InstructorNetID column *
 
  * @method     ChildClass requirePk($key, ConnectionInterface $con = null) Return the ChildClass by primary key and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildClass requireOne(ConnectionInterface $con = null) Return the first ChildClass matching the query and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  *
- * @method     ChildClass requireOneByClassID(string $classID) Return the first ChildClass filtered by the classID column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
+ * @method     ChildClass requireOneByClassid(string $classID) Return the first ChildClass filtered by the classID column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildClass requireOneBySubject(string $subject) Return the first ChildClass filtered by the subject column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
- * @method     ChildClass requireOneByCategory(int $catalogNumber) Return the first ChildClass filtered by the catalogNumber column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
+ * @method     ChildClass requireOneByCatalognumber(int $catalogNumber) Return the first ChildClass filtered by the catalogNumber column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildClass requireOneBySection(string $section) Return the first ChildClass filtered by the section column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
- * @method     ChildClass requireOneByClassID(string $InstructorNetID) Return the first ChildClass filtered by the InstructorNetID column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
+ * @method     ChildClass requireOneByInstructornetid(string $InstructorNetID) Return the first ChildClass filtered by the InstructorNetID column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  *
  * @method     ChildClass[]|ObjectCollection find(ConnectionInterface $con = null) Return ChildClass objects based on current ModelCriteria
- * @method     ChildClass[]|ObjectCollection findByClassID(string $classID) Return ChildClass objects filtered by the classID column
+ * @method     ChildClass[]|ObjectCollection findByClassid(string $classID) Return ChildClass objects filtered by the classID column
  * @method     ChildClass[]|ObjectCollection findBySubject(string $subject) Return ChildClass objects filtered by the subject column
- * @method     ChildClass[]|ObjectCollection findByCategory(int $catalogNumber) Return ChildClass objects filtered by the catalogNumber column
+ * @method     ChildClass[]|ObjectCollection findByCatalognumber(int $catalogNumber) Return ChildClass objects filtered by the catalogNumber column
  * @method     ChildClass[]|ObjectCollection findBySection(string $section) Return ChildClass objects filtered by the section column
- * @method     ChildClass[]|ObjectCollection findByClassID(string $InstructorNetID) Return ChildClass objects filtered by the InstructorNetID column
+ * @method     ChildClass[]|ObjectCollection findByInstructornetid(string $InstructorNetID) Return ChildClass objects filtered by the InstructorNetID column
  * @method     ChildClass[]|\Propel\Runtime\Util\PropelModelPager paginate($page = 1, $maxPerPage = 10, ConnectionInterface $con = null) Issue a SELECT query based on the current ModelCriteria and uses a page and a maximum number of results per page to compute an offset and a limit
  *
  */
@@ -250,28 +250,28 @@ abstract class ClassQuery extends ModelCriteria
      *
      * Example usage:
      * <code>
-     * $query->filterByClassID('fooValue');   // WHERE classID = 'fooValue'
-     * $query->filterByClassID('%fooValue%'); // WHERE classID LIKE '%fooValue%'
+     * $query->filterByClassid('fooValue');   // WHERE classID = 'fooValue'
+     * $query->filterByClassid('%fooValue%'); // WHERE classID LIKE '%fooValue%'
      * </code>
      *
-     * @param     string $classID The value to use as filter.
+     * @param     string $classid The value to use as filter.
      *              Accepts wildcards (* and % trigger a LIKE)
      * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
      *
      * @return $this|ChildClassQuery The current query, for fluid interface
      */
-    public function filterByClassID($classID = null, $comparison = null)
+    public function filterByClassid($classid = null, $comparison = null)
     {
         if (null === $comparison) {
-            if (is_array($classID)) {
+            if (is_array($classid)) {
                 $comparison = Criteria::IN;
-            } elseif (preg_match('/[\%\*]/', $classID)) {
-                $classID = str_replace('*', '%', $classID);
+            } elseif (preg_match('/[\%\*]/', $classid)) {
+                $classid = str_replace('*', '%', $classid);
                 $comparison = Criteria::LIKE;
             }
         }
 
-        return $this->addUsingAlias(ClassTableMap::COL_CLASSID, $classID, $comparison);
+        return $this->addUsingAlias(ClassTableMap::COL_CLASSID, $classid, $comparison);
     }
 
     /**
@@ -308,12 +308,12 @@ abstract class ClassQuery extends ModelCriteria
      *
      * Example usage:
      * <code>
-     * $query->filterByCategory(1234); // WHERE catalogNumber = 1234
-     * $query->filterByCategory(array(12, 34)); // WHERE catalogNumber IN (12, 34)
-     * $query->filterByCategory(array('min' => 12)); // WHERE catalogNumber > 12
+     * $query->filterByCatalognumber(1234); // WHERE catalogNumber = 1234
+     * $query->filterByCatalognumber(array(12, 34)); // WHERE catalogNumber IN (12, 34)
+     * $query->filterByCatalognumber(array('min' => 12)); // WHERE catalogNumber > 12
      * </code>
      *
-     * @param     mixed $category The value to use as filter.
+     * @param     mixed $catalognumber The value to use as filter.
      *              Use scalar values for equality.
      *              Use array values for in_array() equivalent.
      *              Use associative array('min' => $minValue, 'max' => $maxValue) for intervals.
@@ -321,16 +321,16 @@ abstract class ClassQuery extends ModelCriteria
      *
      * @return $this|ChildClassQuery The current query, for fluid interface
      */
-    public function filterByCategory($category = null, $comparison = null)
+    public function filterByCatalognumber($catalognumber = null, $comparison = null)
     {
-        if (is_array($category)) {
+        if (is_array($catalognumber)) {
             $useMinMax = false;
-            if (isset($category['min'])) {
-                $this->addUsingAlias(ClassTableMap::COL_CATALOGNUMBER, $category['min'], Criteria::GREATER_EQUAL);
+            if (isset($catalognumber['min'])) {
+                $this->addUsingAlias(ClassTableMap::COL_CATALOGNUMBER, $catalognumber['min'], Criteria::GREATER_EQUAL);
                 $useMinMax = true;
             }
-            if (isset($category['max'])) {
-                $this->addUsingAlias(ClassTableMap::COL_CATALOGNUMBER, $category['max'], Criteria::LESS_EQUAL);
+            if (isset($catalognumber['max'])) {
+                $this->addUsingAlias(ClassTableMap::COL_CATALOGNUMBER, $catalognumber['max'], Criteria::LESS_EQUAL);
                 $useMinMax = true;
             }
             if ($useMinMax) {
@@ -341,7 +341,7 @@ abstract class ClassQuery extends ModelCriteria
             }
         }
 
-        return $this->addUsingAlias(ClassTableMap::COL_CATALOGNUMBER, $category, $comparison);
+        return $this->addUsingAlias(ClassTableMap::COL_CATALOGNUMBER, $catalognumber, $comparison);
     }
 
     /**
@@ -378,28 +378,28 @@ abstract class ClassQuery extends ModelCriteria
      *
      * Example usage:
      * <code>
-     * $query->filterByClassID('fooValue');   // WHERE InstructorNetID = 'fooValue'
-     * $query->filterByClassID('%fooValue%'); // WHERE InstructorNetID LIKE '%fooValue%'
+     * $query->filterByInstructornetid('fooValue');   // WHERE InstructorNetID = 'fooValue'
+     * $query->filterByInstructornetid('%fooValue%'); // WHERE InstructorNetID LIKE '%fooValue%'
      * </code>
      *
-     * @param     string $classID The value to use as filter.
+     * @param     string $instructornetid The value to use as filter.
      *              Accepts wildcards (* and % trigger a LIKE)
      * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
      *
      * @return $this|ChildClassQuery The current query, for fluid interface
      */
-    public function filterByClassID($classID = null, $comparison = null)
+    public function filterByInstructornetid($instructornetid = null, $comparison = null)
     {
         if (null === $comparison) {
-            if (is_array($classID)) {
+            if (is_array($instructornetid)) {
                 $comparison = Criteria::IN;
-            } elseif (preg_match('/[\%\*]/', $classID)) {
-                $classID = str_replace('*', '%', $classID);
+            } elseif (preg_match('/[\%\*]/', $instructornetid)) {
+                $instructornetid = str_replace('*', '%', $instructornetid);
                 $comparison = Criteria::LIKE;
             }
         }
 
-        return $this->addUsingAlias(ClassTableMap::COL_INSTRUCTORNETID, $classID, $comparison);
+        return $this->addUsingAlias(ClassTableMap::COL_INSTRUCTORNETID, $instructornetid, $comparison);
     }
 
     /**
@@ -412,7 +412,7 @@ abstract class ClassQuery extends ModelCriteria
     public function prune($class = null)
     {
         if ($class) {
-            $this->addUsingAlias(ClassTableMap::COL_CLASSID, $class->getClassID(), Criteria::NOT_EQUAL);
+            $this->addUsingAlias(ClassTableMap::COL_CLASSID, $class->getClassid(), Criteria::NOT_EQUAL);
         }
 
         return $this;

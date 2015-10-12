@@ -329,7 +329,7 @@ abstract class Class implements ActiveRecordInterface
      *
      * @return string
      */
-    public function getClassID()
+    public function getClassid()
     {
         return $this->classid;
     }
@@ -349,7 +349,7 @@ abstract class Class implements ActiveRecordInterface
      *
      * @return int
      */
-    public function getCategory()
+    public function getCatalognumber()
     {
         return $this->catalognumber;
     }
@@ -369,7 +369,7 @@ abstract class Class implements ActiveRecordInterface
      *
      * @return string
      */
-    public function getClassID()
+    public function getInstructornetid()
     {
         return $this->instructornetid;
     }
@@ -380,7 +380,7 @@ abstract class Class implements ActiveRecordInterface
      * @param string $v new value
      * @return $this|\Class The current object (for fluent API support)
      */
-    public function setClassID($v)
+    public function setClassid($v)
     {
         if ($v !== null) {
             $v = (string) $v;
@@ -392,7 +392,7 @@ abstract class Class implements ActiveRecordInterface
         }
 
         return $this;
-    } // setClassID()
+    } // setClassid()
 
     /**
      * Set the value of [subject] column.
@@ -420,7 +420,7 @@ abstract class Class implements ActiveRecordInterface
      * @param int $v new value
      * @return $this|\Class The current object (for fluent API support)
      */
-    public function setCategory($v)
+    public function setCatalognumber($v)
     {
         if ($v !== null) {
             $v = (int) $v;
@@ -432,7 +432,7 @@ abstract class Class implements ActiveRecordInterface
         }
 
         return $this;
-    } // setCategory()
+    } // setCatalognumber()
 
     /**
      * Set the value of [section] column.
@@ -460,7 +460,7 @@ abstract class Class implements ActiveRecordInterface
      * @param string $v new value
      * @return $this|\Class The current object (for fluent API support)
      */
-    public function setClassID($v)
+    public function setInstructornetid($v)
     {
         if ($v !== null) {
             $v = (string) $v;
@@ -472,7 +472,7 @@ abstract class Class implements ActiveRecordInterface
         }
 
         return $this;
-    } // setClassID()
+    } // setInstructornetid()
 
     /**
      * Indicates whether the columns in this object are only set to default values.
@@ -510,19 +510,19 @@ abstract class Class implements ActiveRecordInterface
     {
         try {
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 0 + $startcol : ClassTableMap::translateFieldName('ClassID', TableMap::TYPE_PHPNAME, $indexType)];
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 0 + $startcol : ClassTableMap::translateFieldName('Classid', TableMap::TYPE_PHPNAME, $indexType)];
             $this->classid = (null !== $col) ? (string) $col : null;
 
             $col = $row[TableMap::TYPE_NUM == $indexType ? 1 + $startcol : ClassTableMap::translateFieldName('Subject', TableMap::TYPE_PHPNAME, $indexType)];
             $this->subject = (null !== $col) ? (string) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 2 + $startcol : ClassTableMap::translateFieldName('Category', TableMap::TYPE_PHPNAME, $indexType)];
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 2 + $startcol : ClassTableMap::translateFieldName('Catalognumber', TableMap::TYPE_PHPNAME, $indexType)];
             $this->catalognumber = (null !== $col) ? (int) $col : null;
 
             $col = $row[TableMap::TYPE_NUM == $indexType ? 3 + $startcol : ClassTableMap::translateFieldName('Section', TableMap::TYPE_PHPNAME, $indexType)];
             $this->section = (null !== $col) ? (string) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 4 + $startcol : ClassTableMap::translateFieldName('ClassID', TableMap::TYPE_PHPNAME, $indexType)];
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 4 + $startcol : ClassTableMap::translateFieldName('Instructornetid', TableMap::TYPE_PHPNAME, $indexType)];
             $this->instructornetid = (null !== $col) ? (string) $col : null;
             $this->resetModified();
 
@@ -822,19 +822,19 @@ abstract class Class implements ActiveRecordInterface
     {
         switch ($pos) {
             case 0:
-                return $this->getClassID();
+                return $this->getClassid();
                 break;
             case 1:
                 return $this->getSubject();
                 break;
             case 2:
-                return $this->getCategory();
+                return $this->getCatalognumber();
                 break;
             case 3:
                 return $this->getSection();
                 break;
             case 4:
-                return $this->getClassID();
+                return $this->getInstructornetid();
                 break;
             default:
                 return null;
@@ -865,11 +865,11 @@ abstract class Class implements ActiveRecordInterface
         $alreadyDumpedObjects['Class'][$this->hashCode()] = true;
         $keys = ClassTableMap::getFieldNames($keyType);
         $result = array(
-            $keys[0] => $this->getClassID(),
+            $keys[0] => $this->getClassid(),
             $keys[1] => $this->getSubject(),
-            $keys[2] => $this->getCategory(),
+            $keys[2] => $this->getCatalognumber(),
             $keys[3] => $this->getSection(),
-            $keys[4] => $this->getClassID(),
+            $keys[4] => $this->getInstructornetid(),
         );
         $virtualColumns = $this->virtualColumns;
         foreach ($virtualColumns as $key => $virtualColumn) {
@@ -910,19 +910,19 @@ abstract class Class implements ActiveRecordInterface
     {
         switch ($pos) {
             case 0:
-                $this->setClassID($value);
+                $this->setClassid($value);
                 break;
             case 1:
                 $this->setSubject($value);
                 break;
             case 2:
-                $this->setCategory($value);
+                $this->setCatalognumber($value);
                 break;
             case 3:
                 $this->setSection($value);
                 break;
             case 4:
-                $this->setClassID($value);
+                $this->setInstructornetid($value);
                 break;
         } // switch()
 
@@ -951,19 +951,19 @@ abstract class Class implements ActiveRecordInterface
         $keys = ClassTableMap::getFieldNames($keyType);
 
         if (array_key_exists($keys[0], $arr)) {
-            $this->setClassID($arr[$keys[0]]);
+            $this->setClassid($arr[$keys[0]]);
         }
         if (array_key_exists($keys[1], $arr)) {
             $this->setSubject($arr[$keys[1]]);
         }
         if (array_key_exists($keys[2], $arr)) {
-            $this->setCategory($arr[$keys[2]]);
+            $this->setCatalognumber($arr[$keys[2]]);
         }
         if (array_key_exists($keys[3], $arr)) {
             $this->setSection($arr[$keys[3]]);
         }
         if (array_key_exists($keys[4], $arr)) {
-            $this->setClassID($arr[$keys[4]]);
+            $this->setInstructornetid($arr[$keys[4]]);
         }
     }
 
@@ -1051,7 +1051,7 @@ abstract class Class implements ActiveRecordInterface
      */
     public function hashCode()
     {
-        $validPk = null !== $this->getClassID();
+        $validPk = null !== $this->getClassid();
 
         $validPrimaryKeyFKs = 0;
         $primaryKeyFKs = [];
@@ -1071,7 +1071,7 @@ abstract class Class implements ActiveRecordInterface
      */
     public function getPrimaryKey()
     {
-        return $this->getClassID();
+        return $this->getClassid();
     }
 
     /**
@@ -1082,7 +1082,7 @@ abstract class Class implements ActiveRecordInterface
      */
     public function setPrimaryKey($key)
     {
-        $this->setClassID($key);
+        $this->setClassid($key);
     }
 
     /**
@@ -1091,7 +1091,7 @@ abstract class Class implements ActiveRecordInterface
      */
     public function isPrimaryKeyNull()
     {
-        return null === $this->getClassID();
+        return null === $this->getClassid();
     }
 
     /**
@@ -1107,11 +1107,11 @@ abstract class Class implements ActiveRecordInterface
      */
     public function copyInto($copyObj, $deepCopy = false, $makeNew = true)
     {
-        $copyObj->setClassID($this->getClassID());
+        $copyObj->setClassid($this->getClassid());
         $copyObj->setSubject($this->getSubject());
-        $copyObj->setCategory($this->getCategory());
+        $copyObj->setCatalognumber($this->getCatalognumber());
         $copyObj->setSection($this->getSection());
-        $copyObj->setClassID($this->getClassID());
+        $copyObj->setInstructornetid($this->getInstructornetid());
         if ($makeNew) {
             $copyObj->setNew(true);
         }

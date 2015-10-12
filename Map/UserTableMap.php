@@ -103,8 +103,8 @@ class UserTableMap extends TableMap
      * e.g. self::$fieldNames[self::TYPE_PHPNAME][0] = 'Id'
      */
     protected static $fieldNames = array (
-        self::TYPE_PHPNAME       => array('FirstName', 'LastName', 'NetID', 'Email', ),
-        self::TYPE_CAMELNAME     => array('firstName', 'lastName', 'netID', 'email', ),
+        self::TYPE_PHPNAME       => array('Firstname', 'Lastname', 'Netid', 'Email', ),
+        self::TYPE_CAMELNAME     => array('firstname', 'lastname', 'netid', 'email', ),
         self::TYPE_COLNAME       => array(UserTableMap::COL_FIRSTNAME, UserTableMap::COL_LASTNAME, UserTableMap::COL_NETID, UserTableMap::COL_EMAIL, ),
         self::TYPE_FIELDNAME     => array('firstName', 'lastName', 'netId', 'email', ),
         self::TYPE_NUM           => array(0, 1, 2, 3, )
@@ -117,8 +117,8 @@ class UserTableMap extends TableMap
      * e.g. self::$fieldKeys[self::TYPE_PHPNAME]['Id'] = 0
      */
     protected static $fieldKeys = array (
-        self::TYPE_PHPNAME       => array('FirstName' => 0, 'LastName' => 1, 'NetID' => 2, 'Email' => 3, ),
-        self::TYPE_CAMELNAME     => array('firstName' => 0, 'lastName' => 1, 'netID' => 2, 'email' => 3, ),
+        self::TYPE_PHPNAME       => array('Firstname' => 0, 'Lastname' => 1, 'Netid' => 2, 'Email' => 3, ),
+        self::TYPE_CAMELNAME     => array('firstname' => 0, 'lastname' => 1, 'netid' => 2, 'email' => 3, ),
         self::TYPE_COLNAME       => array(UserTableMap::COL_FIRSTNAME => 0, UserTableMap::COL_LASTNAME => 1, UserTableMap::COL_NETID => 2, UserTableMap::COL_EMAIL => 3, ),
         self::TYPE_FIELDNAME     => array('firstName' => 0, 'lastName' => 1, 'netId' => 2, 'email' => 3, ),
         self::TYPE_NUM           => array(0, 1, 2, 3, )
@@ -141,9 +141,9 @@ class UserTableMap extends TableMap
         $this->setPackage('');
         $this->setUseIdGenerator(false);
         // columns
-        $this->addColumn('firstName', 'FirstName', 'VARCHAR', true, 50, null);
-        $this->addColumn('lastName', 'LastName', 'VARCHAR', true, 50, null);
-        $this->addPrimaryKey('netId', 'NetID', 'VARCHAR', true, 24, null);
+        $this->addColumn('firstName', 'Firstname', 'VARCHAR', true, 50, null);
+        $this->addColumn('lastName', 'Lastname', 'VARCHAR', true, 50, null);
+        $this->addPrimaryKey('netId', 'Netid', 'VARCHAR', true, 24, null);
         $this->addColumn('email', 'Email', 'VARCHAR', true, 255, null);
     } // initialize()
 
@@ -170,11 +170,11 @@ class UserTableMap extends TableMap
     public static function getPrimaryKeyHashFromRow($row, $offset = 0, $indexType = TableMap::TYPE_NUM)
     {
         // If the PK cannot be derived from the row, return NULL.
-        if ($row[TableMap::TYPE_NUM == $indexType ? 2 + $offset : static::translateFieldName('NetID', TableMap::TYPE_PHPNAME, $indexType)] === null) {
+        if ($row[TableMap::TYPE_NUM == $indexType ? 2 + $offset : static::translateFieldName('Netid', TableMap::TYPE_PHPNAME, $indexType)] === null) {
             return null;
         }
 
-        return (string) $row[TableMap::TYPE_NUM == $indexType ? 2 + $offset : static::translateFieldName('NetID', TableMap::TYPE_PHPNAME, $indexType)];
+        return (string) $row[TableMap::TYPE_NUM == $indexType ? 2 + $offset : static::translateFieldName('Netid', TableMap::TYPE_PHPNAME, $indexType)];
     }
 
     /**
@@ -194,7 +194,7 @@ class UserTableMap extends TableMap
         return (string) $row[
             $indexType == TableMap::TYPE_NUM
                 ? 2 + $offset
-                : self::translateFieldName('NetID', TableMap::TYPE_PHPNAME, $indexType)
+                : self::translateFieldName('Netid', TableMap::TYPE_PHPNAME, $indexType)
         ];
     }
 

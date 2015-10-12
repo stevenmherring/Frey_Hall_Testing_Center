@@ -1,30 +1,43 @@
-<database name="default">
-  <table name="user" phpName="User">
-    <column name="firstName" type="varchar" size="50" required="true" phpName="FirstName"/>
-    <column name="lastName" type="varchar" size="50" required="true" phpName="LastName"/>
-    <column name="netId" type="varchar" size="24" required="true" phpName="NetID" primaryKey="true"/>
-    <column name="email" type="varchar" size="255" required="true" phpName="Email"/>
-    </table>
-  <table name="class" phpName="Class">
-    <column name="classID" type="varchar" size="11" required="true" primaryKey="true" phpName="ClassID" />
-    <column name="subject" type="varchar" size="3" required="true" phpName="Subject"/>
-    <column name="catalogNumber" type="integer" size="3" required="true" phpName="Category"/>
-    <column name="section" type="varchar" size="3" required="true" phpName="Section"/>
-    <column name="InstructorNetID" type="varchar" size="128" required="true" phpName="ClassID"/>
+<?xml version="1.0" encoding="utf-8"?>
+<database name="default" defaultIdMethod="native" defaultPhpNamingMethod="underscore">
+  <table name="class" idMethod="native" phpName="Class">
+    <column name="classID" phpName="Classid" type="VARCHAR" size="11" primaryKey="true" required="true"/>
+    <column name="subject" phpName="Subject" type="VARCHAR" size="3" required="true"/>
+    <column name="catalogNumber" phpName="Catalognumber" type="INTEGER" size="3" required="true"/>
+    <column name="section" phpName="Section" type="VARCHAR" size="3" required="true"/>
+    <column name="InstructorNetID" phpName="Instructornetid" type="VARCHAR" size="128" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
   </table>
-  <table name="roster" phpName="Roster">
-    <column name="classID" type="varchar" size="11" required="true" primaryKey="true"/>
-    <column name="subject" type="varchar" size="3" required="true"/>
-    <column name="catalogNumber" type="integer" size="3" required="true"/>
-    <column name="section" type="varchar" size="3" required="true"/>
-    <column name="instructorNetID" type="varchar" size="128" required="true"/>
+  <table name="freyHallTestingCenterRoom" idMethod="native" phpName="Freyhalltestingcenterroom">
+    <column name="numseats" phpName="Numseats" type="INTEGER" size="3" primaryKey="true" required="true"/>
+    <column name="numsetasideseats" phpName="Numsetasideseats" type="INTEGER" size="3" required="true"/>
+    <column name="hours_openfrom" phpName="HoursOpenfrom" type="INTEGER" size="4" required="true"/>
+    <column name="hours_openuntil" phpName="HoursOpenuntil" type="INTEGER" size="4" required="true"/>
+    <column name="gaptime" phpName="Gaptime" type="INTEGER" size="4" required="true"/>
+    <column name="reminderInterval" phpName="Reminderinterval" type="VARCHAR" size="5" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
   </table>
-  <table name="freyHallTestingCenterRoom" phpName="FreyHallTestingCenter">
-    <column name="numseats" type="integer" size="3" required="true" primaryKey="true"/>
-    <column name="numsetasideseats" type="integer" size="3" required="true"/>
-    <column name="hours_openfrom" type="integer" size="4" required="true"/>
-    <column name="hours_openuntil" type="integer" size="4" required="true"/>
-    <column name="gaptime" type="integer" size="4" required="true"/>
-    <column name="reminderInterval" type="varchar" size="5" required="true"/>
+  <table name="roster" idMethod="native" phpName="Roster">
+    <column name="classID" phpName="Classid" type="VARCHAR" size="11" primaryKey="true" required="true"/>
+    <column name="subject" phpName="Subject" type="VARCHAR" size="3" required="true"/>
+    <column name="catalogNumber" phpName="Catalognumber" type="INTEGER" size="3" required="true"/>
+    <column name="section" phpName="Section" type="VARCHAR" size="3" required="true"/>
+    <column name="instructorNetID" phpName="Instructornetid" type="VARCHAR" size="128" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
+  <table name="user" idMethod="native" phpName="User">
+    <column name="firstName" phpName="Firstname" type="VARCHAR" size="50" required="true"/>
+    <column name="lastName" phpName="Lastname" type="VARCHAR" size="50" required="true"/>
+    <column name="netId" phpName="Netid" type="VARCHAR" size="24" primaryKey="true" required="true"/>
+    <column name="email" phpName="Email" type="VARCHAR" size="255" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
   </table>
 </database>

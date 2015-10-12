@@ -322,7 +322,7 @@ abstract class User implements ActiveRecordInterface
      *
      * @return string
      */
-    public function getFirstName()
+    public function getFirstname()
     {
         return $this->firstname;
     }
@@ -332,7 +332,7 @@ abstract class User implements ActiveRecordInterface
      *
      * @return string
      */
-    public function getLastName()
+    public function getLastname()
     {
         return $this->lastname;
     }
@@ -342,7 +342,7 @@ abstract class User implements ActiveRecordInterface
      *
      * @return string
      */
-    public function getNetID()
+    public function getNetid()
     {
         return $this->netid;
     }
@@ -363,7 +363,7 @@ abstract class User implements ActiveRecordInterface
      * @param string $v new value
      * @return $this|\User The current object (for fluent API support)
      */
-    public function setFirstName($v)
+    public function setFirstname($v)
     {
         if ($v !== null) {
             $v = (string) $v;
@@ -375,7 +375,7 @@ abstract class User implements ActiveRecordInterface
         }
 
         return $this;
-    } // setFirstName()
+    } // setFirstname()
 
     /**
      * Set the value of [lastname] column.
@@ -383,7 +383,7 @@ abstract class User implements ActiveRecordInterface
      * @param string $v new value
      * @return $this|\User The current object (for fluent API support)
      */
-    public function setLastName($v)
+    public function setLastname($v)
     {
         if ($v !== null) {
             $v = (string) $v;
@@ -395,7 +395,7 @@ abstract class User implements ActiveRecordInterface
         }
 
         return $this;
-    } // setLastName()
+    } // setLastname()
 
     /**
      * Set the value of [netid] column.
@@ -403,7 +403,7 @@ abstract class User implements ActiveRecordInterface
      * @param string $v new value
      * @return $this|\User The current object (for fluent API support)
      */
-    public function setNetID($v)
+    public function setNetid($v)
     {
         if ($v !== null) {
             $v = (string) $v;
@@ -415,7 +415,7 @@ abstract class User implements ActiveRecordInterface
         }
 
         return $this;
-    } // setNetID()
+    } // setNetid()
 
     /**
      * Set the value of [email] column.
@@ -473,13 +473,13 @@ abstract class User implements ActiveRecordInterface
     {
         try {
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 0 + $startcol : UserTableMap::translateFieldName('FirstName', TableMap::TYPE_PHPNAME, $indexType)];
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 0 + $startcol : UserTableMap::translateFieldName('Firstname', TableMap::TYPE_PHPNAME, $indexType)];
             $this->firstname = (null !== $col) ? (string) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 1 + $startcol : UserTableMap::translateFieldName('LastName', TableMap::TYPE_PHPNAME, $indexType)];
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 1 + $startcol : UserTableMap::translateFieldName('Lastname', TableMap::TYPE_PHPNAME, $indexType)];
             $this->lastname = (null !== $col) ? (string) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 2 + $startcol : UserTableMap::translateFieldName('NetID', TableMap::TYPE_PHPNAME, $indexType)];
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 2 + $startcol : UserTableMap::translateFieldName('Netid', TableMap::TYPE_PHPNAME, $indexType)];
             $this->netid = (null !== $col) ? (string) $col : null;
 
             $col = $row[TableMap::TYPE_NUM == $indexType ? 3 + $startcol : UserTableMap::translateFieldName('Email', TableMap::TYPE_PHPNAME, $indexType)];
@@ -776,13 +776,13 @@ abstract class User implements ActiveRecordInterface
     {
         switch ($pos) {
             case 0:
-                return $this->getFirstName();
+                return $this->getFirstname();
                 break;
             case 1:
-                return $this->getLastName();
+                return $this->getLastname();
                 break;
             case 2:
-                return $this->getNetID();
+                return $this->getNetid();
                 break;
             case 3:
                 return $this->getEmail();
@@ -816,9 +816,9 @@ abstract class User implements ActiveRecordInterface
         $alreadyDumpedObjects['User'][$this->hashCode()] = true;
         $keys = UserTableMap::getFieldNames($keyType);
         $result = array(
-            $keys[0] => $this->getFirstName(),
-            $keys[1] => $this->getLastName(),
-            $keys[2] => $this->getNetID(),
+            $keys[0] => $this->getFirstname(),
+            $keys[1] => $this->getLastname(),
+            $keys[2] => $this->getNetid(),
             $keys[3] => $this->getEmail(),
         );
         $virtualColumns = $this->virtualColumns;
@@ -860,13 +860,13 @@ abstract class User implements ActiveRecordInterface
     {
         switch ($pos) {
             case 0:
-                $this->setFirstName($value);
+                $this->setFirstname($value);
                 break;
             case 1:
-                $this->setLastName($value);
+                $this->setLastname($value);
                 break;
             case 2:
-                $this->setNetID($value);
+                $this->setNetid($value);
                 break;
             case 3:
                 $this->setEmail($value);
@@ -898,13 +898,13 @@ abstract class User implements ActiveRecordInterface
         $keys = UserTableMap::getFieldNames($keyType);
 
         if (array_key_exists($keys[0], $arr)) {
-            $this->setFirstName($arr[$keys[0]]);
+            $this->setFirstname($arr[$keys[0]]);
         }
         if (array_key_exists($keys[1], $arr)) {
-            $this->setLastName($arr[$keys[1]]);
+            $this->setLastname($arr[$keys[1]]);
         }
         if (array_key_exists($keys[2], $arr)) {
-            $this->setNetID($arr[$keys[2]]);
+            $this->setNetid($arr[$keys[2]]);
         }
         if (array_key_exists($keys[3], $arr)) {
             $this->setEmail($arr[$keys[3]]);
@@ -992,7 +992,7 @@ abstract class User implements ActiveRecordInterface
      */
     public function hashCode()
     {
-        $validPk = null !== $this->getNetID();
+        $validPk = null !== $this->getNetid();
 
         $validPrimaryKeyFKs = 0;
         $primaryKeyFKs = [];
@@ -1012,7 +1012,7 @@ abstract class User implements ActiveRecordInterface
      */
     public function getPrimaryKey()
     {
-        return $this->getNetID();
+        return $this->getNetid();
     }
 
     /**
@@ -1023,7 +1023,7 @@ abstract class User implements ActiveRecordInterface
      */
     public function setPrimaryKey($key)
     {
-        $this->setNetID($key);
+        $this->setNetid($key);
     }
 
     /**
@@ -1032,7 +1032,7 @@ abstract class User implements ActiveRecordInterface
      */
     public function isPrimaryKeyNull()
     {
-        return null === $this->getNetID();
+        return null === $this->getNetid();
     }
 
     /**
@@ -1048,9 +1048,9 @@ abstract class User implements ActiveRecordInterface
      */
     public function copyInto($copyObj, $deepCopy = false, $makeNew = true)
     {
-        $copyObj->setFirstName($this->getFirstName());
-        $copyObj->setLastName($this->getLastName());
-        $copyObj->setNetID($this->getNetID());
+        $copyObj->setFirstname($this->getFirstname());
+        $copyObj->setLastname($this->getLastname());
+        $copyObj->setNetid($this->getNetid());
         $copyObj->setEmail($this->getEmail());
         if ($makeNew) {
             $copyObj->setNew(true);

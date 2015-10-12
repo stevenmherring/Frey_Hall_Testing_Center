@@ -108,8 +108,8 @@ class ClassTableMap extends TableMap
      * e.g. self::$fieldNames[self::TYPE_PHPNAME][0] = 'Id'
      */
     protected static $fieldNames = array (
-        self::TYPE_PHPNAME       => array('ClassID', 'Subject', 'Category', 'Section', 'ClassID', ),
-        self::TYPE_CAMELNAME     => array('classID', 'subject', 'category', 'section', 'classID', ),
+        self::TYPE_PHPNAME       => array('Classid', 'Subject', 'Catalognumber', 'Section', 'Instructornetid', ),
+        self::TYPE_CAMELNAME     => array('classid', 'subject', 'catalognumber', 'section', 'instructornetid', ),
         self::TYPE_COLNAME       => array(ClassTableMap::COL_CLASSID, ClassTableMap::COL_SUBJECT, ClassTableMap::COL_CATALOGNUMBER, ClassTableMap::COL_SECTION, ClassTableMap::COL_INSTRUCTORNETID, ),
         self::TYPE_FIELDNAME     => array('classID', 'subject', 'catalogNumber', 'section', 'InstructorNetID', ),
         self::TYPE_NUM           => array(0, 1, 2, 3, 4, )
@@ -122,8 +122,8 @@ class ClassTableMap extends TableMap
      * e.g. self::$fieldKeys[self::TYPE_PHPNAME]['Id'] = 0
      */
     protected static $fieldKeys = array (
-        self::TYPE_PHPNAME       => array('ClassID' => 0, 'Subject' => 1, 'Category' => 2, 'Section' => 3, 'ClassID' => 4, ),
-        self::TYPE_CAMELNAME     => array('classID' => 0, 'subject' => 1, 'category' => 2, 'section' => 3, 'classID' => 4, ),
+        self::TYPE_PHPNAME       => array('Classid' => 0, 'Subject' => 1, 'Catalognumber' => 2, 'Section' => 3, 'Instructornetid' => 4, ),
+        self::TYPE_CAMELNAME     => array('classid' => 0, 'subject' => 1, 'catalognumber' => 2, 'section' => 3, 'instructornetid' => 4, ),
         self::TYPE_COLNAME       => array(ClassTableMap::COL_CLASSID => 0, ClassTableMap::COL_SUBJECT => 1, ClassTableMap::COL_CATALOGNUMBER => 2, ClassTableMap::COL_SECTION => 3, ClassTableMap::COL_INSTRUCTORNETID => 4, ),
         self::TYPE_FIELDNAME     => array('classID' => 0, 'subject' => 1, 'catalogNumber' => 2, 'section' => 3, 'InstructorNetID' => 4, ),
         self::TYPE_NUM           => array(0, 1, 2, 3, 4, )
@@ -146,11 +146,11 @@ class ClassTableMap extends TableMap
         $this->setPackage('');
         $this->setUseIdGenerator(false);
         // columns
-        $this->addPrimaryKey('classID', 'ClassID', 'VARCHAR', true, 11, null);
+        $this->addPrimaryKey('classID', 'Classid', 'VARCHAR', true, 11, null);
         $this->addColumn('subject', 'Subject', 'VARCHAR', true, 3, null);
-        $this->addColumn('catalogNumber', 'Category', 'INTEGER', true, 3, null);
+        $this->addColumn('catalogNumber', 'Catalognumber', 'INTEGER', true, 3, null);
         $this->addColumn('section', 'Section', 'VARCHAR', true, 3, null);
-        $this->addColumn('InstructorNetID', 'ClassID', 'VARCHAR', true, 128, null);
+        $this->addColumn('InstructorNetID', 'Instructornetid', 'VARCHAR', true, 128, null);
     } // initialize()
 
     /**
@@ -176,11 +176,11 @@ class ClassTableMap extends TableMap
     public static function getPrimaryKeyHashFromRow($row, $offset = 0, $indexType = TableMap::TYPE_NUM)
     {
         // If the PK cannot be derived from the row, return NULL.
-        if ($row[TableMap::TYPE_NUM == $indexType ? 0 + $offset : static::translateFieldName('ClassID', TableMap::TYPE_PHPNAME, $indexType)] === null) {
+        if ($row[TableMap::TYPE_NUM == $indexType ? 0 + $offset : static::translateFieldName('Classid', TableMap::TYPE_PHPNAME, $indexType)] === null) {
             return null;
         }
 
-        return (string) $row[TableMap::TYPE_NUM == $indexType ? 0 + $offset : static::translateFieldName('ClassID', TableMap::TYPE_PHPNAME, $indexType)];
+        return (string) $row[TableMap::TYPE_NUM == $indexType ? 0 + $offset : static::translateFieldName('Classid', TableMap::TYPE_PHPNAME, $indexType)];
     }
 
     /**
@@ -200,7 +200,7 @@ class ClassTableMap extends TableMap
         return (string) $row[
             $indexType == TableMap::TYPE_NUM
                 ? 0 + $offset
-                : self::translateFieldName('ClassID', TableMap::TYPE_PHPNAME, $indexType)
+                : self::translateFieldName('Classid', TableMap::TYPE_PHPNAME, $indexType)
         ];
     }
 

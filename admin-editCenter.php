@@ -11,7 +11,7 @@
 <div class="facultyScheduleExamFormContainer">
 <link href="css/faculty-landing.css" rel="stylesheet">
     <h1><center> Edit the Testing Center </h1>
-    <form name="adminEditCenterForm" action="adminEditCenter-form-validation.php" method="post" onsubmit="return validateForm()">
+    <form name="adminEditCenterForm" method = "post" action="adminEditCenter-form-validation.php" onsubmit="return validateForm()">
     <form class="form-horizontal">
         <div class="form-group">
             <label for="inputNumberSeats">Number of seats:</label>

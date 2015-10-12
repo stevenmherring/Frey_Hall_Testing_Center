@@ -19,14 +19,14 @@ use Propel\Runtime\Exception\PropelException;
  *
  *
  *
- * @method     ChildUserQuery orderByFirstName($order = Criteria::ASC) Order by the firstName column
- * @method     ChildUserQuery orderByLastName($order = Criteria::ASC) Order by the lastName column
- * @method     ChildUserQuery orderByNetID($order = Criteria::ASC) Order by the netId column
+ * @method     ChildUserQuery orderByFirstname($order = Criteria::ASC) Order by the firstName column
+ * @method     ChildUserQuery orderByLastname($order = Criteria::ASC) Order by the lastName column
+ * @method     ChildUserQuery orderByNetid($order = Criteria::ASC) Order by the netId column
  * @method     ChildUserQuery orderByEmail($order = Criteria::ASC) Order by the email column
  *
- * @method     ChildUserQuery groupByFirstName() Group by the firstName column
- * @method     ChildUserQuery groupByLastName() Group by the lastName column
- * @method     ChildUserQuery groupByNetID() Group by the netId column
+ * @method     ChildUserQuery groupByFirstname() Group by the firstName column
+ * @method     ChildUserQuery groupByLastname() Group by the lastName column
+ * @method     ChildUserQuery groupByNetid() Group by the netId column
  * @method     ChildUserQuery groupByEmail() Group by the email column
  *
  * @method     ChildUserQuery leftJoin($relation) Adds a LEFT JOIN clause to the query
@@ -40,23 +40,23 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildUser findOne(ConnectionInterface $con = null) Return the first ChildUser matching the query
  * @method     ChildUser findOneOrCreate(ConnectionInterface $con = null) Return the first ChildUser matching the query, or a new ChildUser object populated from the query conditions when no match is found
  *
- * @method     ChildUser findOneByFirstName(string $firstName) Return the first ChildUser filtered by the firstName column
- * @method     ChildUser findOneByLastName(string $lastName) Return the first ChildUser filtered by the lastName column
- * @method     ChildUser findOneByNetID(string $netId) Return the first ChildUser filtered by the netId column
+ * @method     ChildUser findOneByFirstname(string $firstName) Return the first ChildUser filtered by the firstName column
+ * @method     ChildUser findOneByLastname(string $lastName) Return the first ChildUser filtered by the lastName column
+ * @method     ChildUser findOneByNetid(string $netId) Return the first ChildUser filtered by the netId column
  * @method     ChildUser findOneByEmail(string $email) Return the first ChildUser filtered by the email column *
 
  * @method     ChildUser requirePk($key, ConnectionInterface $con = null) Return the ChildUser by primary key and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildUser requireOne(ConnectionInterface $con = null) Return the first ChildUser matching the query and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  *
- * @method     ChildUser requireOneByFirstName(string $firstName) Return the first ChildUser filtered by the firstName column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
- * @method     ChildUser requireOneByLastName(string $lastName) Return the first ChildUser filtered by the lastName column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
- * @method     ChildUser requireOneByNetID(string $netId) Return the first ChildUser filtered by the netId column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
+ * @method     ChildUser requireOneByFirstname(string $firstName) Return the first ChildUser filtered by the firstName column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
+ * @method     ChildUser requireOneByLastname(string $lastName) Return the first ChildUser filtered by the lastName column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
+ * @method     ChildUser requireOneByNetid(string $netId) Return the first ChildUser filtered by the netId column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildUser requireOneByEmail(string $email) Return the first ChildUser filtered by the email column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  *
  * @method     ChildUser[]|ObjectCollection find(ConnectionInterface $con = null) Return ChildUser objects based on current ModelCriteria
- * @method     ChildUser[]|ObjectCollection findByFirstName(string $firstName) Return ChildUser objects filtered by the firstName column
- * @method     ChildUser[]|ObjectCollection findByLastName(string $lastName) Return ChildUser objects filtered by the lastName column
- * @method     ChildUser[]|ObjectCollection findByNetID(string $netId) Return ChildUser objects filtered by the netId column
+ * @method     ChildUser[]|ObjectCollection findByFirstname(string $firstName) Return ChildUser objects filtered by the firstName column
+ * @method     ChildUser[]|ObjectCollection findByLastname(string $lastName) Return ChildUser objects filtered by the lastName column
+ * @method     ChildUser[]|ObjectCollection findByNetid(string $netId) Return ChildUser objects filtered by the netId column
  * @method     ChildUser[]|ObjectCollection findByEmail(string $email) Return ChildUser objects filtered by the email column
  * @method     ChildUser[]|\Propel\Runtime\Util\PropelModelPager paginate($page = 1, $maxPerPage = 10, ConnectionInterface $con = null) Issue a SELECT query based on the current ModelCriteria and uses a page and a maximum number of results per page to compute an offset and a limit
  *
@@ -245,28 +245,28 @@ abstract class UserQuery extends ModelCriteria
      *
      * Example usage:
      * <code>
-     * $query->filterByFirstName('fooValue');   // WHERE firstName = 'fooValue'
-     * $query->filterByFirstName('%fooValue%'); // WHERE firstName LIKE '%fooValue%'
+     * $query->filterByFirstname('fooValue');   // WHERE firstName = 'fooValue'
+     * $query->filterByFirstname('%fooValue%'); // WHERE firstName LIKE '%fooValue%'
      * </code>
      *
-     * @param     string $firstName The value to use as filter.
+     * @param     string $firstname The value to use as filter.
      *              Accepts wildcards (* and % trigger a LIKE)
      * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
      *
      * @return $this|ChildUserQuery The current query, for fluid interface
      */
-    public function filterByFirstName($firstName = null, $comparison = null)
+    public function filterByFirstname($firstname = null, $comparison = null)
     {
         if (null === $comparison) {
-            if (is_array($firstName)) {
+            if (is_array($firstname)) {
                 $comparison = Criteria::IN;
-            } elseif (preg_match('/[\%\*]/', $firstName)) {
-                $firstName = str_replace('*', '%', $firstName);
+            } elseif (preg_match('/[\%\*]/', $firstname)) {
+                $firstname = str_replace('*', '%', $firstname);
                 $comparison = Criteria::LIKE;
             }
         }
 
-        return $this->addUsingAlias(UserTableMap::COL_FIRSTNAME, $firstName, $comparison);
+        return $this->addUsingAlias(UserTableMap::COL_FIRSTNAME, $firstname, $comparison);
     }
 
     /**
@@ -274,28 +274,28 @@ abstract class UserQuery extends ModelCriteria
      *
      * Example usage:
      * <code>
-     * $query->filterByLastName('fooValue');   // WHERE lastName = 'fooValue'
-     * $query->filterByLastName('%fooValue%'); // WHERE lastName LIKE '%fooValue%'
+     * $query->filterByLastname('fooValue');   // WHERE lastName = 'fooValue'
+     * $query->filterByLastname('%fooValue%'); // WHERE lastName LIKE '%fooValue%'
      * </code>
      *
-     * @param     string $lastName The value to use as filter.
+     * @param     string $lastname The value to use as filter.
      *              Accepts wildcards (* and % trigger a LIKE)
      * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
      *
      * @return $this|ChildUserQuery The current query, for fluid interface
      */
-    public function filterByLastName($lastName = null, $comparison = null)
+    public function filterByLastname($lastname = null, $comparison = null)
     {
         if (null === $comparison) {
-            if (is_array($lastName)) {
+            if (is_array($lastname)) {
                 $comparison = Criteria::IN;
-            } elseif (preg_match('/[\%\*]/', $lastName)) {
-                $lastName = str_replace('*', '%', $lastName);
+            } elseif (preg_match('/[\%\*]/', $lastname)) {
+                $lastname = str_replace('*', '%', $lastname);
                 $comparison = Criteria::LIKE;
             }
         }
 
-        return $this->addUsingAlias(UserTableMap::COL_LASTNAME, $lastName, $comparison);
+        return $this->addUsingAlias(UserTableMap::COL_LASTNAME, $lastname, $comparison);
     }
 
     /**
@@ -303,28 +303,28 @@ abstract class UserQuery extends ModelCriteria
      *
      * Example usage:
      * <code>
-     * $query->filterByNetID('fooValue');   // WHERE netId = 'fooValue'
-     * $query->filterByNetID('%fooValue%'); // WHERE netId LIKE '%fooValue%'
+     * $query->filterByNetid('fooValue');   // WHERE netId = 'fooValue'
+     * $query->filterByNetid('%fooValue%'); // WHERE netId LIKE '%fooValue%'
      * </code>
      *
-     * @param     string $netID The value to use as filter.
+     * @param     string $netid The value to use as filter.
      *              Accepts wildcards (* and % trigger a LIKE)
      * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
      *
      * @return $this|ChildUserQuery The current query, for fluid interface
      */
-    public function filterByNetID($netID = null, $comparison = null)
+    public function filterByNetid($netid = null, $comparison = null)
     {
         if (null === $comparison) {
-            if (is_array($netID)) {
+            if (is_array($netid)) {
                 $comparison = Criteria::IN;
-            } elseif (preg_match('/[\%\*]/', $netID)) {
-                $netID = str_replace('*', '%', $netID);
+            } elseif (preg_match('/[\%\*]/', $netid)) {
+                $netid = str_replace('*', '%', $netid);
                 $comparison = Criteria::LIKE;
             }
         }
 
-        return $this->addUsingAlias(UserTableMap::COL_NETID, $netID, $comparison);
+        return $this->addUsingAlias(UserTableMap::COL_NETID, $netid, $comparison);
     }
 
     /**
@@ -366,7 +366,7 @@ abstract class UserQuery extends ModelCriteria
     public function prune($user = null)
     {
         if ($user) {
-            $this->addUsingAlias(UserTableMap::COL_NETID, $user->getNetID(), Criteria::NOT_EQUAL);
+            $this->addUsingAlias(UserTableMap::COL_NETID, $user->getNetid(), Criteria::NOT_EQUAL);
         }
 
         return $this;
