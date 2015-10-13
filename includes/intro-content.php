@@ -15,6 +15,12 @@
                                      echo '<p>Currently logged ' . $logged . ' as ' . htmlentities($_SESSION['username']) . '.</p>';
 
                          echo '<p>Do you want to logout? <a href="includes/perform_logout.php">Log out</a>.</p>';
+                         if ($_SESSION['auth'] == 0) {
+                           echo '<p>dildo</p>';
+                         } else if($_SESSION['auth'] == 2) {
+                           //echo '<p> ADMIN:' .  htmlentities($_SESSION['username']) . '</p>';
+                           echo '<p>ADMIN: ' . $logged . ' as ' . htmlentities($_SESSION['username']) . ' with AUTH: ' . htmlentities($_SESSION['auth']) . '.</p>';
+                         }
                      } else {
                                      echo '<p>Currently logged ' . $logged . '.</p>';
                              }

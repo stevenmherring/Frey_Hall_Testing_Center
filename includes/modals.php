@@ -11,7 +11,7 @@
       <div class="modal-body">
           <form class="form col-md-12 center-block" action="includes/perform_login.php" method="post" name="login_form">
             <div class="form-group">
-              <input type="text" name="email" class="form-control input-lg" placeholder="Netid">
+              <input type="text" name="netid" class="form-control input-lg" placeholder="Netid">
             </div>
             <div class="form-group">
               <input type="password" name="password" class="form-control input-lg" placeholder="Password">
