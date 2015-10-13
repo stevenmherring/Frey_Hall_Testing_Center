@@ -8,8 +8,9 @@
   include("dbQueries.php");
   error_reporting(E_ALL);
   ini_set('display_errors', 'On');
+
   try {
-         $dbh=new PDO("mysql:host=localhost;dbname=FreyHallTestingCenter","root","physics123");
+         $dbh=new PDO("mysql:host=mysql2.cs.stonybrook.edu;dbname=sachin","sachin","108610059");
   } catch(PDOException $e) {
 
     $message = "Couldnt connect to db.";

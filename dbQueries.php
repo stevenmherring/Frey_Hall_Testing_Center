@@ -10,6 +10,8 @@ $q_edit_reminderInterval =  "UPDATE freyHallTestingCenterRoom set reminderInterv
 $transactionLogging = "INSERT INTO administratortransactionlog (userID,transactiontype,transactiontime,transactioncontent)VALUES(?,?,?,?)";
 
 
+$q_view_exams = "SELECT * FROM EXAM";
+
 $q_createrow_testingcenterroom = "INSERT IGNORE INTO freyHallTestingCenterRoom (roomname) values (?)";
 /* Create the administratortransactionlog
 CREATE TABLE administratortransactionlog (
