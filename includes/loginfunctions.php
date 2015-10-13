@@ -27,21 +27,21 @@ function sec_session_start() {
     session_regenerate_id(true);    //prevent session multiplication
 }//sec_session_start
 
-function login($email, $password, $mysqli) {
+function login($netid, $password, $mysqli) {
   //prepared SQL statements to prevent injection attacks
-    if ($stmt = $mysqli->prepare("SELECT id, username, password, salt, auth
+    if ($stmt = $mysqli->prepare("SELECT id, username, email, password, salt, auth
         FROM members
-        WHERE email = ?
+        WHERE netid = ?
         LIMIT 1")) {
-        $stmt->bind_param('s', $email);  //bind email parameter
+        $stmt->bind_param('s', $netid);  //bind netid parameter
         $stmt->execute();    //execute query, store result.
         $stmt->store_result();
 
         //retrieve result data
-        $stmt->bind_result($user_id, $username, $db_password, $salt, $auth);
+        $stmt->bind_result($user_id, $username, $email, $db_password, $salt, $auth);
         $stmt->fetch();
 
-        // shake some salt on password
+        // shake some salt on password 
         $password = hash('sha512', $password . $salt);
         if ($stmt->num_rows == 1) {
             // in the case of locking user accounts we would check if the account is locked from too many login attempts
@@ -63,9 +63,10 @@ function login($email, $password, $mysqli) {
                                                                 "",
                                                                 $username);
                     $_SESSION['username'] = $username;
+                    $_SESSION['auth'] = $auth;
+                    $_SESSION['email'] = $email;
                     $_SESSION['login_string'] = hash('sha512',
                               $password . $user_browser);
-                    $_SESSION['auth'] = $auth;
                     //complete successful login
                     return true;
                 } else {
@@ -117,12 +118,14 @@ function login_check($mysqli) {
     //check that variables are set
     if (isset($_SESSION['user_id'],
                         $_SESSION['username'],
+                        $_SESSION['email'],
                         $_SESSION['login_string'],
                         $_SESSION['auth'])) {
 
         $user_id = $_SESSION['user_id'];
         $login_string = $_SESSION['login_string'];
         $username = $_SESSION['username'];
+        $email = $_SESSION['email'];
         $auth = $_SESSION['auth'];
         // Get the user-agent string of the user.
         $user_browser = $_SERVER['HTTP_USER_AGENT'];

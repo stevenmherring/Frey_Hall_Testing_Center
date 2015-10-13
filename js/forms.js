@@ -15,9 +15,10 @@ function formhash(form, password) {
     form.submit();
 }
 
-function regformhash(form, uid, email, password, conf) {
+function regformhash(form, uid, netid, email, password, conf) {
      // Check each field has a value
     if (uid.value == ''         ||
+          netid.value == ''     ||
           email.value == ''     ||
           password.value == ''  ||
           conf.value == '') {
@@ -25,13 +26,11 @@ function regformhash(form, uid, email, password, conf) {
         alert('You must provide all the requested details. Please try again');
         return false;
     }
-
-    // Check the username
-
-    re = /^\w+$/;
-    if(!re.test(form.username.value)) {
-        alert("Username must contain only letters, numbers and underscores. Please try again");
-        form.username.focus();
+    //check netid
+    //TODO: sherring accept only #'s and non existing netids
+    if (netid.value.length < 9 || netid.value.length > 15){
+        alert("netid must be between 9 and 15 characters long");
+        form.netid.focus();
         return false;
     }
 
