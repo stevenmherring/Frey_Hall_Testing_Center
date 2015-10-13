@@ -1,20 +1,4 @@
-<!--
-<html>
-<body>
-
-<form action="handle_forms.php" method="post">
-    Submit a User CSV <input type="file" name="user_form" accept=".csv"><br><br>
-    Submit a Roster CSV <input type="file" name="roster_form" accept=".csv"><br><br>
-    Submit a Class CSV <input type="file" name="class_form" accept=".csv"><br><br>
-    <input type="submit">
-</form>
-
-</body>
-</html>
-
--->
-
- <div id="adminContent" class="facultyScheduleExamFormContainer" style="padding: 75px">
+<div id="adminContent" class="facultyScheduleExamFormContainer" style="padding: 75px">
      <div >
          <form action="handle_forms.php" method="POST">
             Submit a User CSV <input type="file" id="user_form" name="user_form" accept=".csv"><br><br>

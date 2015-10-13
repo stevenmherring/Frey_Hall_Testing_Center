@@ -86,7 +86,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
-} 
+}
 
 //$sql = "SELECT *  FROM appointment a, exam e, roster r WHERE a.examID=e.examID AND e.classID=r.classID AND a.netID!=r.netID";
 $sql = "UPDATE appointment, exam, roster SET status='super' WHERE appointment.examID = exam.examID AND exam.classID=roster.classID AND appointment.netID!=roster.netID";
@@ -99,9 +99,9 @@ $conn->query($sql2);
 echo "Superfluous appointments have been discovered and the database has been updated"; ?> <br>
 
      <button onclick="goBack()">Go Back</button>
-     
-     
-     
+
+
+
  </div>
 <!-- Bootstrap Core JavaScript -->
   <script src="js/bootstrap.min.js"></script>

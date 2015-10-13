@@ -4,11 +4,14 @@ include_once 'loginfunctions.php';
 
 sec_session_start(); //call custom session start
 
-if (isset($_POST['email'], $_POST['p'])) {
-    $email = $_POST['email'];
+if (isset($_POST['netid'], $_POST['p'])) {
     $password = $_POST['p']; //password hashed
+    $netid = $_POST['netid'];
+    $auth = $_POST['auth'];
+    $email = $_POST['email'];
+    $username = $_POST['username'];
 
-    if (login($email, $password, $mysqli) == true) {
+    if (login($netid, $password, $mysqli) == true) {
         //logged in
         header('Location: ../index.php');
     } else {

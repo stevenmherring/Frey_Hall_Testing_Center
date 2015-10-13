@@ -1,4 +1,4 @@
-     <?php
+<?php
 $servername = "mysql2.cs.stonybrook.edu";
 $username = "sachin";
 $password = "108610059";
@@ -13,7 +13,6 @@ if ($conn->connect_error) {
 $userRow=0;
 $rosterRow=0;
 $classRow=0;
-$test = $_POST[user_form];
 if ($_POST[user_form]!=null){
     if (($handle = fopen("$_POST[user_form]", "r")) !== FALSE) {
         $data = fgetcsv($handle, 1000, ",");
@@ -33,7 +32,7 @@ if ($_POST[user_form]!=null){
     }
 } else{
       $errUpdate = "chin fucked up";
-      echo "<script type='text/javascript'>alert('$test');</script>";
+      echo "<script type='text/javascript'>alert('$errUpdate');</script>";
 }
 if ($_POST[roster_form]!=null){
     if (($handle = fopen("$_POST[roster_form]", "r")) !== FALSE) {
@@ -54,7 +53,7 @@ if ($_POST[roster_form]!=null){
     }
 }else{
       $errUpdate = "chin fucked up";
-      echo "<script type='text/javascript'>alert('$test');</script>";
+      echo "<script type='text/javascript'>alert('$errUpdate');</script>";
 }
 if ($_POST[class_form]!=null){
     if (($handle = fopen("$_POST[class_form]", "r")) !== FALSE) {
@@ -73,9 +72,6 @@ if ($_POST[class_form]!=null){
         }
         fclose($handle);
     }
-}else{
-      $errUpdate = "chin fucked up";
-      echo "<script type='text/javascript'>alert('$test');</script>";
 }
 
 
