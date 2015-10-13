@@ -41,7 +41,7 @@ function login($netid, $password, $mysqli) {
         $stmt->bind_result($user_id, $username, $email, $db_password, $salt, $auth);
         $stmt->fetch();
 
-        // shake some salt on password 
+        // shake some salt on password
         $password = hash('sha512', $password . $salt);
         if ($stmt->num_rows == 1) {
             // in the case of locking user accounts we would check if the account is locked from too many login attempts
@@ -67,14 +67,19 @@ function login($netid, $password, $mysqli) {
                     $_SESSION['email'] = $email;
                     $_SESSION['login_string'] = hash('sha512',
                               $password . $user_browser);
+                    $now = time();
+                    $response = 'success';
+                    $mysqli->query("INSERT INTO login_attempts(user_id, time, response)
+                                            VALUES ('$user_id', '$now', '$response')");
                     //complete successful login
                     return true;
                 } else {
                     //bad password
                     //since i defined it in the database, might as well record it
                     $now = time();
-                    $mysqli->query("INSERT INTO login_attempts(user_id, time)
-                                    VALUES ('$user_id', '$now')");
+                    $response = 'failed';
+                    $mysqli->query("INSERT INTO login_attempts(user_id, time, response)
+                                    VALUES ('$user_id', '$now', '$response')");
                     return false;
                 }
             }
