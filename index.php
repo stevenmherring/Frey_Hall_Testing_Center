@@ -1,4 +1,16 @@
 
+<?php
+include_once 'includes/db_connect.php';
+include_once 'includes/loginfunctions.php';
+
+sec_session_start();
+
+if (login_check($mysqli) == true) {
+    $logged = 'in';
+} else {
+    $logged = 'out';
+}
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
@@ -25,6 +37,8 @@ Shi Lin Lu -->
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <script type="text/JavaScript" src="js/sha512.js"></script>
+    <script type="text/JavaScript" src="js/forms.js"></script>
 
 </head>
 
@@ -37,14 +51,14 @@ Shi Lin Lu -->
    <!-- INTRO PAGE -->
 <?php include("includes/intro.html");?>
   <!-- END INTRO-->
-<?php include("includes/intro-content.html");?>
+<?php include("includes/intro-content.php");?>
 
     <!-- Footer -->
 <?php include("includes/footer.html");?>
     <!-- END FOOTER-->
 
     <!-- MODALS -->
-<?php include("includes/modals.html");?>
+<?php include("includes/modals.php");?>
     <!-- END MODALS -->
 
     <!-- jQuery -->
