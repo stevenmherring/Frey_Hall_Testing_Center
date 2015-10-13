@@ -10,20 +10,32 @@ function validateForm() {
                             var reminderChoice = document.forms["adminEditCenterForm"]["reminderChoice"].value;
                                 var hours_openfrom = document.forms["adminEditCenterForm"]["hours_openfrom"].value;
                                     var hours_openuntil = document.forms["adminEditCenterForm"]["hours_openuntil"].value;
-    if (gaptime == null || gaptime == "") {
+    if (gaptime == null || gaptime == "" || isNaN(gaptime)) {
         alert("Gaptime must be filled out");
         return false;
     } if (numberOfSeats == null || numberOfSeats == "") {
         alert("Number of seats must be filled out");
+        if (isNaN(numberOfSeats)){
+          alert("Number of seats must be a number");
+        }
         return false;
     }  if (hours_openfrom == null || hours_openfrom == "") {
         alert("Open hours must be filled out");
+        if (isNaN(hours_openfrom)){
+          alert("Open hours must be a number");
+        }
         return false;
     }  if (hours_openuntil == null || hours_openuntil == "") {
-        alert("Closing hoursmust be filled out");
+        alert("Closing hours must be filled out");
+        if (isNaN(hours_openuntil)){
+          alert("Closing hours  must be a number");
+        }
         return false;
     } if (inputSetasideSeats == null || inputSetasideSeats == "") {
         alert("Number of SetasideSeats must be filled out");
+        if (isNaN(inputSetasideSeats)){
+          alert("Number of setasideseats must be a number");
+        }
         return false;
     } if (datePick_RangeClosedFrom == null || datePick_RangeClosedFrom == "") {
         alert("Range closed from must be filled out");
@@ -39,6 +51,9 @@ function validateForm() {
         return false;
     } if (reminderChoice == null || reminderChoice == "") {
         alert("ReminderChoice must be filled out");
+        if (isNaN(reminderChoice)){
+          alert("Reminder choice must be a number");
+        }
         return false;
     }
 }
