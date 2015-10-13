@@ -23,15 +23,16 @@
                 <li>
                     <a href="index.php">Home</a>
                 </li>
-                <li>
-                    <a href="student.php" data-toggle="tooltip" title="Express Navigation to Student Page">Student</a>
-                </li>
-                <li>
-                    <a href="faculty.php" data-toggle="tooltip" title="Express Navigation to Faculty Page">Faculty</a>
-                </li>
-                <li>
-                    <a href="admin.php" data-toggle="tooltip" title="Express Navigation to Admin page">Admin</a>
-                </li>
+                <?php
+                        if (login_check($mysqli) == true) {
+                          echo '
+                          <li>
+                              <a href="includes/perform_logout.php" data-toggle="tooltip" title="Logout">Logout</a>
+                          </li> ';
+                        }
+                ?>
+
+
                 <li><a href="#contactUsModal" data-toggle="modal" data-target="#contactUsModal">Contact us</a></li>
             </ul>
             </div>

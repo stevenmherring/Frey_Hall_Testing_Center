@@ -32,7 +32,7 @@ Shi Lin Lu -->
         }
     </script>
   <!-- Navigation -->     <!-- Header -->
-  <?php include("includes/header.html");?>
+  <?php include("includes/header.php");?>
   <!--END NAV-->
 </head>
 
@@ -114,7 +114,7 @@ echo "Superfluous appointments have been discovered and the database has been up
   <!-- END FOOTER-->
 
   <!-- MODALS -->
-  <?php include("includes/modals.html");?>
+  <?php include("includes/modals.php");?>
   <!-- END MODALS -->
 </footer>
 </html>

@@ -28,7 +28,7 @@ Shi Lin Lu -->
   <script src='js/jquery.js'></script>
 
   <!-- Navigation -->     <!-- Header -->
-  <?php include("includes/header.html");?>
+  <?php include("includes/header.php");?>
   <!--END NAV-->
 </head>
 
@@ -55,7 +55,7 @@ Shi Lin Lu -->
               </ul>
             </li>
             <li><a href="student-pref.html" class="btn btn-danger">Check-in Student</a></li>
-            <li><a href="admin-editCenter.php" class="btn btn-danger">Edit Center</a></li>
+            <li><a href="editCenter.php" class="btn btn-danger">Edit Center</a></li>
             <li><a href="importdata.php" class="btn btn-danger">Import Data</a></li>
             <li><a href="student-pref.html" class="btn btn-danger">Utilization</a></li>
             <li><a href="student-pref.html" class="btn btn-danger">Generate Reports</a></li>
@@ -84,7 +84,7 @@ Shi Lin Lu -->
   <!-- END FOOTER-->
 
   <!-- MODALS -->
-  <?php include("includes/modals.html");?>
+  <?php include("includes/modals.php");?>
   <!-- END MODALS -->
 </footer>
 </html>

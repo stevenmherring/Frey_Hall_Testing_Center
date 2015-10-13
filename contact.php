@@ -12,7 +12,7 @@ Shi Lin Lu -->
 <head>
 
     <!-- MODALS -->
-<?php include("includes/modals.html");?>
+<?php include("includes/modals.php");?>
     <!-- END MODALS -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -34,7 +34,7 @@ Shi Lin Lu -->
 <body>
 
     <!-- Navigation -->     <!-- Header -->
-<?php include("includes/header.html");?>
+<?php include("includes/header.php");?>
    <!--END NAV-->
 
    <!-- INTRO PAGE -->
