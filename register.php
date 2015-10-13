@@ -22,6 +22,7 @@ include_once 'includes/loginfunctions.php';
         ?>
         <ul>
             <li>Usernames may contain only digits, upper and lowercase letters and underscores</li>
+            <li>Netids must be numerical between 9 and 15 characters</li>
             <li>Emails must have a valid email format</li>
             <li>Passwords must be at least 6 characters long</li>
             <li>Passwords must contain
@@ -36,9 +37,7 @@ include_once 'includes/loginfunctions.php';
         <form action="<?php echo esc_url($_SERVER['PHP_SELF']); ?>"
                 method="post"
                 name="registration_form">
-            Username: <input type='text'
-                name='username'
-                id='username' /><br>
+            Netid: <input type="text" name="netid" id="netid" /><br>
             Email: <input type="text" name="email" id="email" /><br>
             Password: <input type="password"
                              name="password"
@@ -49,7 +48,8 @@ include_once 'includes/loginfunctions.php';
             <input type="button"
                    value="Register"
                    onclick="return regformhash(this.form,
-                                   this.form.username,
+                                   this.form.netid,
+                                   this.form.netid,
                                    this.form.email,
                                    this.form.password,
                                    this.form.confirmpwd);" />
