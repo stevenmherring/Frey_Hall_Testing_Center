@@ -30,7 +30,7 @@ Shi Lin Lu -->
     <script src="js/jquery.js"></script>
 
     <!-- Navigation -->     <!-- Header -->
-    <?php include("includes/header.html");?>
+    <?php include("includes/header.php");?>
     <!--END NAV-->
 
    <!-- INTRO PAGE -->
@@ -76,7 +76,7 @@ Shi Lin Lu -->
     <!-- END FOOTER-->
 
     <!-- MODALS -->
-<?php include("includes/modals.html");?>
+<?php include("includes/modals.php");?>
     <!-- END MODALS -->
 </body>
 

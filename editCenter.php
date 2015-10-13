@@ -28,34 +28,24 @@
   <script type="text/JavaScript" src="js/forms.js"></script>
 </head>
 <body>
-  <!-- Navigation -->     <!-- Header -->
-<?php include("includes/header.php");?>
- <!--END NAV-->
 <?php
         if (login_check($mysqli) == true) {
             if ($_SESSION['auth'] == 0) {
               // auth level 0 ADMIN
-              echo file_get_contents('admin.php');
+              echo file_get_contents('admin-editCenter.php');
             } else if($_SESSION['auth'] == 1) {
               // auth level 1 INSTRUCTOR
-              echo file_get_contents('faculty.php');
+              header('Location: access-error.php');
             } else if($_SESSION['auth'] == 2) {
                //auth level 2 STUDENT
-               echo file_get_contents('student.php');
+               header('Location: access-error.php');
              }
 
         } else {
-                        echo '<p>Currently logged ' . $logged . '.</p>';
+                        header('Location: access-error.php');
                 }
 ?>
 
-<!-- Footer -->
-<?php include("includes/footer.html");?>
-<!-- END FOOTER-->
-
-<!-- MODALS -->
-<?php include("includes/modals.php");?>
-<!-- END MODALS -->
 
 <!-- jQuery -->
 <script src="js/jquery.js"></script>
@@ -65,7 +55,3 @@
 <script type="text/javascript"></script>
 
 </body>
-
-<footer>
-
-</footer>

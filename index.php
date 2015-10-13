@@ -45,7 +45,7 @@ Shi Lin Lu -->
 <body>
 
     <!-- Navigation -->     <!-- Header -->
-<?php include("includes/header.html");?>
+<?php include("includes/header.php");?>
    <!--END NAV-->
 
    <!-- INTRO PAGE -->
