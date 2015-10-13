@@ -27,6 +27,8 @@ Shi Lin Lu -->
   <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
   <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
   <script src='js/jquery.js'></script>
+  <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
 
   <!-- Navigation -->     <!-- Header -->
   <?php include("includes/header.html");?>
@@ -55,7 +57,7 @@ Shi Lin Lu -->
               </ul>
             </li>
             <li><a href="student-pref.html" class="btn btn-danger">Check-in Student</a></li>
-            <li><a href="student-pref.html" class="btn btn-danger">Edit Center</a></li>
+            <li><a href="admin-editCenter.php" class="btn btn-danger">Edit Center</a></li>
             <li><a href="student-pref.html" class="btn btn-danger">Import Data</a></li>
             <li><a href="student-pref.html" class="btn btn-danger">Utilization</a></li>
             <li><a href="student-pref.html" class="btn btn-danger">Generate Reports</a></li>
@@ -70,12 +72,12 @@ Shi Lin Lu -->
     </div>
   </div>
 
- <div id="acontent" class="content container">
+ <div id="adminContent" class="content container">
  <?php include('admin-landing.php');?>
  </div>
 <!-- Bootstrap Core JavaScript -->
   <script src="js/bootstrap.min.js"></script>
-<script src='js/loader.js'></script>
+  <script src='js/loader.js'></script>
 
 </body>
 <footer>

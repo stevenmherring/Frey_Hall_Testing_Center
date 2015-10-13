@@ -1,0 +1,33 @@
+vendor/bin/propel model:build -vvv
+Processing: schema.xml
+  4 tables processed successfully
+4 tables found in 1 schema files.
+Generating PHP files...
+Datamodel: /home/sbu-chris/Desktop/cse308/Frey_Hall_Testing_Center/schema.xml
+ - Database: default
+  + Table: class
+	-> Updating /Base/Class.php (table: class, builder: Propel\Generator\Builder\Om\ObjectBuilder)
+	-> Updating /Map/ClassTableMap.php (table: class, builder: Propel\Generator\Builder\Om\TableMapBuilder)
+	-> Updating /Base/ClassQuery.php (table: class, builder: Propel\Generator\Builder\Om\QueryBuilder)
+	-> (exists) Class.php
+	-> (exists) ClassQuery.php
+  + Table: freyHallTestingCenterRoom
+	-> Creating /Base/Freyhalltestingcenterroom.php (table: freyHallTestingCenterRoom, builder: Propel\Generator\Builder\Om\ObjectBuilder)
+	-> Creating /Map/FreyhalltestingcenterroomTableMap.php (table: freyHallTestingCenterRoom, builder: Propel\Generator\Builder\Om\TableMapBuilder)
+	-> Creating /Base/FreyhalltestingcenterroomQuery.php (table: freyHallTestingCenterRoom, builder: Propel\Generator\Builder\Om\QueryBuilder)
+	-> Creating Freyhalltestingcenterroom.php (table: freyHallTestingCenterRoom, builder: Propel\Generator\Builder\Om\ExtensionObjectBuilder)
+	-> Creating FreyhalltestingcenterroomQuery.php (table: freyHallTestingCenterRoom, builder: Propel\Generator\Builder\Om\ExtensionQueryBuilder)
+  + Table: roster
+	-> (unchanged) /Base/Roster.php
+	-> (unchanged) /Map/RosterTableMap.php
+	-> (unchanged) /Base/RosterQuery.php
+	-> (exists) Roster.php
+	-> (exists) RosterQuery.php
+		(no change)
+  + Table: user
+	-> Updating /Base/User.php (table: user, builder: Propel\Generator\Builder\Om\ObjectBuilder)
+	-> Updating /Map/UserTableMap.php (table: user, builder: Propel\Generator\Builder\Om\TableMapBuilder)
+	-> Updating /Base/UserQuery.php (table: user, builder: Propel\Generator\Builder\Om\QueryBuilder)
+	-> (exists) User.php
+	-> (exists) UserQuery.php
+Object model generation complete - 11 files written

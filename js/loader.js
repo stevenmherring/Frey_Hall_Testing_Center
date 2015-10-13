@@ -9,8 +9,11 @@ $('ul#snav li a').click(function(){
   return false;
 });
 
-$(document).ready(function (){
-  $("#fcontent").load("faculty-landing.php");
+$('ul#anav li a').click(function(){
+  var page = $(this).attr('href');
+  $('#adminContent').load(page)
+
+  return false;
 });
 
 $('ul#fnav li a').click(function(){
@@ -19,3 +22,16 @@ $('ul#fnav li a').click(function(){
 
   return false;
 });
+
+$(document).ready(function (){
+  $("#fcontent").load("faculty-landing.php");
+});
+
+$(document).ready(function (){
+  $("#datepicker").datepicker();
+})
+
+
+$(document).ready(function (){
+  $('.datepicker').datepicker();
+})
