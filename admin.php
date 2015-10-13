@@ -1,4 +1,3 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
@@ -50,13 +49,14 @@ Shi Lin Lu -->
               <ul class="dropdown-menu dropdown-menu right">
                 <li><a href="#">View Appointments</a></li>
                 <li><a href="#">Schedule Student</a></li>
+                  <li><a href="superfluousAppts.php">Find Superfluous Appointments</a></li>
                 <li><a href="#">Check-in</a></li>
                 <li><a href="#">Check-in Student</a></li>
               </ul>
             </li>
             <li><a href="student-pref.html" class="btn btn-danger">Check-in Student</a></li>
-            <li><a href="student-pref.html" class="btn btn-danger">Edit Center</a></li>
-            <li><a href="student-pref.html" class="btn btn-danger">Import Data</a></li>
+            <li><a href="admin-editCenter.php" class="btn btn-danger">Edit Center</a></li>
+            <li><a href="importdata.php" class="btn btn-danger">Import Data</a></li>
             <li><a href="student-pref.html" class="btn btn-danger">Utilization</a></li>
             <li><a href="student-pref.html" class="btn btn-danger">Generate Reports</a></li>
         </ul>
@@ -70,9 +70,9 @@ Shi Lin Lu -->
     </div>
   </div>
 
- <div id="acontent" class="content container">
- <?php include('admin-landing.php');?>
- </div>
+   <div id="adminContent" class="content container">
+   <?php include('admin-landing.php');?>
+   </div>
 <!-- Bootstrap Core JavaScript -->
   <script src="js/bootstrap.min.js"></script>
 <script src='js/loader.js'></script>
