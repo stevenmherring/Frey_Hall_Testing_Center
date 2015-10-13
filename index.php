@@ -66,9 +66,7 @@ Shi Lin Lu -->
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-    <script type="text/javascript">
-
-    </script>
+    <script type="text/javascript"></script>
 
 </body>
 

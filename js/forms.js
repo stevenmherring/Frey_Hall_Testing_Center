@@ -34,6 +34,14 @@ function regformhash(form, uid, netid, email, password, conf) {
         return false;
     }
 
+    // Check the username
+    //TODO: sherring accept only #'s and non existing netids
+    if (uid.value.length < 9 || uid.value.length > 15){
+        alert("netid must be between 9 and 15 characters long");
+        form.uid.focus();
+        return false;
+    }
+
     // Check that the password is sufficiently long (min 6 chars)
     // The check is duplicated below, but this is included to give more
     // specific guidance to the user

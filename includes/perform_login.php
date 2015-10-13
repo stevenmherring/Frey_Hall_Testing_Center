@@ -13,7 +13,7 @@ if (isset($_POST['netid'], $_POST['p'])) {
 
     if (login($netid, $password, $mysqli) == true) {
         //logged in
-        header('Location: ../index.php');
+        header('Location: ../landing.php');
     } else {
         //not in
         header('Location: ../index.php?error=1');

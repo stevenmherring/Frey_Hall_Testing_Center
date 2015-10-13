@@ -27,8 +27,6 @@
     <p>
     <label> End time:  </label><input type="text" name="name" value="" size="25" maxlength="50" />
     </p>
-
-
     <input type="submit" name="submit" value="Schedule this exam" />
 </form>
 </div>
