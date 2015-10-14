@@ -32,10 +32,10 @@
         if (login_check($mysqli) == true) {
             if ($_SESSION['auth'] == 0) {
               // auth level 0 ADMIN
-              header('Location: access-error.php');
+              echo file_get_contents('admin-superfluousAppts.php');
             } else if($_SESSION['auth'] == 1) {
               // auth level 1 INSTRUCTOR
-              echo file_get_contents('processExam.php');
+              header('Location: access-error.php');
             } else if($_SESSION['auth'] == 2) {
                //auth level 2 STUDENT
                header('Location: access-error.php');
@@ -45,13 +45,3 @@
                         header('Location: access-error.php');
                 }
 ?>
-
-
-<!-- jQuery -->
-<script src="js/jquery.js"></script>
-
-<!-- Bootstrap Core JavaScript -->
-<script src="js/bootstrap.min.js"></script>
-<script type="text/javascript"></script>
-
-</body>

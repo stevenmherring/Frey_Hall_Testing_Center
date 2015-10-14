@@ -7,6 +7,18 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 
+<?php
+  include_once 'includes/db_connect.php';
+  include_once 'includes/loginfunctions.php';
+  sec_session_start();
+
+  if (login_check($mysqli) == true) {
+      $logged = 'in';
+  } else {
+      $logged = 'out';
+  }
+?>
+<?php if (login_check($mysqli) == true && $auth == 0) : ?>
 <!-- action="adminEditCenter-form-validation.php"  -->
 <div class="facultyScheduleExamFormContainer">
 <link href="css/faculty-landing.css" rel="stylesheet">
@@ -70,3 +82,5 @@
  <script src="js/bootstrap.min.js"></script>
  <script src='js/loader.js'></script>
  <script src='js/formValidation.js'></script>
+<?php else : header('Location: access-error.php'); ?>
+<?php endif; ?>

@@ -1,3 +1,16 @@
+<?php
+  include_once 'includes/db_connect.php';
+  include_once 'includes/loginfunctions.php';
+  sec_session_start();
+
+  if (login_check($mysqli) == true) {
+      $logged = 'in';
+  } else {
+      $logged = 'out';
+  }
+?>
+
+<?php if (login_check($mysqli) == true) : ?>
 <h3>Create An Exam</h3>
 
 <!-- Faculty Landing Page CSS -->
@@ -63,3 +76,5 @@
     <input type="submit" name="submit" value="Schedule this exam" />
 </form>
 </div>
+<?php else : header('Location: access-error.php'); ?>
+<?php endif; ?>

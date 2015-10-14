@@ -1,3 +1,15 @@
+<?php
+  include_once 'includes/db_connect.php';
+  include_once 'includes/loginfunctions.php';
+  sec_session_start();
+
+  if (login_check($mysqli) == true) {
+      $logged = 'in';
+  } else {
+      $logged = 'out';
+  }
+?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
@@ -33,7 +45,7 @@ Shi Lin Lu -->
 </head>
 
 <body>
-
+  <?php if (login_check($mysqli) == true && $auth == 2) : ?>
   <nav class="navbar navbar-student" role="navigation">
     <div class="container">
       <a class="navbar-brand" href="#" rel="home" title="Stony Brook Testing Center" >
@@ -63,7 +75,8 @@ Shi Lin Lu -->
 <!-- Bootstrap Core JavaScript -->
   <script src="js/bootstrap.min.js"></script>
 <script src='js/loader.js'></script>
-
+<?php else : header('Location: access-error.php'); ?>
+<?php endif; ?>
 </body>
 <footer>
   <!-- Footer -->
