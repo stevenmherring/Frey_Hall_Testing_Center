@@ -1,3 +1,15 @@
+<?php
+  include_once 'includes/db_connect.php';
+  include_once 'includes/loginfunctions.php';
+  sec_session_start();
+
+  if (login_check($mysqli) == true) {
+      $logged = 'in';
+  } else {
+      $logged = 'out';
+  }
+?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
@@ -33,7 +45,7 @@ Shi Lin Lu -->
 </head>
 
 <body>
-
+<?php if (login_check($mysqli) == true && $auth == 0) : ?>
   <nav class="navbar navbar-student" role="navigation">
     <div class="container">
       <a class="navbar-brand" href="#" rel="home" title="Stony Brook Testing Center" >
@@ -44,16 +56,7 @@ Shi Lin Lu -->
           <ul id="anav" class="navbar-right">
             <li><a href="student-exams.php" class="btn btn-danger">Pending Exams</a></li>
             <li><a href="student-sched.html" class="btn btn-danger">Cancel Exam</a></li>
-            <li>
-              <a href="#" class="dropdown-toggle btn btn-danger" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Appointments<span class="caret"></span></a>
-              <ul class="dropdown-menu dropdown-menu right">
-                <li><a href="#">View Appointments</a></li>
-                <li><a href="#">Schedule Student</a></li>
-                  <li><a href="superfluousAppts.php">Find Superfluous Appointments</a></li>
-                <li><a href="#">Check-in</a></li>
-                <li><a href="#">Check-in Student</a></li>
-              </ul>
-            </li>
+            <li><a href="superfluous.php" class="btn btn-danger">Find Superfluous Appointments</a></li>
             <li><a href="student-pref.html" class="btn btn-danger">Check-in Student</a></li>
             <li><a href="editCenter.php" class="btn btn-danger">Edit Center</a></li>
             <li><a href="importdata.php" class="btn btn-danger">Import Data</a></li>
@@ -76,9 +79,8 @@ Shi Lin Lu -->
 <!-- Bootstrap Core JavaScript -->
   <script src="js/bootstrap.min.js"></script>
 <script src='js/loader.js'></script>
-
-</body>
-<footer>
+<?php else : header('Location: access-error.php'); ?>
+<?php endif; ?>
   <!-- Footer -->
   <?php include("includes/footer.html");?>
   <!-- END FOOTER-->
@@ -86,5 +88,6 @@ Shi Lin Lu -->
   <!-- MODALS -->
   <?php include("includes/modals.php");?>
   <!-- END MODALS -->
-</footer>
+</body>
+
 </html>

@@ -1,3 +1,14 @@
+<?php
+  include_once 'includes/db_connect.php';
+  include_once 'includes/loginfunctions.php';
+  sec_session_start();
+
+  if (login_check($mysqli) == true) {
+      $logged = 'in';
+  } else {
+      $logged = 'out';
+  }
+?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -37,7 +48,7 @@ Shi Lin Lu -->
 </head>
 
 <body>
-
+  <?php if (login_check($mysqli) == true && $auth == 1) : ?>
   <nav class="navbar navbar-student" role="navigation">
     <div class="container">
       <a class="navbar-brand" href="#" rel="home" title="Stony Brook Testing Center" >
@@ -49,7 +60,7 @@ Shi Lin Lu -->
           <li><a href="faculty-classes.php" class="btn btn-danger">Classes</a></li>
           <li><a href="faculty-landing.php" class="btn btn-danger">Create an exam</a></li>
           <li><a href="faculty-landing.php" class="btn btn-danger">Delete an exam</a></li>
-		  <li><a href="faculty-month.php" class="btn btn-danger">Month view</a></li>
+		      <li><a href="faculty-month.php" class="btn btn-danger">Month view</a></li>
           <li><a href="student-pref.html" class="btn btn-danger">Contact Students</a></li>
           <li><a href="faculty-exams.php" class="btn btn-danger">My Exams</a></li>
         </ul>
@@ -67,7 +78,8 @@ Shi Lin Lu -->
  <?php include('faculty-landing.php');?>
  </div>
 
-
+<?php else : header('Location: access-error.php'); ?>
+<?php endif; ?>
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>
 <script src="js/loader.js"></script>

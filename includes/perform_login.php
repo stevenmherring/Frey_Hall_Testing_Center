@@ -16,7 +16,7 @@ if (isset($_POST['netid'], $_POST['p'])) {
         header('Location: ../landing.php');
     } else {
         //not in
-        header('Location: ../index.php?error=1');
+        header('Location: ../error.php?error=2');
     }
 } else {
     //invalid returns

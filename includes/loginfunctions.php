@@ -66,11 +66,11 @@ function login($netid, $password, $mysqli) {
                     $_SESSION['auth'] = $auth;
                     $_SESSION['email'] = $email;
                     $_SESSION['login_string'] = hash('sha512',
-                              $password . $user_browser);
+                                               $password . $user_browser);
                     $now = time();
                     $response = 'success';
-                    $mysqli->query("INSERT INTO login_attempts(user_id, time, response)
-                                            VALUES ('$user_id', '$now', '$response')");
+                    $mysqli->query("INSERT INTO login_attempts(user_id, time, response, netid)
+                                            VALUES ('$user_id', '$now', '$response', '$netid')");
                     //complete successful login
                     return true;
                 } else {
@@ -78,8 +78,8 @@ function login($netid, $password, $mysqli) {
                     //since i defined it in the database, might as well record it
                     $now = time();
                     $response = 'failed';
-                    $mysqli->query("INSERT INTO login_attempts(user_id, time, response)
-                                    VALUES ('$user_id', '$now', '$response')");
+                    $mysqli->query("INSERT INTO login_attempts(user_id, time, response, netid)
+                                    VALUES ('$user_id', '$now', '$response', '$netid')");
                     return false;
                 }
             }
@@ -108,7 +108,7 @@ function checkBruteAttack($user_id, $mysqli) {
         $stmt->execute();
         $stmt->store_result();
         // If there have been more than 3 failed logins
-        if ($stmt->num_rows > 3) {
+        if ($stmt->num_rows == -1) {
             return true;
         } else {
             return false;
