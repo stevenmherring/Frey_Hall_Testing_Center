@@ -35,6 +35,22 @@
                 </li>
                 <?php
                         if (login_check($mysqli) == true) {
+                          if($_SESSION['auth'] == 0) {
+                            echo '
+                            <li>
+                                <a href="landing.php" data-toggle="tooltip" title="Landing">Admin</a>
+                            </li> ';
+                          } else if($_SESSION['auth'] == 1) {
+                            echo '
+                            <li>
+                                <a href="landing.php" data-toggle="tooltip" title="Landing">Faculty</a>
+                            </li> ';
+                          } else if($_SESSION['auth'] == 2) {
+                            echo '
+                            <li>
+                                <a href="landing.php" data-toggle="tooltip" title="Landing">Student</a>
+                            </li> ';
+                          }
                           echo '
                           <li>
                               <a href="includes/perform_logout.php" data-toggle="tooltip" title="Logout">Logout</a>
