@@ -26,7 +26,8 @@
   <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
   <script type="text/JavaScript" src="js/sha512.js"></script>
   <script type="text/JavaScript" src="js/forms.js"></script>
-</head>
+  <?php include("includes/header.php");?>
+  </head>
 <body>
 <?php
         if (login_check($mysqli) == true) {
@@ -35,7 +36,7 @@
               header('Location: access-error.php');
             } else if($_SESSION['auth'] == 1) {
               // auth level 1 INSTRUCTOR
-              echo file_get_contents('processExam.php');
+              //echo file_get_contents('processExam.php');
             } else if($_SESSION['auth'] == 2) {
                //auth level 2 STUDENT
                header('Location: access-error.php');
@@ -45,7 +46,6 @@
                         header('Location: access-error.php');
                 }
 ?>
-
 <?php
 $servername = "mysql2.cs.stonybrook.edu";
 $username = "sachin";
@@ -120,7 +120,6 @@ else {
 	echo "<div style ='font:30px Arial,tahoma,sans-serif;color:#ff0000;text-align:center;'> Error! ExamID already in use</div>";
 }
 ?>
-
 <br><br><br>
 
 <?php
@@ -139,6 +138,7 @@ if (mysqli_num_rows($result) > 0) {
 mysqli_close($conn);
 ?>
 
+
 <!-- jQuery -->
 <script src="js/jquery.js"></script>
 
@@ -147,3 +147,6 @@ mysqli_close($conn);
 <script type="text/javascript"></script>
 
 </body>
+<footer>
+  <?php include("includes/footer.html");?>
+</footer>

@@ -5,7 +5,7 @@
   <link href="css/bootstrap.min.css" rel="stylesheet"> 
   <link href="css/landing-page.css" rel="stylesheet">
   <link href="css/simple-sidebar.css" rel="stylesheet">
-  <?php include("includes/header.html");?>
+  <?php include("includes/header.php");?>
 </head>
 
 <?php
