@@ -1,15 +1,13 @@
 <?php
-  //include_once 'includes/db_connect.php';
-  //include_once 'includes/loginfunctions.php';
   include_once('classes/Database.php');
   include_once('classes/Authentication.php');
   Authentication::sec_session_start();
   ob_start();
   $db = Database::getDatabase();
   if (Authentication::login_check($db->getMysqli()) == true) {
-      $logged = 'in';
+  $logged = 'in';
   } else {
-      $logged = 'out';
+  $logged = 'out';
   }
 ?>
 <head>
@@ -35,12 +33,9 @@
 <?php include("includes/header.php");?>
  <!--END NAV-->
 <?php
-        if ($db->getMysqli() === null){
-          echo '<p>Mysqli connection closed </p>';
-        }
-        if (Authentication::login_check($db->getMysqli()) == true) {
+        if (login_check($mysqli) == true) {
             if ($_SESSION['auth'] == 0) {
-              // auth level 0 ADMINS
+              // auth level 0 ADMIN
               echo file_get_contents('admin.php');
             } else if($_SESSION['auth'] == 1) {
               // auth level 1 INSTRUCTOR
@@ -51,8 +46,7 @@
              }
 
         } else {
-                  echo '<p>Login failed.</p>';
-                  echo '<p>Currently logged ' . $logged . '.</p>';
+                        echo '<p>Currently logged ' . $logged . '.</p>';
                 }
 ?>
 

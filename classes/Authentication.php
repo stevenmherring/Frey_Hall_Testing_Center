@@ -242,8 +242,5 @@ class Authentication {
       }
   }//esc_url
 
-
-
-
   }
 ?>
