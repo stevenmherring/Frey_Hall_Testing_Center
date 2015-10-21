@@ -1,4 +1,4 @@
-<?php 
+<?php
 include("dbQueries.php");
 //error_reporting(E_ALL);
 //ini_set('display_errors', 'On');
@@ -53,9 +53,9 @@ if ($userForm!=null){
 
             }
         }
-        
+
     }
-    
+
     fclose($handle);
 }
 
@@ -80,7 +80,7 @@ if ($rosterForm!=null){
                 /*if ($conn->query($sql) === TRUE) {}*/
                 if ($result->execute() === TRUE){
                     echo "$rosterRow";
-                
+
                     $stmtCSVlog = $transactionLogging;
                   $stmtCSVquery = $dbh->prepare($stmtCSVlog);
                   $transactionContent = "netID:" . $data[0] . "," . "classID:" . $data[1] . ",";
@@ -95,7 +95,7 @@ if ($rosterForm!=null){
 
             }
         }
-        
+
     }
     fclose($handle);
 }
@@ -148,6 +148,6 @@ else{
      <p> You have sucessfully imported <?php echo $userRow ?> user rows, <?php echo $rosterRow ?> roster rows, and <?php echo $classRow ?> class rows for the <?php
     echo $_POST[term];?> term.</p>
 
-<?php }  
+<?php }
         $dbh->commit();
         $dbh=null;?>

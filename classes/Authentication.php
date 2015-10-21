@@ -13,7 +13,7 @@ class Authentication {
     if (!is_writable(session_save_path())) {
     echo 'Session path "'.session_save_path().'" is not writable for PHP!';
     }
-    $secure = SECURE;
+    $secure = false;
     //When set to TRUE, the cookie will only be set if a secure connection exists.
     //On the server-side, it's on the programmer to send this kind of cookie only on secure connection (e.g. with respect to $_SERVER["HTTPS"]).
     $httponly = true;
@@ -44,17 +44,11 @@ class Authentication {
     // must be called before session_start
     $session_name = 'sec_session_id'; //set session name
     session_name($session_name);
-    $print = session_name();
-  	echo '<script type="text/javascript">alert("'.$print.'")</script>';
-    session_start();
+    if (session_status() == PHP_SESSION_NONE) {
+      session_start();
+    }
     //Session_Regenerate ID takes bool for deleting old session
-
-    $print = session_name();
-  	echo '<script type="text/javascript">alert("'.$print.'")</script>';
     session_regenerate_id(true);
-
-        $print = session_name();
-      	echo '<script type="text/javascript">alert("'.$print.'")</script>';
   }
 
   public static function attempt_login($netid, $password, $mysqli) {
@@ -80,7 +74,6 @@ class Authentication {
       //mysqli_stmt::fetch -- mysqli_stmt_fetch — Fetch results from a prepared statement into the bound variables
       $stmt->bind_result($user_id, $username, $email, $db_password, $salt, $auth);
       $stmt->fetch();
-      echo '<script type="text/javascript">alert("'.$user_id.'")</script>';
       $password = hash('sha512', $password . $salt);
       if ($stmt->num_rows === 1) {
             // in the case of locking user accounts we would check if the account is locked from too many login attempts
