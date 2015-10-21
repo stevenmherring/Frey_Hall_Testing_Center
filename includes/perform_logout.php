@@ -1,7 +1,6 @@
 <?php
-include_once('../classes/Database.php');
-include_once('../classes/Authentication.php');
-Authentication::sec_session_start();
+include_once 'loginfunctions.php';
+sec_session_start();
 
 //retreive session parameters
 $_SESSION = array();
