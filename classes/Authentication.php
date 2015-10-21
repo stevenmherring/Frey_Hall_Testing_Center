@@ -8,26 +8,32 @@ class Authentication {
   const DEFAULT_ROLE = 'member';
   const SECURE = 'false';
 
-  private $session_name;
 
-  public function sec_session_start(){
-    $session_name = 'sec_session_id'; //set session name
-    $secure = 'SECURE';
+  public static function sec_session_start(){
+    if (!is_writable(session_save_path())) {
+    echo 'Session path "'.session_save_path().'" is not writable for PHP!';
+    }
+    $secure = SECURE;
     //When set to TRUE, the cookie will only be set if a secure connection exists.
     //On the server-side, it's on the programmer to send this kind of cookie only on secure connection (e.g. with respect to $_SERVER["HTTPS"]).
     $httponly = true;
     // Cookie only available through HTTP protocol / verbs.
     // May help with Javascript security exploits
+
+
+    if (ini_set('session.use_only_cookies', 1) === FALSE) {
+        header("Location: ../error.php?err=Could not initiate a safe session (ini_set)");
+        exit();
+    }
     $cookieParams = session_get_cookie_params();
 
-    $path = '/';
     // This may need to change to a specific directory which
     // contains only the files needed for user methods as opposed
     // to the root of the server.
 
     //Domain the cookie is available to, and higher (subdomains)
     //$domain = "www.snowlives.com";
-    $domain = "localhost:8085";
+    //$domain = "localhost:8085";
     session_set_cookie_params($cookieParams["lifetime"],
       $cookieParams["path"],
       $cookieParams["domain"],
@@ -36,38 +42,57 @@ class Authentication {
 
     //Define the session to the name of session defined above
     // must be called before session_start
+    $session_name = 'sec_session_id'; //set session name
     session_name($session_name);
+    $print = session_name();
+  	echo '<script type="text/javascript">alert("'.$print.'")</script>';
     session_start();
     //Session_Regenerate ID takes bool for deleting old session
+
+    $print = session_name();
+  	echo '<script type="text/javascript">alert("'.$print.'")</script>';
     session_regenerate_id(true);
+
+        $print = session_name();
+      	echo '<script type="text/javascript">alert("'.$print.'")</script>';
   }
 
-  public function attempt_login($netid, $password, $mysqli) {
+  public static function attempt_login($netid, $password, $mysqli) {
     if ($mysqli === null){
       throw new Exception ("Attempt_login passed a null mysqli.");
     }
-    $q_login_query_netid = "SELECT id, username, email, password, salt, auth FROM members WHERE netid = ? LIMIT 1";
+    $q_login_query_netid = "SELECT id, username, email, password, salt,
+      auth FROM members WHERE netid = ? LIMIT 1";
     $stmt = $mysqli->prepare($q_login_query_netid);
     //if ($stmt != null){
       $stmt->bind_param('s', $netid);
       $stmt->execute();
-      if ($stmt->store_result()){
+      $stmt->store_result();
+      $user_id;
+      $sername;
+      $email;
+      $db_password;
+      $salt;
+      $auth;
+      //if ($stmt->store_result()){
         // see what steve was checking here
-      }
+      //}
       //mysqli_stmt::fetch -- mysqli_stmt_fetch — Fetch results from a prepared statement into the bound variables
       $stmt->bind_result($user_id, $username, $email, $db_password, $salt, $auth);
       $stmt->fetch();
-
+      echo '<script type="text/javascript">alert("'.$user_id.'")</script>';
       $password = hash('sha512', $password . $salt);
       if ($stmt->num_rows === 1) {
             // in the case of locking user accounts we would check if the account is locked from too many login attempts
             // this is likely not an issue with our application, but the check is here as we defined the possibilty in database
             if (self::checkBruteAttack($user_id, $mysqli) === true) {
-                //account is locked, should probably handle this some way...for now, nothing. TODO: MAYBE - sherring
+                //account is locked, should probably handle
+
+                throw new Exception ("brute failed");
                 return false;
             } else {
                 //confirm login details
-                if ($db_password == $password) {
+                if ($db_password === $password) {
                     //password is good
                     //TODO: understand XSS attacks - sherring
                     $user_browser = $_SERVER['HTTP_USER_AGENT'];
@@ -92,6 +117,7 @@ class Authentication {
                 } else {
                     //bad password
                     //since i defined it in the database, might as well record it
+                      throw new Exception ("db password failed");
                     $now = time();
                     $response = 'failed';
                     $q_insert_loginattempt = "INSERT INTO login_attempts(user_id, time, response, netid) VALUES ('$user_id', '$now', '$response', '$netid')";
@@ -101,6 +127,7 @@ class Authentication {
             }
         } else {
             // bad user
+              throw new Exception (" stmt num rows not 1");
             return false;
         }
 
@@ -138,8 +165,6 @@ class Authentication {
   public function login_check($mysqli) {
       //check that variables are set
       if (isset($_SESSION['user_id'],
-                          $_SESSION['username'],
-                          $_SESSION['email'],
                           $_SESSION['login_string'],
                           $_SESSION['auth'])) {
 
@@ -174,17 +199,23 @@ class Authentication {
                       return true;
                   } else {
                       // not in
+                      throw new Exception (" login_check != login strings");
                       return false;
                   }
               } else {
                   // not in
+                  throw new Exception (" statement row count is off");
                   return false;
               }
           } else {
               // not in
+              throw new Exception (" prepared statementfailed");
               return false;
           }
       } else {
+          //  echo '<script type="text/javascript">alert("'.$_SESSION['user_id'].'")</script>';
+          //  echo '<script type="text/javascript">alert("'.$_SESSION['email'].'")</script>';
+            //echo '<script type="text/javascript">alert("'.$_SESSION['auth'].'")</script>';
           // not in
           return false;
       }

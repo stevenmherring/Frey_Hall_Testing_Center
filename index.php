@@ -1,5 +1,6 @@
 
 <?php
+session_destroy();
 /*
 include_once 'includes/db_connect.php';
 include_once 'includes/loginfunctions.php';
@@ -20,6 +21,9 @@ if (Authentication::login_check($db->getMysqli()) === true) {
 } else {
     $logged = 'out';
 }
+
+    $print = session_name();
+  	echo '<script type="text/javascript">alert("'.$print.'")</script>';
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">

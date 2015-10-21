@@ -8,8 +8,8 @@ if (isset($_POST['netid'], $_POST['p'])) {
     $password = $_POST['p']; //password hashed
     $netid = $_POST['netid'];
     $auth = $_POST['auth'];
-    $email = $_POST['email'];
-    $username = $_POST['username'];
+    //$email = $_POST['email'];
+    //$username = $_POST['username'];
 
     if (Authentication::attempt_login($netid, $password, $db->getMysqli()) === true) {
         //logged in

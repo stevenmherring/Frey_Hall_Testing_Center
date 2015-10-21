@@ -34,6 +34,9 @@
 <?php include("includes/header.php");?>
  <!--END NAV-->
 <?php
+        if ($db->getMysqli() === null){
+          echo '<p>Mysqli connection closed </p>';
+        }
         if (Authentication::login_check($db->getMysqli()) == true) {
             if ($_SESSION['auth'] == 0) {
               // auth level 0 ADMINS
@@ -47,7 +50,8 @@
              }
 
         } else {
-                        echo '<p>Currently logged ' . $logged . '.</p>';
+                  echo '<p>Login failed.</p>';
+                  echo '<p>Currently logged ' . $logged . '.</p>';
                 }
 ?>
 
