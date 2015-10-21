@@ -1,3 +1,17 @@
+<?php
+  //include_once 'includes/db_connect.php';
+  //include_once 'includes/loginfunctions.php';
+  include_once('classes/Database.php');
+  include_once('classes/Authentication.php');
+  Authentication::sec_session_start();
+  $db = Database::getDatabase();
+  if (Authentication::login_check($db->getMysqli()) === true) {
+      $logged = 'in';
+  } else {
+      $logged = 'out';
+  }
+?>
+<head>
 <!-- Dyanmic Items --->
 
 <!--login modal-->
@@ -29,10 +43,11 @@
               }
             ?>
             <?php
-              if (login_check($mysqli) == true) {
+              if (Authentication::login_check($mysqli) == true) {
                 echo '<p>Currently logged ' . $logged . ' as ' . htmlentities($_SESSION['username']) . '.</p>';
                 echo '<p>Do you want to change user? <a href="includes/perform_logout.php">Log out</a>.</p>';
               } else {
+                echo '<p>Login check failed.</p>';
                 echo '<p>Currently logged ' . $logged . '.</p>';
                 }
             ?>
@@ -49,7 +64,7 @@
   <div class="modal-content">
       <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-          <h1 class="text-center">DoIT - Single Sign On - Admins</h1>
+          <h1 class="text-center">DoIT - Single Sign On - Admins</h1
       </div>
       <div class="modal-body">
           <form class="form col-md-12 center-block">
