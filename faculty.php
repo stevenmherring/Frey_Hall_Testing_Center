@@ -59,7 +59,7 @@ Shi Lin Lu -->
           <ul id="fnav" class="navbar-right">
           <li><a href="faculty-classes.php" class="btn btn-danger">Classes</a></li>
           <li><a href="faculty-landing.php" class="btn btn-danger">Create an exam</a></li>
-          <li><a href="faculty-delete.php" class="btn btn-danger">Delete an exam</a></li>
+          <li><a href="faculty-landing.php" class="btn btn-danger">Delete an exam</a></li>
 		      <li><a href="faculty-month.php" class="btn btn-danger">Month view</a></li>
           <li><a href="student-pref.html" class="btn btn-danger">Contact Students</a></li>
           <li><a href="faculty-exams.php" class="btn btn-danger">My Exams</a></li>
