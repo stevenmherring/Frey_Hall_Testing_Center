@@ -1,11 +1,21 @@
 
 <?php
+/*
 include_once 'includes/db_connect.php';
 include_once 'includes/loginfunctions.php';
 
 sec_session_start();
 
 if (login_check($mysqli) == true) {
+    $logged = 'in';
+} else {
+    $logged = 'out';
+}*/
+include_once('classes/Database.php');
+include_once('classes/Authentication.php');
+Authentication::sec_session_start();
+$db = Database::getDatabase();
+if (Authentication::login_check($db->getMysqli()) === true) {
     $logged = 'in';
 } else {
     $logged = 'out';

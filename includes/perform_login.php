@@ -1,9 +1,9 @@
 <?php
-include_once 'db_connect.php';
-include_once 'loginfunctions.php';
+include_once('../classes/Database.php');
+include_once('../classes/Authentication.php');
+Authentication::sec_session_start();
 
-sec_session_start(); //call custom session start
-
+$db = Database::getDatabase();
 if (isset($_POST['netid'], $_POST['p'])) {
     $password = $_POST['p']; //password hashed
     $netid = $_POST['netid'];
@@ -11,7 +11,7 @@ if (isset($_POST['netid'], $_POST['p'])) {
     $email = $_POST['email'];
     $username = $_POST['username'];
 
-    if (login($netid, $password, $mysqli) == true) {
+    if (Authentication::attempt_login($netid, $password, $db->getMysqli()) === true) {
         //logged in
         header('Location: ../landing.php');
     } else {
