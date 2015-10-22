@@ -1,24 +1,9 @@
-<meta charset="UTF-8">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-
 <?php
-  include_once 'includes/db_connect.php';
-  include_once 'includes/loginfunctions.php';
-  sec_session_start();
-
-  if (Authentication::login_check($db->getMysqli()) == true) {
-      $logged = 'in';
-  } else {
-      $logged = 'out';
-  }
-?>
-<?php if (Authentication::login_check($db->getMysqli()) == true && $auth == 0) : ?>
+include_once('classes/Authentication.php');
+include_once('classes/Database.php');
+$db = Database::getDatabase();
+Authentication::sec_session_start();
+if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['auth'] == 0) : ?>
 <!-- action="adminEditCenter-form-validation.php"  -->
 <div class="facultyScheduleExamFormContainer">
 <link href="css/faculty-landing.css" rel="stylesheet">

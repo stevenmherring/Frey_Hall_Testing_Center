@@ -9,6 +9,10 @@ $('ul#snav li a').click(function(){
   return false;
 });
 
+$(document).ready(function (){
+  $("#adminContent").load("admin-editCenter.php");
+});
+
 $('ul#anav li a').click(function(){
   var page = $(this).attr('href');
   $('#adminContent').load(page)

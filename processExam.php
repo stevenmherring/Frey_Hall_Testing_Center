@@ -3,7 +3,7 @@
   include_once 'includes/loginfunctions.php';
   sec_session_start();
 
-  if (Authentication::login_check($db->getMysqli() == true) {
+  if (Authentication::login_check($db->getMysqli()) == true) {
       $logged = 'in';
   } else {
       $logged = 'out';

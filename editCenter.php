@@ -1,13 +1,6 @@
 <?php
-  include_once 'includes/db_connect.php';
-  include_once 'includes/loginfunctions.php';
-  sec_session_start();
-
-  if (Authentication::login_check($db->getMysqli()) == true) {
-      $logged = 'in';
-  } else {
-      $logged = 'out';
-  }
+include_once('classes/Authentication.php');
+include_once('classes/Database.php');
 ?>
 <head>
   <meta charset="utf-8">
@@ -29,7 +22,7 @@
 </head>
 <body>
 <?php
-        if (Authentication::login_check($db->getMysqli()) == true) {
+        if (Authentication::login_check(Database::getMysqli()) == true) {
             if ($_SESSION['auth'] == 0) {
               // auth level 0 ADMIN
               echo file_get_contents('admin-editCenter.php');

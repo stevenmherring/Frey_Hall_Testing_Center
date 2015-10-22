@@ -1,9 +1,8 @@
 <?php
   include_once('classes/Database.php');
   include_once('classes/Authentication.php');
-  Authentication::sec_session_start();
-  ob_start();
   $db = Database::getDatabase();
+  Authentication::sec_session_start();
   if (Authentication::login_check($db->getMysqli()) == true) {
       $logged = 'in';
   } else {

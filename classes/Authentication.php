@@ -81,7 +81,7 @@ class Authentication {
             if (self::checkBruteAttack($user_id, $mysqli) === true) {
                 //account is locked, should probably handle
 
-                throw new Exception ("brute failed");
+                //throw new Exception ("brute failed");
                 return false;
             } else {
                 //confirm login details
@@ -110,7 +110,7 @@ class Authentication {
                 } else {
                     //bad password
                     //since i defined it in the database, might as well record it
-                      throw new Exception ("db password failed");
+                      //throw new Exception ("db password failed");
                     $now = time();
                     $response = 'failed';
                     $q_insert_loginattempt = "INSERT INTO login_attempts(user_id, time, response, netid) VALUES ('$user_id', '$now', '$response', '$netid')";
@@ -192,17 +192,17 @@ class Authentication {
                       return true;
                   } else {
                       // not in
-                      throw new Exception (" login_check != login strings");
+                    //  throw new Exception (" login_check != login strings");
                       return false;
                   }
               } else {
                   // not in
-                  throw new Exception (" statement row count is off");
+                  //throw new Exception (" statement row count is off");
                   return false;
               }
           } else {
               // not in
-              throw new Exception (" prepared statementfailed");
+              //throw new Exception (" prepared statementfailed");
               return false;
           }
       } else {
