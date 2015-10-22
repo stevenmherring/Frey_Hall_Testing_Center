@@ -11,7 +11,7 @@
          <div class="introduction section-introduction section-themeable">
            <h3><p><strong>
              <?php
-                     if (login_check($mysqli) == true) {
+                     if (Authentication::login_check($db->getMysqli()) == true) {
                                      echo '<p>Currently logged ' . $logged . ' as ' . htmlentities($_SESSION['username']) . '.</p>';
 
                          echo '<p>Do you want to logout? <a href="includes/perform_logout.php">Log out</a>.</p>';

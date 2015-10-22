@@ -1,5 +1,3 @@
-<!-- Dyanmic Items --->
-
 <!--login modal-->
 <div id="login" class="modal fade" tabindex="-1" role="dialog">
   <div class="modal-dialog">
@@ -29,7 +27,7 @@
               }
             ?>
             <?php
-              if (login_check($mysqli) == true) {
+              if (Authentication::login_check($db->getMysqli()) === true) {
                 echo '<p>Currently logged ' . $logged . ' as ' . htmlentities($_SESSION['username']) . '.</p>';
                 echo '<p>Do you want to change user? <a href="includes/perform_logout.php">Log out</a>.</p>';
               } else {

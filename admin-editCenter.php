@@ -12,13 +12,13 @@
   include_once 'includes/loginfunctions.php';
   sec_session_start();
 
-  if (login_check($mysqli) == true) {
+  if (Authentication::login_check($db->getMysqli()) == true) {
       $logged = 'in';
   } else {
       $logged = 'out';
   }
 ?>
-<?php if (login_check($mysqli) == true && $auth == 0) : ?>
+<?php if (Authentication::login_check($db->getMysqli()) == true && $auth == 0) : ?>
 <!-- action="adminEditCenter-form-validation.php"  -->
 <div class="facultyScheduleExamFormContainer">
 <link href="css/faculty-landing.css" rel="stylesheet">

@@ -4,12 +4,13 @@
   Authentication::sec_session_start();
   ob_start();
   $db = Database::getDatabase();
-  if (Authentication::login_check($db->getMysqli()) == true) {
-  $logged = 'in';
+  if (Authentication::login_check($db->getMysqli()) === true) {
+      $logged = 'in';
   } else {
-  $logged = 'out';
+      $logged = 'out';
   }
 ?>
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -33,7 +34,7 @@
 <?php include("includes/header.php");?>
  <!--END NAV-->
 <?php
-        if (login_check($mysqli) == true) {
+        if ($logged == 'in') {
             if ($_SESSION['auth'] == 0) {
               // auth level 0 ADMIN
               echo file_get_contents('admin.php');

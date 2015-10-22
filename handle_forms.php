@@ -71,6 +71,7 @@ if ($rosterForm!=null){
           $dbh = null;
           return;
         }
+        echo "use"; 
         //$conn->query($sql);
         $result->execute();
         while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {

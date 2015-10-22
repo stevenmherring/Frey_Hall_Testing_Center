@@ -1,8 +1,10 @@
 <?php
-  include_once 'includes/db_connect.php';
-  include_once 'includes/loginfunctions.php';
-
-  if (login_check($mysqli) == true) {
+  include_once('classes/Database.php');
+  include_once('classes/Authentication.php');
+  Authentication::sec_session_start();
+  ob_start();
+  $db = Database::getDatabase();
+  if (Authentication::login_check($db->getMysqli()) == true) {
       $logged = 'in';
   } else {
       $logged = 'out';
@@ -34,7 +36,7 @@
                     <a href="index.php">Home</a>
                 </li>
                 <?php
-                        if (login_check($mysqli) == true) {
+                        if (Authentication::login_check($db->getMysqli()) == true) {
                           if($_SESSION['auth'] == 0) {
                             echo '
                             <li>

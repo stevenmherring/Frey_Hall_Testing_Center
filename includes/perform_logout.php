@@ -1,6 +1,9 @@
 <?php
-include_once 'loginfunctions.php';
-sec_session_start();
+include_once('../classes/Database.php');
+include_once('../classes/Authentication.php');
+Authentication::sec_session_start();
+ob_start();
+$db = Database::getDatabase();
 
 //retreive session parameters
 $_SESSION = array();
