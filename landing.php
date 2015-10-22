@@ -2,7 +2,6 @@
   include_once('classes/Database.php');
   include_once('classes/Authentication.php');
   Authentication::sec_session_start();
-  ob_start();
   $db = Database::getDatabase();
   if (Authentication::login_check($db->getMysqli()) === true) {
       $logged = 'in';
@@ -10,7 +9,7 @@
       $logged = 'out';
   }
 ?>
-
+<!DOCTYPE HTML>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,6 +22,7 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom CSS -->
   <link href="css/landing-page.css" rel="stylesheet">
+  <link href="css/simple-sidebar.css" rel="stylesheet">
   <!-- Custom Fonts -->
   <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
   <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
@@ -31,23 +31,27 @@
 </head>
 <body>
   <!-- Navigation -->     <!-- Header -->
-<?php include("includes/header.php");?>
+<?php
+include("includes/header.php");
+?>
  <!--END NAV-->
 <?php
         if ($logged == 'in') {
             if ($_SESSION['auth'] == 0) {
               // auth level 0 ADMIN
-              echo file_get_contents('admin.php');
+              //echo file_get_contents('admin.php');
+              header('Location: admin.php');
             } else if($_SESSION['auth'] == 1) {
               // auth level 1 INSTRUCTOR
-              echo file_get_contents('faculty.php');
+              //echo file_get_contents('faculty.php');
+              header('Location: faculty.php');
             } else if($_SESSION['auth'] == 2) {
                //auth level 2 STUDENT
-               echo file_get_contents('student.php');
+              //echo file_get_contents('student.php');
+              header('Location: student.php');
              }
-
         } else {
-                        echo '<p>Currently logged ' . $logged . '.</p>';
+            echo '<p>Currently logged ' . $logged . '.</p>';
                 }
 ?>
 

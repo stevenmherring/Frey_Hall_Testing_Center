@@ -1,14 +1,3 @@
-<?php
-  include_once 'includes/db_connect.php';
-  include_once 'includes/loginfunctions.php';
-  sec_session_start();
-
-  if (Authentication::login_check($db->getMysqli() == true) {
-      $logged = 'in';
-  } else {
-      $logged = 'out';
-  }
-?>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
