@@ -3,7 +3,7 @@
   include_once 'includes/loginfunctions.php';
   sec_session_start();
 
-  if (login_check($mysqli) == true) {
+  if (Authentication::login_check($db->getMysqli() == true) {
       $logged = 'in';
   } else {
       $logged = 'out';
@@ -18,7 +18,7 @@
   <link href="css/simple-sidebar.css" rel="stylesheet">
   <?php include("includes/header.php");?>
 </head>
-<?php if (login_check($mysqli) == true && $auth == 1) : ?>
+<?php if (Authentication::login_check($db->getMysqli() == true && $auth == 1) : ?>
 <body>
 <?php
 $servername = "mysql2.cs.stonybrook.edu";

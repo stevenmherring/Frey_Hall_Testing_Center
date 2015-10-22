@@ -1,14 +1,15 @@
 <?php
-  include_once 'includes/db_connect.php';
-  include_once 'includes/loginfunctions.php';
-  sec_session_start();
-
-  if (login_check($mysqli) == true) {
+include_once('classes/Authentication.php');
+include_once('classes/Database.php');
+Authentication::sec_session_start();
+ob_start();
+$db = Database::getDatabase();
+  if (Authentication::login_check( $db->getMysqli() ) == true) {
       $logged = 'in';
   } else {
       $logged = 'out';
-  }
-?>
+    }
+    ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -45,7 +46,7 @@ Shi Lin Lu -->
 </head>
 
 <body>
-  <?php if (login_check($mysqli) == true && $auth == 2) : ?>
+  <?php if (Authentication::login_check($db->getMysqli()) == true && $auth == 2) ; ?>
   <nav class="navbar navbar-student" role="navigation">
     <div class="container">
       <a class="navbar-brand" href="#" rel="home" title="Stony Brook Testing Center" >

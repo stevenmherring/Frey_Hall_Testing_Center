@@ -3,7 +3,7 @@
   include_once 'includes/loginfunctions.php';
   sec_session_start();
 
-  if (login_check($mysqli) == true) {
+  if (Authentication::login_check($db->getMysqli()) == true) {
       $logged = 'in';
   } else {
       $logged = 'out';
@@ -29,7 +29,7 @@
 </head>
 <body>
 <?php
-        if (login_check($mysqli) == true) {
+        if (Authentication::login_check($db->getMysqli()) == true) {
             if ($_SESSION['auth'] == 0) {
               // auth level 0 ADMIN
               echo file_get_contents('admin-editCenter.php');
