@@ -26,7 +26,15 @@ Shi Lin Lu -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src="js/jquery.js"</script>
+      <link rel="stylesheet" href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
+    <script>
+    jQuery(function($) {
+        $('#datepick').datepicker();
+    });
+    </script>
 
     <!-- Navigation -->     <!-- Header -->
     <?php include("includes/header.php");?>

@@ -30,12 +30,3 @@ $('ul#fnav li a').click(function(){
 $(document).ready(function (){
   $("#fcontent").load("faculty-landing.php");
 });
-
-$(document).ready(function (){
-  $("#datepicker").datepicker();
-})
-
-
-$(document).ready(function (){
-  $('.datepicker').datepicker();
-})
