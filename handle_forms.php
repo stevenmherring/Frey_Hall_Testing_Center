@@ -118,7 +118,7 @@ if ($classForm!=null){
         while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
             $num = count($data);
             if ($data[0]!=null){
-                $sql = "INSERT INTO class(classID, subj, section, instructorNetID)VALUES('$data[0]', '$data[1]','$data[2]', '$data[3]' )";
+                $sql = "INSERT INTO class(classID, subj, catalogNumber, section, instructorNetID)VALUES('$data[0]', '$data[1]',$data[2], '$data[3]', '$data[4]' )";
                 $result = $dbh->prepare($sql);
                 /*if ($conn->query($sql) === TRUE) {}*/
                 if ($result->execute() === TRUE){

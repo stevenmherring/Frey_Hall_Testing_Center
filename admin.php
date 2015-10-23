@@ -59,7 +59,7 @@ if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['auth'] =
             <li><a href="student-exams.php" class="btn btn-danger">Pending Exams</a></li>
             <li><a href="student-sched.html" class="btn btn-danger">Cancel Exam</a></li>
             <li><a href="superfluous.php" class="btn btn-danger">Find Superfluous Appointments</a></li>
-            <li><a href="student-pref.html" class="btn btn-danger">Check-in Student</a></li>
+            <li><a href="adminScheduleAppt.php" class="btn btn-danger">Check-in Student</a></li>
             <li><a href="editCenter.php" class="btn btn-danger">Edit Center</a></li>
             <li><a href="importdata.php" class="btn btn-danger">Import Data</a></li>
             <li><a href="student-pref.html" class="btn btn-danger">Utilization</a></li>
