@@ -18,14 +18,14 @@ $examStartHr = $_POST['startHr'];
 $examStartMin = $_POST['startMin'];
 $examEndHr = $_POST['endHr'];
 $examEndMin = $_POST['endMin'];
+$examClassID = $_POST['ClassName'];
+
 
 $examStartTime = $examStartHr . ":" . $examStartMin . ":" . "00";
 $examEndTime = $examEndHr . ":" . $examEndMin . ":" . "00";
 
-echo $examStartTime;
-echo $examEndTime;
 
-$sql = "INSERT INTO exam(examStartDate, examEndDate, examStartTime, examEndTime, examDuration, examName, classID) VALUES ('$examStartDate', '$examEndDate', '$examStartTime', '$examEndTime', $examDuration, '$examName', '11111-1111')";
+$sql = "INSERT INTO exam(examStartDate, examEndDate, examStartTime, examEndTime, examDuration, examName, classID) VALUES ('$examStartDate', '$examEndDate', '$examStartTime', '$examEndTime', $examDuration, '$examName', '$examClassID')";
         $result = $dbh->prepare($sql);
         if (!$result){
           $prepareFail = "Information NOT updated.";
