@@ -18,7 +18,9 @@ $examStartHr = $_POST['startHr'];
 $examStartMin = $_POST['startMin'];
 $examEndHr = $_POST['endHr'];
 $examEndMin = $_POST['endMin'];
-$examClassID = $_POST['ClassName'];
+$examClassID = $_POST['className'];
+
+echo $examClassID;
 
 
 $examStartTime = $examStartHr . ":" . $examStartMin . ":" . "00";
