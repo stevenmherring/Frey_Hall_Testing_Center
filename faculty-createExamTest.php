@@ -1,4 +1,29 @@
 <?php
+include("dbQueries.php");
+//error_reporting(E_ALL);
+//ini_set('display_errors', 'On');
+
+try {
+       $dbh=new PDO("mysql:host=mysql2.cs.stonybrook.edu;dbname=sachin","sachin","108610059");
+} catch(PDOException $e) {
+  $message = "Couldnt connect to db.";
+  echo "<script type='text/javascript'>alert('$message');</script>";
+}
+$dbh->beginTransaction();
+
+$sql = "SELECT * FROM class WHERE InstructorNetID ='345345345' ";
+        $result = $dbh->prepare($sql);
+        if (!$result){
+          $prepareFail = "Information NOT updated.";
+          echo "<script type='text/javascript'>alert('$prepareFail');</script>";
+          $dbh->rollback();
+          $dbh = null;
+          return;
+        }
+        //$conn->query($sql);
+     $result->execute($var);
+$var = $result->fetchAll();
+ 
   include_once 'includes/db_connect.php';
   include_once 'includes/loginfunctions.php';
   sec_session_start();
@@ -91,6 +116,15 @@
         <form action="createExam.php" method="post" onSubmit="return check();">
             <p>
                 <label> Exam Name: </label><input type="text" id="examName" name="examName" value="" maxlength="50" required/>
+            </p>
+            <p>
+                <label> ClassID: </label>
+                <select class="combobox" name="className" id="className" required>
+                    <option value="">Choose a class</option>
+                    <?php foreach ($var as $vars) { ?>
+                    <option value="<?php echo $vars["classID"]; ?>"><?php  echo $vars["subj"] . $vars["catalogNumber"] . " Section: " . $vars["section"]; ?></option> 
+                    <?php } ?>
+                </select>
             </p>
              <p>
             <label> Exam Duration(Minutes): </label>
@@ -217,3 +251,7 @@
 <?php endif; ?>
 </body>
 </html>
+
+<?php
+$dbh->commit();
+        $dbh=null;?>
