@@ -32,7 +32,7 @@
                 <label> What is the student's Net ID: </label><input type="text" id="apptNetID" name="apptNetID" value="" maxlength="50" required/>
             </p>
             
-            <input type="submit" name="submit" value="Schedule exam" />
+            <input type="submit" name="submit" value="Next" />
             </form>
     </div>
          </div>

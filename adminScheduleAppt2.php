@@ -11,7 +11,7 @@ try {
 }
 $dbh->beginTransaction();
 
-$sql = "SELECT * FROM roster r, user u, class c WHERE u.netID=r.netID AND u.netID='$_POST[apptNetID]' AND c.classID = r.classID; ";
+$sql = "SELECT * FROM roster r, user u, class c, exam e WHERE u.netID=r.netID AND u.netID='$_POST[apptNetID]' AND c.classID = r.classID AND e.classID=c.classID; ";
         $result = $dbh->prepare($sql);
         if (!$result){
           $prepareFail = "Information NOT updated.";
@@ -21,7 +21,7 @@ $sql = "SELECT * FROM roster r, user u, class c WHERE u.netID=r.netID AND u.netI
           return;
         }
         //$conn->query($sql);
-     $result->execute($var);
+     $result->execute();
 $var = $result->fetchAll();
  
   include_once 'includes/db_connect.php';
@@ -42,41 +42,7 @@ $var = $result->fetchAll();
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
   <link rel="stylesheet" href="/resources/demos/style.css">
-    <script type="text/javascript">
     
-    function check()
-            {
-                var checkStartHr= document.getElementById("apptHr").value;
-                var checkStartMin= document.getElementById("apptMin").value;
-                var startDate = document.getElementById("datepicker").value;
-                var startTime = parseInt(checkStartHr)*60 + parseInt(checkStartMin);
-                var startSplit = startDate.split('-');
-                var endSplit =endDate.split('-');
-//                var startHr = parseInt(checkStartHr);
-//                var startMin = parseInt(checkStartMin);
-//                var endHr = parseInt(checkEndHr);
-//                var endMin = parseInt(checkEndMin);
-                
-                startSplit[0]= parseInt(startSplit[0]);
-                startSplit[1]= parseInt(startSplit[1]);
-                startSplit[2]= parseInt(startSplit[2]);
-                endSplit[0]= parseInt(endSplit[0]);
-                endSplit[1]= parseInt(endSplit[1]);
-                endSplit[2]= parseInt(endSplit[2]);
-               var state = true;
-            
-                
-                if (state == true){
-                    return true;
-                }
-                else{
-                    alert('Your Exam start date/time must be before your end date/time minus exam duration');
-
-					return false;
-                }
-                
-			}
-        </script>
     
 </head>
 <body>
@@ -87,76 +53,18 @@ $var = $result->fetchAll();
         <h3>Create Appt</h3>
     <div style='height:500px'>
     
-        <form action="createAppt.php" method="post" onSubmit="return check();">
+        <form action="adminScheduleAppt3.php" method="post">
             <p>
-                <label> Course Name : </label>
+                <label> Exam Name : </label>
                 <select class="combobox" name="className" id="className" required>
-                    <option value="">Choose a class </option>
+                    <option value="">Choose an exam </option>
                     <?php foreach ($var as $vars) { ?>
-                    <option value="<?php echo $vars["classID"]; ?>"><?php  echo $vars["subj"] . $vars["catalogNumber"] . " Section: " . $vars["section"]; ?></option> 
+            <option value="<?php echo $vars["examID"]; ?>"><?php  echo $vars["subj"] . $vars["catalogNumber"] . ":" . $vars["section"] . " - " . $vars["examName"]; ?></option> 
                     <?php } ?>
                 </select>
-            </p>
-            
-            
-            
-           <script>
-          $(function() {
-            $( "#startdatepicker" ).datepicker({
-                dateFormat: "yy-mm-dd"
-                });
-          });
-          </script>
-        <p>Appointment Date: <input type="text" name="startDate" id="startdatepicker"></p>
-          <p>
-    <label> Time:  </label>
-        <select class="combobox" name="apptHr" id="apptHr" required>
-            <option value="">Hr</option>
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-            <option value="11">11</option>
-            <option value="12">12</option>
-            <option value="13">13</option>
-            <option value="14">14</option>
-            <option value="15">15</option>
-            <option value="16">16</option>
-            <option value="17">17</option>
-            <option value="18">18</option>
-            <option value="19">19</option>
-            <option value="20">20</option>
-            <option value="21">21</option>
-            <option value="22">22</option>
-            <option value="23">23</option>
-        </select>
-        <select class="combobox" name="apptMin" id="apptMin" required>
-            <option value="">Min</option>
-            <option value="00">00</option>
-            <option value="30">30</option>
-        </select>
-<!--
-        <select class="combobox" name="startAMPM" id="startAMPM">
-            <option value="AM">AM</option>
-            <option value="PM">PM</option>
-        </select>
--->
-        
-<!--
-        <select class="combobox" name="endAMPM" id="endAMPM">
-            <option value="AM">AM</option>
-            <option value="PM">PM</option>
-        </select>
--->
-    </p> 
-            <input type="submit" name="submit" value="Schedule exam" />
+            </p>        
+           
+            <input type="submit" name="submit" value="Next" />
             </form>
     </div>
          </div>
