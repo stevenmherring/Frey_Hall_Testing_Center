@@ -26,16 +26,11 @@ Shi Lin Lu -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
     <!-- jQuery -->
-    <script src="js/jquery.js"</script>
-      <link rel="stylesheet" href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="//code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
-    <script>
-    jQuery(function($) {
-        $('#datepick').datepicker();
-    });
-    </script>
-
+      <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <!-- Navigation -->     <!-- Header -->
     <?php include("includes/header.php");?>
     <!--END NAV-->
@@ -60,7 +55,7 @@ if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['auth'] =
             <li><a href="student-sched.html" class="btn btn-danger">Cancel Exam</a></li>
             <li><a href="superfluous.php" class="btn btn-danger">Find Superfluous Appointments</a></li>
             <li><a href="adminScheduleAppt.php" class="btn btn-danger">Check-in Student</a></li>
-            <li><a href="editCenter.php" class="btn btn-danger">Edit Center</a></li>
+            <li><a href="admin-editCenter.php" class="btn btn-danger">Edit Center</a></li>
             <li><a href="importdata.php" class="btn btn-danger">Import Data</a></li>
             <li><a href="student-pref.html" class="btn btn-danger">Utilization</a></li>
             <li><a href="student-pref.html" class="btn btn-danger">Generate Reports</a></li>
