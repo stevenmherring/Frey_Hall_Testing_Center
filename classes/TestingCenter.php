@@ -18,7 +18,7 @@ class TestingCenter {
   private $testingcenter;
 
   public function __construct() {
-
+    $this->roomname = "FreyHallTestingCenter";
   }
 
   public static function getTestingcenter(){
@@ -60,6 +60,20 @@ class TestingCenter {
     $q_getgaptime = "SELECT gaptime FROM freyhalltestingcenterroom where daysFrom = ?";
     $db->beginTransaction();
     $result = $db->prepare($q_getgaptime);
+    if ($!result){
+      echo "<script type='text/javascript'>alert('errUpdate');</script>";
+    }
+    $result->execute(array($date));
+    $this->gaptime = $result->fetch(PDO::FETCH_ASSOC);
+    return $this->gaptime;
+  }
+
+  public function getreminderInterval(Date $date){
+    $db = Database::getDatabase();
+    $handle = $db->getHandle();
+    $q_getreminderinterval = "SELECT reminderinterval FROM freyhalltestingcenterroom where daysFrom = ?";
+    $db->beginTransaction();
+    $result = $db->prepare($q_getreminderinterval);
     if ($!result){
       echo "<script type='text/javascript'>alert('errUpdate');</script>";
     }
