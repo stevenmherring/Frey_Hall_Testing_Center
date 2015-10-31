@@ -22,26 +22,49 @@ class TestingCenter {
   }
 
   public static function getTestingcenter(){
-    if ($testingcenter === null){
-      return $testingcenter = new TestingCenter();
-    } else {
-      return $this->testingcenter;
-    }
-
+    $testingcenter = new TestingCenter();
+    return $testingcenter;
   }
 
-  private function getNumseats(Date $date){
+  public function getNumseats(Date $date){
     $db = Database::getDatabase();
     $handle = $db->getHandle();
-    $q_getseats = "SELECT * FROM freyhalltestingcenterroom where daysFrom = ?";
+    $q_getseats = "SELECT numseats FROM freyhalltestingcenterroom where daysFrom = ?";
     $db->beginTransaction();
     $result = $db->prepare($q_getseats);
     if ($!result){
       echo "<script type='text/javascript'>alert('errUpdate');</script>";
     }
     $result->execute(array($date));
+    $this->numseats = $result->fetch(PDO::FETCH_ASSOC);
+    return $this->numseats;
   }
 
+  public function getNumsetasideseats(Date $date){
+    $db = Database::getDatabase();
+    $handle = $db->getHandle();
+    $q_getsetasideseats = "SELECT numsetasideseats FROM freyhalltestingcenterroom where daysFrom = ?";
+    $db->beginTransaction();
+    $result = $db->prepare($q_getsetasideseats);
+    if ($!result){
+      echo "<script type='text/javascript'>alert('errUpdate');</script>";
+    }
+    $result->execute(array($date));
+    $this->numsetasideseats = $result->fetch(PDO::FETCH_ASSOC);
+    return $this->numsetasideseats;
+  }
 
-
+  public function getgapTime(Date $date){
+    $db = Database::getDatabase();
+    $handle = $db->getHandle();
+    $q_getgaptime = "SELECT gaptime FROM freyhalltestingcenterroom where daysFrom = ?";
+    $db->beginTransaction();
+    $result = $db->prepare($q_getgaptime);
+    if ($!result){
+      echo "<script type='text/javascript'>alert('errUpdate');</script>";
+    }
+    $result->execute(array($date));
+    $this->gaptime = $result->fetch(PDO::FETCH_ASSOC);
+    return $this->gaptime;
+  }
 }
