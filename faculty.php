@@ -48,7 +48,7 @@ Shi Lin Lu -->
 </head>
 
 <body>
-  <?php if (login_check($mysqli) == true && $auth == 1) : ?>
+  <?php if (login_check($mysqli) == true && $_SESSION['auth'] == 1) : ?>
   <nav class="navbar navbar-student" role="navigation">
     <div class="container">
       <a class="navbar-brand" href="#" rel="home" title="Stony Brook Testing Center" >

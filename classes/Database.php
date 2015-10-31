@@ -41,6 +41,11 @@
   public function getMysqli(){
     return $this->conn;
   }
+
+
+    public function getHandle(){
+      return $this->handle;
+    }
   /*
    * Close a database connection
    */
