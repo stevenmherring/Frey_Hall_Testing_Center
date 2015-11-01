@@ -74,13 +74,8 @@ if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['auth'] =
 <script>
 
 $(document).ready(function (){
-  $("#datepicker").datepicker();
-})
-
-
-$(document).ready(function (){
   $('.datepicker').datepicker();
-})
+});
 </script>
   <script src="js/bootstrap.min.js"></script>
   <script src='js/formValidation.js'></script>
