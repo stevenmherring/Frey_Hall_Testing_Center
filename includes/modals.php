@@ -127,3 +127,26 @@
     </div>
 </div>
 <!-- /.container -->
+
+<!--cancel_pending modal-->
+<div id="cancel_pending" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h1 class="text-center"> Cancel Pending Exam</h1>
+        </div>
+        <div class="modal-body">
+            <form class="form col-md-12 center-block" action="includes/perform_login.php" method="post" name="login_form">
+              <div class="form-group">
+                <button class="btn btn-danger btn-lg btn-block" value="Login" onclick="formhash(this.form, this.form.password);">Confirm cancel exam</button>
+              </div>
+            </form>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-danger btn-lg btn-block" value="confirm_cancel">Confirm cancel</button>
+        </div>
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+    </div>
+  </div>
+</div>
