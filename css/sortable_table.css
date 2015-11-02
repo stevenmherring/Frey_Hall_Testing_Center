@@ -1,0 +1,32 @@
+.sortable_table {
+  text-align: center;
+  width: 100%;
+}
+
+.sortable_table .add_button {
+  border-radius: 4px;
+  font-size: 16px;
+  padding: 8px 8px 8px 8px;
+}
+
+.sortable_table td {
+  font-size: 16px;
+  height: 44px;
+}
+
+.sortable_table th:not([sort_expression="NONE"]) {
+  cursor: pointer;
+}
+
+.sortable_table th {
+  font-size: 20px;
+}
+
+.sort_dir {
+  padding-left: 4px;
+  font-size: 16px;
+}
+
+tr:nth-child(even) {
+  background: #DDDDDD;
+}

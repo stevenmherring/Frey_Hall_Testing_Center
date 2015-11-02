@@ -12,7 +12,7 @@ $('ul#snav li a').click(function(){
 $(document).ready(function (){
   $("#adminContent").load("admin-editCenter.php");
 });
-\
+
 $('ul#anav li a').click(function(){
   var page = $(this).attr('href');
   $('#adminContent').load(page)
