@@ -11,30 +11,26 @@ if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['auth'] =
       <form name="generateReportForm" method = "post" action="reportFormValidation.php" onsubmit="return validateForm()">
       <form class="form-horizontal">
           <div class="form-group">
-              <label for="day">Day by Day per Term (ex: Spring-2015)</label>
-              <input name="term" type="text" id="term" placeholder="Spring-2015">
-          </div>
-
-          <div class="form-group">
-              <label for="week">Week by Week per Term (ex: Spring-2015)</label>
-              <input name="term" type="text" id="term" placeholder="Spring-2015">
-          </div>
-
-          <div class="form-group">
-              <label for="course">Courses utlizing center during Term (ex: Spring-2015)</label>
-              <input name="term" type="text" id="term" placeholder="Spring-2015">
-          </div>
-
-          <div class="form-group">
-              <label for="course">Appointments during term range(ex: Spring-2015 to Fall-2016)</label>
+              <label for="report">Generate report for a specific term</label>
               <input name="term1" type="text" id="term1" placeholder="Spring-2015">
-              <input name="term2" type="text" id="term2" placeholder="Fall-2016">
+              <input name="term2" type="text" id="term2" placeholder="Fall-2016 (Appointment)">
+          </div>
+          <div>
+              <input type="Daily-Report" class="btn btn-primary" value="Daily Report" >
+          </div>
+          <div>
+              <input type="Weekly-Report" class="btn btn-primary" value="Weekly Report">
+          </div>
+          <div>
+              <input type="Course-Report" class="btn btn-primary" value="Course Report" >
+          </div>
+          <div>
+              <input type="Appointment-Report" class="btn btn-primary" value="Appointment Report" >
+          </div>
+          <div>
+              <input type="reset" class="btn btn-default" value="Reset">
           </div>
 
-          <div>
-              <input type="submit" class="btn btn-primary" value="Submit" >
-              <input type="reset" class="btn btn-default" value="Reset">
-              </div>
       </form>
   </div>
 
