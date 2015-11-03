@@ -6,19 +6,6 @@ include_once('classes/Authentication.php');
 include_once('classes/Database.php');
 $db = Database::getDatabase();
 Authentication::sec_session_start();
-try {
-       $dbh=new PDO("mysql:host=mysql2.cs.stonybrook.edu;dbname=sachin","sachin","108610059");
-} catch(PDOException $e) {
-  $message = "Couldnt connect to db.";
-  echo "<script type='text/javascript'>alert('$message');</script>";
-}
-$dbh->beginTransaction();
-
-  if (login_check($mysqli) == true) {
-      $logged = 'in';
-  } else {
-      $logged = 'out';
-  }
 ?>
 <html lang="en">
 <head>
@@ -95,7 +82,7 @@ $dbh->beginTransaction();
 </head>
 <body>
 
-     <?php if (login_check($mysqli) == true && $_SESSION['auth'] == 1) : ?>
+      <?php    if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['auth'] == 1) : ?>
   
     <h3>Create An Ad Hoc Exam</h3>
     <div style="padding:10px">
@@ -237,7 +224,3 @@ $dbh->beginTransaction();
 <?php endif; ?>
 </body>
 </html>
-
-<?php
-$dbh->commit();
-        $dbh=null;?>
