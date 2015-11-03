@@ -15,67 +15,66 @@ Authentication::sec_session_start();
   $reports = Reports::getWeekReport($_POST['term1']);
 ?>
 
--->
  <?php
     for ($i = 0; $i < count($reports); $i++) {
       $total = 0;
       echo 'Week of ';
-      echo reports[$i]['date'];
+      echo $reports[$i]['$date'];
       echo ' through ';
-      echo reports[$i + 6]['date'];
-      <br>
+      echo $reports[$i + 6]['$date'];
+      echo '<br>';
       echo 'Classes with scheduled exams';
-      echo reports[$i]['date']
-      echo $reports[$i][classList];
-      total = total + $reports[$i][appointmentCount];
+      echo $reports[$i]['$date'];
+      echo $reports[$i]['$classList'];
+      $total = $total + $reports[$i][$appointmentCount];
       echo 'Appointment Count: ';
-      echo total;
+      echo $total;
       $i++;
-      <br>
-      echo reports[$i]['date']
-      echo $reports[$i][classList];
-      total = total + $reports[$i][appointmentCount];
+      echo '<br>';
+      echo $reports[$i]['$date'];
+      echo $reports[$i][$classList];
+      $total = $total + $reports[$i][$appointmentCount];
       echo 'Appointment Count: ';
-      echo total;
+      echo $total;
       $i++;
-      <br>
-      echo reports[$i]['date']
-      echo $reports[$i][classList];
-      total = total + $reports[$i][appointmentCount];
+      echo '<br>';
+      echo $reports[$i]['$date'];
+      echo $reports[$i][$classList];
+      $total = $total + $reports[$i][$appointmentCount];
       echo 'Appointment Count: ';
-      echo total;
+      echo $total;
       $i++;
-      <br>
-      echo reports[$i]['date']
-      echo $reports[$i][classList];
-      total = total + $reports[$i][appointmentCount];
+      echo '<br>';
+      echo $reports[$i]['$date'];
+      echo $reports[$i][$classList];
+      $total = $total + $reports[$i][$appointmentCount];
       echo 'Appointment Count: ';
-      echo total;
+      echo $total;
       $i++;
-      <br>
-      echo reports[$i]['date']
-      echo $reports[$i][classList];
-      total = total + $reports[$i][appointmentCount];
+      echo '<br>';
+      echo $reports[$i]['$date'];
+      echo $reports[$i][$classList];
+      $total = $total + $reports[$i][$appointmentCount];
       echo 'Appointment Count: ';
-      echo total;
+      echo $total;
       $i++;
-      <br>
-      echo reports[$i]['date']
-      echo $reports[$i][classList];
-      total = total + $reports[$i][appointmentCount];
+      echo '<br>';
+      echo $reports[$i]['$date'];
+      echo $reports[$i][$classList];
+      $total = $total + $reports[$i][$appointmentCount];
       echo 'Appointment Count: ';
-      echo total;
+      echo $total;
       $i++;
-      <br>
-      echo reports[$i]['date']
+      echo '<br>';
+      echo $reports[$i]['$date'];
       echo $reports[$i][classList];
-      total = total + $reports[$i][appointmentCount];
+      $total = $total + $reports[$i][$appointmentCount];
       echo 'Appointment Count: ';
-      echo total;
+      echo $total;
       $i++;
-      <br>
+      echo '<br>';
       echo 'Total Appointments: ';
-      echo total;
+      echo $total;
     }
 ?>
 

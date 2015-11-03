@@ -19,7 +19,7 @@ Authentication::sec_session_start();
       echo '-----';
       echo $_POST['term1'];
       echo '-----';
-      <br>
+      echo '<br>';
       foreach ($reports as $report) { //populate courseList and increment it for each occurence. ?____?
   ?>
           <tr>

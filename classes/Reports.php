@@ -109,7 +109,7 @@ class Reports {
       echo "<script type='text/javascript'>alert('errUpdate');</script>";
       exit;
     }
-    $statement->execute(array($term));
+    $statement->execute(array($term1, $term2));
     $index = 0;
     while($result = $statement->fetch(PDO::FETCH_ASSOC, PDO::FETCH_ORI_NEXT)) {
       $report[$index] = $result;
