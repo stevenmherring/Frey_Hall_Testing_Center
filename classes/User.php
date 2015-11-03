@@ -49,6 +49,25 @@ class User {
     return $myExams;
   }
 
+  /* Call this method to select all appointments for this exam*/
+  public static function getAppointmentsForExam($exam){
+    $q_getAppointmentsForExam =  "SELECT * FROM appointment a1 WHERE a1.examID=?";
+    $myExams = array();
+    $db = Database::getDatabase();
+    $handle = $db->getHandle();
+    $handle->beginTransaction();
+    $statement = $handle->prepare($q_getAppointmentsForExam);
+    if (!$statement){
+      echo "<script type='text/javascript'>alert($errFindExam);</script>";
+    }
+    $statement->execute(array($exam));
+    $index = 0;
+    while($result = $statement->fetch(PDO::FETCH_ASSOC, PDO::FETCH_ORI_NEXT)){
+      $myExams[$index] = $result;
+      $index++;
+    }
+    return $myExams;
+  }
   /* Call this method to select all exams where this netid is a involved */
   public static function deleteExam($examID){
     echo '<script type="text/javascript">alert("Entered delete exam");</script>';

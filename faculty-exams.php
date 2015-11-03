@@ -21,6 +21,8 @@ if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['auth'] =
             <th sort_expression="ExamEndDate">ExamEndDate</th>
             <th sort_expression="ExamDuration">ExamDuration</th>
             <th sort_expression="Processed">Processed</th>
+            <th sort_expression="Processed">ExamID</th>
+            <th sort_expression="Processed">Functions</th>
           </tr>
           <?php
               foreach ($userExams as $exam) {
@@ -38,6 +40,7 @@ if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['auth'] =
                       <a href="#cancel_pending" data-toggle="modal" data-target="#cancel_pending">Delete Exam</a>
                       <?php endif; ?>
 
+                      <a href="#view_attendance" data-toggle="modal" data-target="#view_attendance" onclick="view_exam_appts(<?php echo $exam['examID']?>)" >View Attendance</a>
                     </td>
                   </tr>
           <?php

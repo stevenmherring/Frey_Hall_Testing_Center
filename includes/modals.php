@@ -151,3 +151,20 @@
     </div>
   </div>
 </div>
+
+
+<!--view appt details modal-->
+<?php
+include_once('classes/User.php'); ?>
+<div id="view_attendance" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-body">
+          <form class="form col-md-12 center-block" action="faculty.php" method="post" name="view_exam_attendance" id="view_exam_attendance" >
+          <div class="form-group">
+            <input type="text" id="examtoviewattendance" name="examtoviewattendance" class="hidden" >
+          </div>
+          <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+    </div>
+  </div>
+</div>
