@@ -1,5 +1,11 @@
 
 <?php
+
+spl_autoload_register('autoloader');
+
+function autoloader() {
+    include_once 'classes/Database.php';
+}
 include_once('classes/Database.php');
 include_once('classes/Authentication.php');
 Authentication::sec_session_start();

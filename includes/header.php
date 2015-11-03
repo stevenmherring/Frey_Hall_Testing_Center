@@ -61,6 +61,7 @@
 
 
                 <li><a href="#contactUsModal" data-toggle="modal" data-target="#contactUsModal">Contact us</a></li>
+                <li><a href="#cancel_pending" data-toggle="modal" class="hidden" data-target="#cancel_pending"></a></li>
             </ul>
             </div>
         </div>

@@ -127,3 +127,27 @@
     </div>
 </div>
 <!-- /.container -->
+
+<!--cancel_pending modal-->
+<div id="cancel_pending" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h1 class="text-center"> Cancel Pending Exam</h1>
+        </div>
+        <div class="modal-body">
+            <form class="form col-md-12 center-block" action="facultyexamdelete.php" method="post" name="cancel_pending_exam" id="cancel_pending_form" >
+
+              <div class="form-group">
+              <input type="text" name="examtodelete" class="form-control input-lg" >
+            </div>
+              <div class="form-group">
+                <button class="btn btn-danger btn-lg btn-block" value="confirm_cancel-exam" onclick="handle_cancel_exam(this.form, this.form.examtodelete);" >Confirm</button>
+              </div>
+          </form>
+        </div>
+          <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+    </div>
+  </div>
+</div>

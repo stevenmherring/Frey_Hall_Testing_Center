@@ -30,9 +30,9 @@ class TestingCenter {
     $db = Database::getDatabase();
     $handle = $db->getHandle();
     $q_getseats = "SELECT numseats FROM freyhalltestingcenterroom where daysFrom = ?";
-    $db->beginTransaction();
-    $result = $db->prepare($q_getseats);
-    if ($!result){
+    $handle->beginTransaction();
+    $result = $handle->prepare($q_getseats);
+    if (!$result){
       echo "<script type='text/javascript'>alert('errUpdate');</script>";
     }
     $result->execute(array($date));
@@ -44,8 +44,8 @@ class TestingCenter {
     $db = Database::getDatabase();
     $handle = $db->getHandle();
     $q_getsetasideseats = "SELECT numsetasideseats FROM freyhalltestingcenterroom where daysFrom = ?";
-    $db->beginTransaction();
-    $result = $db->prepare($q_getsetasideseats);
+    $handle->beginTransaction();
+    $result = $handle->prepare($q_getsetasideseats);
     if ($!result){
       echo "<script type='text/javascript'>alert('errUpdate');</script>";
     }
@@ -58,8 +58,8 @@ class TestingCenter {
     $db = Database::getDatabase();
     $handle = $db->getHandle();
     $q_getgaptime = "SELECT gaptime FROM freyhalltestingcenterroom where daysFrom = ?";
-    $db->beginTransaction();
-    $result = $db->prepare($q_getgaptime);
+    $handle->beginTransaction();
+    $result = $handle->prepare($q_getgaptime);
     if ($!result){
       echo "<script type='text/javascript'>alert('errUpdate');</script>";
     }
@@ -72,8 +72,8 @@ class TestingCenter {
     $db = Database::getDatabase();
     $handle = $db->getHandle();
     $q_getreminderinterval = "SELECT reminderinterval FROM freyhalltestingcenterroom where daysFrom = ?";
-    $db->beginTransaction();
-    $result = $db->prepare($q_getreminderinterval);
+    $handle->beginTransaction();
+    $result = $handle->prepare($q_getreminderinterval);
     if ($!result){
       echo "<script type='text/javascript'>alert('errUpdate');</script>";
     }
