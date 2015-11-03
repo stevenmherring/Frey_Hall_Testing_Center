@@ -11,19 +11,6 @@ try {
 }
 $dbh->beginTransaction();
 
-$sql = "SELECT * FROM class WHERE InstructorNetID ='345345345' ";
-        $result = $dbh->prepare($sql);
-        if (!$result){
-          $prepareFail = "Information NOT updated.";
-          echo "<script type='text/javascript'>alert('$prepareFail');</script>";
-          $dbh->rollback();
-          $dbh = null;
-          return;
-        }
-        //$conn->query($sql);
-     $result->execute($var);
-$var = $result->fetchAll();
- 
   include_once 'includes/db_connect.php';
   include_once 'includes/loginfunctions.php';
   sec_session_start();
@@ -103,18 +90,7 @@ $var = $result->fetchAll();
                 
 			}
         
-        function classType()
-            {
-                var checkRadioButton = document.getElementById("class");
-                var checkClassName = document.getElementById("className");
-                
-                if(checkRadioButton.checked == true){
-                    checkClassName.toggle();
-                }
-                else{
-                    
-                }
-            }
+
         </script>
     
 </head>
@@ -122,23 +98,16 @@ $var = $result->fetchAll();
 
      <?php if (login_check($mysqli) == true) : ?>
     
-    <h3>Create Exam</h3>
+    <h3>Create An Ad Hoc Exam</h3>
     <div style="height: 500px">
-        <form action="createExam.php" method="post" onSubmit="return check();">
+        <form action="createAdHocExam.php" method="post" onSubmit="return check();">
            
             <p>
                 <label> Exam Name: </label><input type="text" id="examName" name="examName" value="" maxlength="50" required/>
             </p>
            
-             <p>
-                <label> ClassID: </label>
-                <select class="combobox" name="className" id="className" required>
-                    <option value="">Choose a class</option>
-                    <?php foreach ($var as $vars) { ?>
-                    <option value="<?php echo $vars["classID"]; ?>"><?php  echo $vars["subj"] . $vars["catalogNumber"] . " Section: " . $vars["section"]; ?></option> 
-                    <?php } ?>
-                </select>
-            </p>
+             
+
              <p>
             <label> Exam Duration(Minutes): </label>
                 <select class="combobox" name="examDuration" id="examDuration" required>
@@ -217,6 +186,7 @@ $var = $result->fetchAll();
     </p>  
         <p>End Date: <input type="text" name="endDate" id="enddatepicker"></p>
           <p>
+
     <label> End time:  </label>
         <select class="combobox" name="endHr" id="endHr" required>
             <option value="">Hr</option>
@@ -257,6 +227,10 @@ $var = $result->fetchAll();
         </select>
 -->
     </p> 
+        <p>
+                <label> Enter students separated by line (NetID, First Name, Last Name) </label><br>
+                <textarea rows="20" cols="50"  name="adhoc" id="adhoc"></textarea>
+            </p>
             <input type="submit" name="submit" value="Schedule exam" />
             </form>
          </div>

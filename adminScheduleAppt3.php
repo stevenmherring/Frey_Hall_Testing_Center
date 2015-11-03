@@ -11,7 +11,7 @@ try {
 }
 $dbh->beginTransaction();
 
-$sql = "SELECT * FROM roster r, user u, class c, exam e WHERE u.netID=r.netID AND u.netID='$_POST[apptNetID]' AND c.classID = r.classID AND e.classID=c.classID; ";
+$sql = "SELECT * FROM exam WHERE examID=$_POST[className]";
         $result = $dbh->prepare($sql);
         if (!$result){
           $prepareFail = "Information NOT updated.";
@@ -23,8 +23,21 @@ $sql = "SELECT * FROM roster r, user u, class c, exam e WHERE u.netID=r.netID AN
         //$conn->query($sql);
      $result->execute();
 $var = $result->fetchAll();
- 
-  include_once 'includes/db_connect.php';
+$examStartDate = "a";
+$examEndDate = "a";
+$examStartTime = "a";
+$examEndTime = "a";
+foreach($var as $vars){
+    $examStartDate = $vars["examStartDate"];
+    $examEndDate = $vars["examEndDate"];
+    $examStartTime = $vars["examStartTime"];
+    $examEndTime = $vars["examEndTime"];
+}
+$startDateSplit = explode("-",$examStartDate);
+$endDateSplit = explode("-",$examEndDate);
+$startTimeSplit = explode(":", $examStartTime);
+$endTimeSplit = explode(":", $examEndTime);
+include_once 'includes/db_connect.php';
   include_once 'includes/loginfunctions.php';
   sec_session_start();
 
@@ -48,7 +61,7 @@ $var = $result->fetchAll();
             {
                 var checkStartHr= document.getElementById("apptHr").value;
                 var checkStartMin= document.getElementById("apptMin").value;
-                var startDate = document.getElementById("datepicker").value;
+                var startDate = document.getElementById("startdatepicker").value;
                 var startTime = parseInt(checkStartHr)*60 + parseInt(checkStartMin);
                 var startSplit = startDate.split('-');
                 var endSplit =endDate.split('-');
@@ -63,18 +76,20 @@ $var = $result->fetchAll();
                 endSplit[0]= parseInt(endSplit[0]);
                 endSplit[1]= parseInt(endSplit[1]);
                 endSplit[2]= parseInt(endSplit[2]);
-               var state = true;
-            
-                
-                if (state == true){
-                    return true;
-                }
-                else{
-                    alert('Your Exam start date/time must be before your end date/time minus exam duration');
-
-					return false;
-                }
-                
+                var state = true;
+//                if($startDateSplit[0]<=startSplit[0] && startSplit[0]<=$endDateSplit[0])
+//                    {}
+//                
+//                if (state == true){
+//                    return false;
+//                }
+//                else{
+//                    alert('Your Exam start date/time must be before your end date/time minus exam duration');
+//
+//					return false;
+//                }
+//                return false;
+//                
 			}
         </script>
     
@@ -83,10 +98,10 @@ $var = $result->fetchAll();
     
      <?php if (login_check($mysqli) == true) : ?>
     
-    <div id="adminContent" class="facultyScheduleExamFormContainer" >
+    <div id="adminContent" class="facultyScheduleExamFormContainer"  >
         <h3>Create Appt</h3>
     <div style='height:500px'>
-            <form action="createAppt.php" method="post">
+            <form action="createAppt.php" method="post" onsubmit="return check()">
                <script>
                       $(function() {
                         $( "#startdatepicker" ).datepicker({
@@ -130,7 +145,10 @@ $var = $result->fetchAll();
                     <option value="30">30</option>
                 </select>
             </p>
-        </form>
+                <input type="hidden" id = "netID" name="netID" value="<?php echo $_POST[netID] ?>">
+                <input type="hidden" id="examID" name="examID" value="<?php echo $_POST[className] ?>">
+            <input type="submit" name="submit" value="Next" />
+            </form>
 </div>
          </div>
     <?php else : header('Location: access-error.php'); ?>

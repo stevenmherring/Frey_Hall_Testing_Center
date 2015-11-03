@@ -11,7 +11,7 @@ try {
 }
 $dbh->beginTransaction();
 
-$sql = "SELECT * FROM roster r, user u, class c, exam e WHERE u.netID=r.netID AND u.netID='$_POST[apptNetID]' AND c.classID = r.classID AND e.classID=c.classID; ";
+$sql = "SELECT * FROM roster r, user u, class c, exam e WHERE u.netID=r.netID AND u.netID='$_SESSION[user_ID]' AND c.classID = r.classID AND e.classID=c.classID; ";
         $result = $dbh->prepare($sql);
         if (!$result){
           $prepareFail = "Information NOT updated.";
@@ -63,7 +63,7 @@ $var = $result->fetchAll();
                     <?php } ?>
                 </select>
             </p>        
-           <input type="hidden" name="netID" value="<?php echo $_POST[apptNetID] ?>">
+           <input type="hidden" name="netID" value="<?php echo $_SESSION['user_ID'] ?>">
             <input type="submit" name="submit" value="Next" />
             </form>
     </div>

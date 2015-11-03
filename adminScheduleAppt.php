@@ -25,7 +25,8 @@
     
     <div id="adminContent" class="facultyScheduleExamFormContainer" >
         <h3>Create Appt</h3>
-    <div style: '500px'>
+        
+    <div style=height:500px>
     
         <form action="adminScheduleAppt2.php" method="post" onSubmit="return check();">
             <p>
