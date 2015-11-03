@@ -14,7 +14,6 @@ try {
 }
 $dbh->beginTransaction();
 $userID = $_SESSION['username'];
-echo $userID;
 $sql = "SELECT * FROM roster r, user u, class c, exam e WHERE u.netID=r.netID AND u.netID='$userID' AND c.classID = r.classID AND e.classID=c.classID; ";
         $result = $dbh->prepare($sql);
         if (!$result){
