@@ -32,7 +32,7 @@ if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['auth'] =
                     <td>
                     <?php
                       if (strcmp($exam['processed'],"pending") === 0) :?>
-                      <a href="#cancel_pending" data-toggle="modal" data-target="#cancel_pending">Delete Exam</a>
+                      <a href="#cancel_pending" data-toggle="modal" data-target="#cancel_pending">Delete appt</a>
                       <?php endif; ?>
                     </td>
                   </tr>
