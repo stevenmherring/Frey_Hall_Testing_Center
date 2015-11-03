@@ -3,7 +3,7 @@
  * Report Generation Static Class Design
  */
 include_once('Database.php');
-class Report {
+class Reports {
 
   private function __construct() {}
   //class vars
@@ -12,7 +12,7 @@ class Report {
   * Give the class a static dp, every method must call initialize to determine it is instantiated
   */
 
-  private static function intiliaze() {
+  private static function initialize() {
     if(self::$initialized) {
       return;
     }
@@ -29,10 +29,11 @@ class Report {
  although better formatting (e.g., HTML) is preferable.
   */
   public static function getDayReport($term) {
-    initialize();
+    self::initialize();
     // a. For each day in a specified term, report the number of student appointments on that day.
     $db = Database::getDatabase();
-    $q_getDays = "SELECT day FROM dates where term=?";
+    //this field must be modified to fit the new table in databse for DAYS
+    $q_getDays = "SELECT * from days where term = '$term'";
     $report = array();
     $handle = $db->getHandle();
     $handle->beginTransaction();
@@ -50,17 +51,71 @@ class Report {
     return $report;
   }//getDayReport
 
-  public static function getWeekReport() {
+  public static function getWeekReport($term) {
     // b. For each week in a specified term, report the number of student appointments that week
+    $db = Database::getDatabase();
+    //this field must be modified to fit the new table in databse for DAYS
+    $q_getDays = "SELECT * from days where term='$term'";
+    $report = array();
+    $handle = $db->getHandle();
+    $handle->beginTransaction();
+    $statement = $handle->prepare($q_getDays);
+    if (!$statement){
+      echo "<script type='text/javascript'>alert('errUpdate');</script>";
+      exit;
+    }
+    $statement->execute(array($term));
+    $index = 0;
+    while($result = $statement->fetch(PDO::FETCH_ASSOC, PDO::FETCH_ORI_NEXT)) {
+      $report[$index] = $result;
+      $index++;
+    }//while result != NULL
+    return $report;
     //and the course identifiers of courses associated with any of those appointments.
   }//getWeekReport
 
-  public static function getTermReport() {
+  public static function getTermReport($term) {
     //c. For a specified term, report the courses that used the testing center in that term.
+    $db = Database::getDatabase();
+    //this field must be modified to fit the new table in databse for DAYS
+    $q_getDays = "SELECT * from exams where term='$term'";
+    $report = array();
+    $handle = $db->getHandle();
+    $handle->beginTransaction();
+    $statement = $handle->prepare($q_getDays);
+    if (!$statement){
+      echo "<script type='text/javascript'>alert('errUpdate');</script>";
+      exit;
+    }
+    $statement->execute(array($term));
+    $index = 0;
+    while($result = $statement->fetch(PDO::FETCH_ASSOC, PDO::FETCH_ORI_NEXT)) {
+      $report[$index] = $result;
+      $index++;
+    }//while result != NULL
+    return $report;
   }//getTermReport
 
-  public static function getRangeReport() {
+  public static function getRangeReport($term1, $term2) {
     // d. For a specified range of terms, report the total number of student appointments in each
+    $db = Database::getDatabase();
+    //this field must be modified to fit the new table in databse for DAYS
+    $q_getDays = "SELECT * from exams where term BETWEEN $term1 AND $term2";
+    $report = array();
+    $handle = $db->getHandle();
+    $handle->beginTransaction();
+    $statement = $handle->prepare($q_getDays);
+    if (!$statement){
+      echo "<script type='text/javascript'>alert('errUpdate');</script>";
+      exit;
+    }
+    $statement->execute(array($term));
+    $index = 0;
+    while($result = $statement->fetch(PDO::FETCH_ASSOC, PDO::FETCH_ORI_NEXT)) {
+      $report[$index] = $result;
+      $index++;
+    }//while result != NULL
+    return $report;
     //term.
   }//getRangeReport
 
