@@ -2,7 +2,10 @@
 include("dbQueries.php");
 //error_reporting(E_ALL);
 //ini_set('display_errors', 'On');
-
+include_once('classes/Authentication.php');
+include_once('classes/Database.php');
+$db = Database::getDatabase();
+Authentication::sec_session_start();
 try {
        $dbh=new PDO("mysql:host=mysql2.cs.stonybrook.edu;dbname=sachin","sachin","108610059");
 } catch(PDOException $e) {
@@ -10,8 +13,8 @@ try {
   echo "<script type='text/javascript'>alert('$message');</script>";
 }
 $dbh->beginTransaction();
-
-$sql = "SELECT * FROM class WHERE InstructorNetID ='345345345' ";
+$userID = $_SESSION['username'];
+$sql = "SELECT * FROM class WHERE InstructorNetID ='$userID'";
         $result = $dbh->prepare($sql);
         if (!$result){
           $prepareFail = "Information NOT updated.";
@@ -24,15 +27,7 @@ $sql = "SELECT * FROM class WHERE InstructorNetID ='345345345' ";
      $result->execute($var);
 $var = $result->fetchAll();
  
-  include_once 'includes/db_connect.php';
-  include_once 'includes/loginfunctions.php';
-  sec_session_start();
 
-  if (login_check($mysqli) == true) {
-      $logged = 'in';
-  } else {
-      $logged = 'out';
-  }
 ?>
 <html lang="en">
 <head>
@@ -120,7 +115,7 @@ $var = $result->fetchAll();
 </head>
 <body>
 
-     <?php if (login_check($mysqli) == true) : ?>
+ <?php    if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['auth'] == 1) : ?>
     
     <h3>Create Exam</h3>
     <div style="height: 500px">
