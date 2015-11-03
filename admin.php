@@ -58,7 +58,7 @@ if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['auth'] =
             <li><a href="admin-editCenter.php" class="btn btn-danger">Edit Center</a></li>
             <li><a href="importdata.php" class="btn btn-danger">Import Data</a></li>
             <li><a href="student-pref.html" class="btn btn-danger">Utilization</a></li>
-            <li><a href="student-pref.html" class="btn btn-danger">Generate Reports</a></li>
+            <li><a href="reports.php" class="btn btn-danger">Generate Reports</a></li>
         </ul>
         </form>
       </div>
