@@ -1,15 +1,11 @@
+
 <?php
-  include_once 'includes/db_connect.php';
-  include_once 'includes/loginfunctions.php';
-
-  sec_session_start();
-
-  if (login_check($mysqli) == true) {
-      $logged = 'in';
-  } else {
-      $logged = 'out';
-  }
-?>
+include_once('classes/Authentication.php');
+include_once('classes/Database.php');
+include_once('classes/User.php');
+$db = Database::getDatabase();
+Authentication::sec_session_start();
+if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['auth'] == 1) : ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -48,7 +44,6 @@ Steven Chin-->
 </head>
 
 <body>
-  <?php if (login_check($mysqli) == true && $_SESSION['auth'] == 1) : ?>
   <nav class="navbar navbar-student" role="navigation">
     <div class="container">
       <a class="navbar-brand" href="#" rel="home" title="Stony Brook Testing Center" >
@@ -73,9 +68,14 @@ Steven Chin-->
       <div class="filler"></div>
     </div>
   </div>
-
+  <?php
+  $method = $_SERVER['REQUEST_METHOD'];
+  if (strcmp($method,"POST") == 0) {
+    $examID = $_POST['examtodelete'];
+    //$examID = filter_input(INPUT_POST, 'examid');
+    User::deleteExam($examID);
+  }?>
  <div id="fcontent" class="fcontent container">
- <?php include('faculty-landing.php');?>
  </div>
 
 <?php else : header('Location: access-error.php'); ?>

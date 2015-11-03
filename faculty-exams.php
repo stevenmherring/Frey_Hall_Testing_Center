@@ -8,15 +8,10 @@ if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['auth'] =
 
 <?php else : header('Location: access-error.php'); ?>
 <?php endif; ?>
-
   <?php
-    if (null !== ($method = filter_input(INPUT_POST, 'method'))) {
-
-    }
     $userExams = User::getExams($_SESSION['username']);
   ?>
   <link rel="stylesheet" type="text/css" href="css/sortable_table.css">
-  <script type="text/javascript" src="js/modal.js"></script>
   <div class="facultyScheduleExamFormContainer">
       <table id="stops_table" class="sortable_table">
         <tbody>
@@ -36,14 +31,22 @@ if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['auth'] =
                     <td><?php echo($exam['examEndDate']);?></td>
                     <td><?php echo($exam['examDuration']);?></td>
                     <td><?php echo($exam['processed']);?></td>
+                    <td><?php echo($exam['examID']);?></td>
                     <td>
-                      <a href="#cancel_pending" class="btn btn-default btn-lg"data-toggle="modal">
-                        Cancel Pending Exam
-                    </a>
+                    <?php
+                      if (strcmp($exam['processed'],"pending") === 0) :?>
+                      <a href="#cancel_pending" data-toggle="modal" data-target="#cancel_pending">Delete Exam</a>
+                      <?php endif; ?>
+
+                    </td>
                   </tr>
           <?php
               }
           ?>
-    <!-- MODALS -->
-<?php //include("includes/modals.php");?>
-    <!-- END MODALS -->
+          <!-- jQuery -->
+          <script src="js/jquery.js"></script>
+
+          <!-- Bootstrap Core JavaScript -->
+          <script src="js/bootstrap.min.js"></script>
+          <script type="text/javascript"></script>
+          <script type="text/javascript" src="js/faculty-exams.js"></script>

@@ -137,16 +137,17 @@
             <h1 class="text-center"> Cancel Pending Exam</h1>
         </div>
         <div class="modal-body">
-            <form class="form col-md-12 center-block" action="includes/perform_login.php" method="post" name="login_form">
+            <form class="form col-md-12 center-block" action="facultyexamdelete.php" method="post" name="cancel_pending_exam" id="cancel_pending_form" >
+
               <div class="form-group">
-                <button class="btn btn-danger btn-lg btn-block" value="Login" onclick="formhash(this.form, this.form.password);">Confirm cancel exam</button>
+              <input type="text" name="examtodelete" class="form-control input-lg" >
+            </div>
+              <div class="form-group">
+                <button class="btn btn-danger btn-lg btn-block" value="confirm_cancel-exam" onclick="handle_cancel_exam(this.form, this.form.examtodelete);" >Confirm</button>
               </div>
-            </form>
+          </form>
         </div>
-        <div class="form-group">
-          <button class="btn btn-danger btn-lg btn-block" value="confirm_cancel">Confirm cancel</button>
-        </div>
-        <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+          <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
     </div>
   </div>
 </div>

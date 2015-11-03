@@ -32,7 +32,10 @@ class User {
 
   /* Call this method to select all exams where this netid is a involved */
   public static function deleteExam($examID){
-    $q_deletemyexam = "DELETE * from exam where examID=?";
+    echo '<script type="text/javascript">alert("Entered delete exam");</script>';
+    echo '<script type="text/javascript">alert('.$examID.');</script>';
+
+    $q_deletemyexam = "DELETE from exam where examID=?";
     $db = Database::getDatabase();
     $handle = $db->getHandle();
     $handle->beginTransaction();
@@ -41,6 +44,7 @@ class User {
       echo "<script type='text/javascript'>alert($errDeleteExam);</script>";
     }
     $statement->execute(array($examID));
+    $handle->commit();
   }
 
 }
