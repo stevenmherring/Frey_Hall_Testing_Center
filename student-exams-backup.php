@@ -56,7 +56,7 @@ $var = $result->fetchAll();
         <h3>Create Appt</h3>
     <div style='height:500px'>
     
-        <form action="adminScheduleAppt3.php" method="post">
+        <form action="studentCreateAppt.php" method="post">
             <p>
                 <label> Exam Name : </label>
                 <select class="combobox" name="className" id="className" required>
@@ -66,7 +66,8 @@ $var = $result->fetchAll();
                     <?php } ?>
                 </select>
             </p>        
-           <input type="hidden" name="netID" value="<?php echo $_SESSION['user_ID'] ?>">
+            <?php echo $_SESSION['user_ID']; ?>
+           <input type="hidden" name="netID" value="<?php echo $_SESSION['user_ID']; ?>">
             <input type="submit" name="submit" value="Next" />
             </form>
     </div>
