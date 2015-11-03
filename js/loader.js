@@ -27,6 +27,16 @@ $('ul#fnav li a').click(function(){
   return false;
 });
 
+$('ul#snav li a').click(function(){
+  var page = $(this).attr('href');
+  $('#scontent').load(page)
+
+  return false;
+});
 $(document).ready(function (){
   $("#fcontent").load("faculty-landing.php");
+});
+
+$(document).ready(function (){
+  $("#scontent").load("student-landing.php");
 });

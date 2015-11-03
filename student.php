@@ -35,6 +35,7 @@ Shi Lin Lu -->
    <!-- INTRO PAGE -->
 </head>
 
+<body>
 <?php
   include_once('classes/Authentication.php');
   include_once('classes/Database.php');
@@ -50,8 +51,8 @@ Shi Lin Lu -->
       <div class="collapse navbar-collapse collapse-buttons">
         <form class="navbar-form navbar-right" role="search">
         <ul id="snav" class="navbar-right">
-          <li><a href="student-exams.php" class="btn btn-danger">Schedule Exam</a></li>
-          <li><a href="student-sched.html" class="btn btn-danger">View Scheduled Exams</a></li>
+          <li><a href="student-exams-backup.php" class="btn btn-danger">Schedule Exam</a></li>
+          <li><a href="student-myexams.php" class="btn btn-danger">View Scheduled Exams</a></li>
           <li><a href="student-avail.html" class="btn btn-danger">View Available Exams</a></li>
           <li><a href="student-pref.html" class="btn btn-danger">Preferences</a></li>
         </ul>
@@ -65,11 +66,18 @@ Shi Lin Lu -->
     </div>
   </div>
 
- <div id="content" class="content container">
+ <div id="scontent" class="scontent container">
  <?php include('student-landing.php');?>
  </div>
+
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>
 <script src='js/loader.js'></script>
+    <!-- Footer -->
+<?php include("includes/footer.html");?>
+    <!-- END FOOTER-->
+
 <?php else : header('Location: access-error.php'); ?>
 <?php endif; ?>
+</body>
+</html>
