@@ -1,14 +1,8 @@
 <?php
-  include_once 'includes/db_connect.php';
-  include_once 'includes/loginfunctions.php';
-
-  sec_session_start();
-
-  if (login_check($mysqli) == true) {
-      $logged = 'in';
-  } else {
-      $logged = 'out';
-  }
+include_once('classes/Authentication.php');
+include_once('classes/Database.php');
+$db = Database::getDatabase();
+Authentication::sec_session_start();
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
@@ -48,8 +42,8 @@ Steven Chin-->
 </head>
 
 <body>
-  <?php if (login_check($mysqli) == true && $_SESSION['auth'] == 1) : ?>
-  <nav class="navbar navbar-student" role="navigation">
+  <?php if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['auth'] == 1) : ?>
+    <nav class="navbar navbar-student" role="navigation">
     <div class="container">
       <a class="navbar-brand" href="#" rel="home" title="Stony Brook Testing Center" >
         <b>Welcome, Faculty!</b>
@@ -59,6 +53,7 @@ Steven Chin-->
           <ul id="fnav" class="navbar-right">
           <li><a href="faculty-classes.php" class="btn btn-danger">Classes</a></li>
           <li><a href="faculty-createExamTest.php" class="btn btn-danger">Create an exam</a></li>
+          <li><a href="createAdHoc.php" class="btn btn-danger">Create an Ad Hoc exam</a></li>
           <li><a href="faculty-landing.php" class="btn btn-danger">Delete an exam</a></li>
 		      <li><a href="faculty-month.php" class="btn btn-danger">Month view</a></li>
           <li><a href="student-pref.html" class="btn btn-danger">Contact Students</a></li>

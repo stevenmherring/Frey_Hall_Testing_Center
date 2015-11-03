@@ -2,7 +2,10 @@
 include("dbQueries.php");
 //error_reporting(E_ALL);
 //ini_set('display_errors', 'On');
-
+include_once('classes/Authentication.php');
+include_once('classes/Database.php');
+$db = Database::getDatabase();
+Authentication::sec_session_start();
 try {
        $dbh=new PDO("mysql:host=mysql2.cs.stonybrook.edu;dbname=sachin","sachin","108610059");
 } catch(PDOException $e) {
@@ -10,10 +13,6 @@ try {
   echo "<script type='text/javascript'>alert('$message');</script>";
 }
 $dbh->beginTransaction();
-
-  include_once 'includes/db_connect.php';
-  include_once 'includes/loginfunctions.php';
-  sec_session_start();
 
   if (login_check($mysqli) == true) {
       $logged = 'in';
@@ -96,10 +95,10 @@ $dbh->beginTransaction();
 </head>
 <body>
 
-     <?php if (login_check($mysqli) == true) : ?>
-    
+     <?php if (login_check($mysqli) == true && $_SESSION['auth'] == 1) : ?>
+  
     <h3>Create An Ad Hoc Exam</h3>
-    <div style="height: 500px">
+    <div style="padding:10px">
         <form action="createAdHocExam.php" method="post" onSubmit="return check();">
            
             <p>

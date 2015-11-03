@@ -2,6 +2,10 @@
 include("dbQueries.php");
 //error_reporting(E_ALL);
 //ini_set('display_errors', 'On');
+include_once('classes/Authentication.php');
+include_once('classes/Database.php');
+$db = Database::getDatabase();
+Authentication::sec_session_start();
 
 try {
        $dbh=new PDO("mysql:host=mysql2.cs.stonybrook.edu;dbname=sachin","sachin","108610059");
@@ -20,7 +24,6 @@ $examEndHr = $_POST['endHr'];
 $examEndMin = $_POST['endMin'];
 $examClassID = $_POST['className'];
 
-echo $examClassID;
 
 
 $examStartTime = $examStartHr . ":" . $examStartMin . ":" . "00";
@@ -38,6 +41,7 @@ $sql = "INSERT INTO exam(examStartDate, examEndDate, examStartTime, examEndTime,
         }
         //$conn->query($sql);
 $result->execute();
+
 echo "Exam Created";
 
 $dbh->commit();

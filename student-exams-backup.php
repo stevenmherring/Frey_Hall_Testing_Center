@@ -10,8 +10,8 @@ try {
   echo "<script type='text/javascript'>alert('$message');</script>";
 }
 $dbh->beginTransaction();
-
-$sql = "SELECT * FROM roster r, user u, class c, exam e WHERE u.netID=r.netID AND u.netID='$_SESSION[user_ID]' AND c.classID = r.classID AND e.classID=c.classID; ";
+$userID = $_SESSION['username'];
+$sql = "SELECT * FROM roster r, user u, class c, exam e WHERE u.netID=r.netID AND u.netID='$userID' AND c.classID = r.classID AND e.classID=c.classID; ";
         $result = $dbh->prepare($sql);
         if (!$result){
           $prepareFail = "Information NOT updated.";
