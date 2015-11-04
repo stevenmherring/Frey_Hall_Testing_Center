@@ -38,7 +38,7 @@ Shi Lin Lu -->
    <!--END NAV-->
 
    <!-- INTRO PAGE -->
-<?php include("includes/intro.html");?>
+<?php include("includes/intro.php");?>
   <!-- END INTRO-->
 <?php include("includes/intro-content.html");?>
 

@@ -34,7 +34,7 @@ $('ul#snav li a').click(function(){
   return false;
 });
 $(document).ready(function (){
-  $("#fcontent").load("faculty-landing.php");
+  $("#fcontent").load("faculty-classes.php");
 });
 
 $(document).ready(function (){

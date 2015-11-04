@@ -10,10 +10,13 @@
                     <hr class="intro-divider">
                     <ul class="list-inline intro-social-buttons">
                         <li>
-                            <a href="#login" class="btn btn-default btn-lg" data-toggle="modal"><i class="fa fa-sign-in fa-fw"></i> <span class="network-name">Login</span></a>
-                        </li>
-                        <li>
-                            <a href="#admin" class="btn btn-danger btn-lg" data-toggle="modal"><i class="fa fa-lock fa-fw"></i> <span class="network-name">Admin</span></a>
+                          <?php
+                            if(Authentication::login_check($db->getMysqli()) == false) {
+                                echo '<a href="#login" class="btn btn-default btn-lg" data-toggle="modal"><i class="fa fa-sign-in fa-fw"></i> <span class="network-name">Login</span></a>';
+                          } else {
+                            echo '<a href="includes/perform_logout.php" class="btn btn-default btn-lg"><i class="fa fa-sign-out fa-fw"></i> <span class="network-name">Logout</span></a>';
+                          }
+                          ?>
                         </li>
                     </ul>
                 </div>
