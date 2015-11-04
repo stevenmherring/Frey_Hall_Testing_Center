@@ -35,7 +35,6 @@ Shi Lin Lu -->
    <!-- INTRO PAGE -->
 </head>
 
-<body>
 <?php
   include_once('classes/Authentication.php');
   include_once('classes/Database.php');
@@ -66,18 +65,11 @@ Shi Lin Lu -->
     </div>
   </div>
 
- <div id="scontent" class="scontent container">
+ <div id="content" class="content container">
  <?php include('student-landing.php');?>
  </div>
-
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>
 <script src='js/loader.js'></script>
-    <!-- Footer -->
-<?php include("includes/footer.html");?>
-    <!-- END FOOTER-->
-
 <?php else : header('Location: access-error.php'); ?>
 <?php endif; ?>
-</body>
-</html>
