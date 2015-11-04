@@ -1,8 +1,9 @@
 <?php
 include_once('classes/Authentication.php');
 include_once('classes/Database.php');
-$db = Database::getDatabase();
 Authentication::sec_session_start();
+$db = Database::getDatabase();
+ob_start();
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
@@ -46,7 +47,7 @@ Steven Chin-->
     <nav class="navbar navbar-student" role="navigation">
     <div class="container">
       <a class="navbar-brand" href="#" rel="home" title="Stony Brook Testing Center" >
-        <b>Welcome, Faculty!</b>
+        <b>Welcome, <?php echo htmlentities($_SESSION['username']); ?>!</b>
       </a>
       <div class="collapse navbar-collapse collapse-buttons">
         <form class="navbar-form navbar-right" role="search">
@@ -69,7 +70,7 @@ Steven Chin-->
   </div>
 
  <div id="fcontent" class="fcontent container">
- <?php include('faculty-landing.php');?>
+ <?php include('faculty-classes.php');?>
  </div>
 
 <?php else : header('Location: access-error.php'); ?>
