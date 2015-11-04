@@ -1,0 +1,10 @@
+## MAIN DEFAULTS
+Options +ExecCGI -Indexes
+DirectoryIndex index.html index.htm index.php
+DefaultLanguage en-US
+AddDefaultCharset UTF-8
+ServerSignature Off
+
+<FilesMatch "\.(css|js)$">
+Header set Cache-Control "max-age=172800, public, must-revalidate"
+</FilesMatch>
