@@ -2,7 +2,10 @@
 include("dbQueries.php");
 //error_reporting(E_ALL);
 //ini_set('display_errors', 'On');
-
+include_once('classes/Authentication.php');
+include_once('classes/Database.php');
+$db = Database::getDatabase();
+Authentication::sec_session_start();
 try {
        $dbh=new PDO("mysql:host=mysql2.cs.stonybrook.edu;dbname=sachin","sachin","108610059");
 } catch(PDOException $e) {
@@ -44,9 +47,11 @@ $examStartTime = $examStartHr . ":" . $examStartMin . ":" . "00";
 $examEndTime = $examEndHr . ":" . $examEndMin . ":" . "00";
 
 
-
+var_dump($examAdHocSplit);
 
 foreach($examAdHocSplit as $person){     
+    var_dump($person);
+    echo "<br>";
     $persons = explode(", ", $person);
     $sql2 = "INSERT INTO adHoc(adHocID, netID, firstName, lastName) VALUES ($newAdHocID, '$persons[0]', '$persons[1]', '$persons[2]')";
     $result2 = $dbh->prepare($sql2);
@@ -58,7 +63,17 @@ foreach($examAdHocSplit as $person){
       return;
     }
     //$conn->query($sql);
-    $result2->execute();
+    if ($result2->execute() === TRUE){
+                  $stmtCSVlog = $transactionLogging;
+                  $stmtCSVquery = $dbh->prepare($stmtCSVlog);
+                  $transactionContent = "adHocID:" . $newAdHocID . "," . "netID:" . $persons[0] . "," . "firstName:" . $persons[1] .  "," . "lastName:" . $persons[2] .  ",";
+                  $transactionType = "createAdHocMembers";
+                  $now = time();
+                  $userID = $_SESSION['username'];
+                  //"INSERT INTO transactionlog_tbl(userID,transactiontype,transactiontime,transactioncontent)VALUES(?,?,?,?)";
+                  $stmtCSVquery->execute(array($userID,$transactionType,$now,$transactionContent));
+                }
+    $dbh->commit();
     $count=$count+1;
     
 }
@@ -72,7 +87,16 @@ $sql3 = "INSERT INTO exam(examStartDate, examEndDate, examStartTime, examEndTime
       return;
     }
     //$conn->query($sql);
-    $result3->execute();
+    if ($result3->execute() === TRUE){
+                  $stmtCSVlog = $transactionLogging;
+                  $stmtCSVquery = $dbh->prepare($stmtCSVlog);
+                  $transactionContent = "adHocID:" . $newAdHocID . "," . "netID:" . $persons[0] . "," . "firstName:" . $persons[1] .  "," . "lastName:" . $persons[2] .  ",";
+                  $transactionType = "createAdHocExam";
+                  $now = time();
+                  $userID = $_SESSION['username'];
+                  //"INSERT INTO transactionlog_tbl(userID,transactiontype,transactiontime,transactioncontent)VALUES(?,?,?,?)";
+                  $stmtCSVquery->execute(array($userID,$transactionType,$now,$transactionContent));
+                }
 
 echo "You have inserted " . $count .  " person(s)";
 $dbh->commit();

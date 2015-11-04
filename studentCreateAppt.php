@@ -31,11 +31,13 @@ $examStartDate = "a";
 $examEndDate = "a";
 $examStartTime = "a";
 $examEndTime = "a";
+$examName = "a";
 foreach($var as $vars){
     $examStartDate = $vars["examStartDate"];
     $examEndDate = $vars["examEndDate"];
     $examStartTime = $vars["examStartTime"];
     $examEndTime = $vars["examEndTime"];
+    $examName = $vars["examName"];
 }
 $startDateSplit = explode("-",$examStartDate);
 $endDateSplit = explode("-",$examEndDate);
@@ -94,6 +96,11 @@ $endTimeSplit = explode(":", $examEndTime);
     <div id="adminContent" class="facultyScheduleExamFormContainer"  >
         <h3>Create Appt</h3>
     <div style='height:500px'>
+        
+        
+        
+        
+        
             <form action="createStudentAppt.php" method="post" onsubmit="return check()">
                <script>
                       $(function() {
@@ -138,8 +145,7 @@ $endTimeSplit = explode(":", $examEndTime);
                     <option value="30">30</option>
                 </select>
             </p>
-                <?php echo $_SESSION['username'] ?>
-                <?php echo $_POST['className']; ?>
+                
                 <input type="hidden" id = "netID" name="netID" value="<?php echo $_SESSION['username'] ?>">
                 <input type="hidden" id="examID" name="examID" value="<?php echo $_POST['className']; ?>">
             <input type="submit" name="submit" value="Next" />
