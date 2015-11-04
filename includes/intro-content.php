@@ -13,8 +13,6 @@
              <?php
                      if (Authentication::login_check($db->getMysqli()) == true) {
                                      echo '<p>Hello, ' . htmlentities($_SESSION['username']) . '.</p>';
-
-                         echo '<p><a href="includes/perform_logout.php">Log out</a>.</p>';
                      } else {
                                      echo '<p>Currently logged ' . $logged . '.</p>';
                              }
