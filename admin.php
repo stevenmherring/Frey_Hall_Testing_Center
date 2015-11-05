@@ -29,7 +29,6 @@ Shi Lin Lu -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
       <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
-    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <!-- Navigation -->     <!-- Header -->
     <?php include("includes/header.php");?>
@@ -43,6 +42,7 @@ include_once('classes/Database.php');
 $db = Database::getDatabase();
 Authentication::sec_session_start();
 if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['auth'] == 0) : ?>
+<body>
   <nav class="navbar navbar-student" role="navigation">
     <div class="container">
       <a class="navbar-brand" href="#" rel="home" title="Stony Brook Testing Center" >
@@ -53,8 +53,8 @@ if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['auth'] =
           <ul id="anav" class="navbar-right">
             <li><a href="student-exams.php" class="btn btn-danger">Pending Exams</a></li>
             <li><a href="student-sched.html" class="btn btn-danger">Cancel Exam</a></li>
-            <li><a href="superfluous.php" class="btn btn-danger">Find Superfluous Appointments</a></li>
-            <li><a href="adminScheduleAppt.php" class="btn btn-danger">Check-in Student</a></li>
+            <li><a href="superfluous.php" class="btn btn-danger">Superfluous Appointments</a></li>
+            <li><a href="adminScheduleAppt.php" class="btn btn-danger">Schedule Appt</a></li>
             <li><a href="admin-editCenter.php" class="btn btn-danger">Edit Center</a></li>
             <li><a href="importdata.php" class="btn btn-danger">Import Data</a></li>
             <li><a href="student-pref.html" class="btn btn-danger">Utilization</a></li>
@@ -71,13 +71,14 @@ if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['auth'] =
   </div>
 
    <div id="adminContent" class="content container">
-   <?php include('admin-landing.php');?>
+   <?php include('admin-landing.php'); ?>
    </div>
+
+   <?php else : header('Location: access-error.php'); ?>
+   <?php endif; ?>
 <!-- Bootstrap Core JavaScript -->
   <script src="js/bootstrap.min.js"></script>
 <script src='js/loader.js'></script>
-<?php else : header('Location: access-error.php'); ?>
-<?php endif; ?>
   <!-- Footer -->
   <?php include("includes/footer.html");?>
   <!-- END FOOTER-->
@@ -85,3 +86,6 @@ if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['auth'] =
   <!-- MODALS -->
   <?php include("includes/modals.php");?>
   <!-- END MODALS -->
+</body>
+
+</html>

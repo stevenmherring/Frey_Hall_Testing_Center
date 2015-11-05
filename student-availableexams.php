@@ -9,7 +9,7 @@ if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['auth'] =
 <?php else : header('Location: access-error.php'); ?>
 <?php endif; ?>
   <?php
-    $userExams = User::getAppointments($_SESSION['username']);
+    $userExams = User::getExams($_SESSION['username'],$_SESSION['auth']);
   ?>
   <link rel="stylesheet" type="text/css" href="css/sortable_table.css">
   <div class="facultyScheduleExamFormContainer">
@@ -26,6 +26,9 @@ if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['auth'] =
           </tr>
           <?php
               foreach ($userExams as $exam) {
+                if ((User::hasAppointment($_SESSION['username'],$exam['examID']))):
+
+
           ?>
                   <tr>
                     <td><?php echo($exam['subj']);?></td>
@@ -35,14 +38,20 @@ if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['auth'] =
                     <td><?php echo($exam['examStartTime']);?></td>
                     <td><?php echo($exam['examEndTime']);?></td>
                     <td><?php echo($exam['examDuration']);?></td>
-                    <td>
-                    <?php
-                      if (strcmp($exam['processed'],"pending") === 0) :?>
-                      <a href="#cancel_pending" data-toggle="modal" data-target="#cancel_pending">Delete appt</a>
-                      <?php endif; ?>
-                    </td>
                   </tr>
           <?php
+                else :?>
+                  <tr>
+                    <td><?php echo "You have an appointment for the exam '"; echo ($exam['subj']); echo ($exam['catalogNumber']); echo "' already scheduled.";?></td>
+                    <td><?php echo "--";?></td>
+                    <td><?php echo "--";?></td>
+                    <td><?php echo "--";?></td>
+                    <td><?php echo "--";?></td>
+                    <td><?php echo "--";?></td>
+                    <td><?php echo "--";?></td>
+                  </tr>
+                <?php
+              endif;
               }
           ?>
           <!-- jQuery -->

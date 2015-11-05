@@ -52,7 +52,7 @@ Shi Lin Lu -->
         <ul id="snav" class="navbar-right">
           <li><a href="student-exams-backup.php" class="btn btn-danger">Schedule Exam</a></li>
           <li><a href="student-myexams.php" class="btn btn-danger">View Scheduled Exams</a></li>
-          <li><a href="student-avail.html" class="btn btn-danger">View Available Exams</a></li>
+          <li><a href="student-availableexams.php" class="btn btn-danger">View Available Exams</a></li>
           <li><a href="student-pref.html" class="btn btn-danger">Preferences</a></li>
         </ul>
         </form>
