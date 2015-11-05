@@ -49,7 +49,7 @@ if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['auth'] =
         <a class="navbar-brand" href="#" rel="home" title="Stony Brook Testing Center" >
           <b>Welcome, Admin!</b>
         </a>
-        <form class="navbar-header pull-right" role="search">
+        <form class="navbar-form pull-right" role="search">
           <span class='btn-group'>
           <ul id="anav" class="navbar-right ">
 
