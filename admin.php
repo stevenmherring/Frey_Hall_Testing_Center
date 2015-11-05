@@ -51,14 +51,16 @@ if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['auth'] =
       <div class="collapse navbar-collapse collapse-buttons">
         <form class="navbar-form navbar-right" role="search">
           <ul id="anav" class="navbar-right">
+
+            <span class='btn-group'>
             <li><a href="student-exams.php" class="btn btn-danger">Pending Exams</a></li>
-            <li><a href="student-sched.html" class="btn btn-danger">Cancel Exam</a></li>
             <li><a href="superfluous.php" class="btn btn-danger">Superfluous Appointments</a></li>
             <li><a href="adminScheduleAppt.php" class="btn btn-danger">Schedule Appt</a></li>
             <li><a href="admin-editCenter.php" class="btn btn-danger">Edit Center</a></li>
             <li><a href="importdata.php" class="btn btn-danger">Import Data</a></li>
             <li><a href="student-pref.html" class="btn btn-danger">Utilization</a></li>
             <li><a href="reports.php" class="btn btn-danger">Generate Reports</a></li>
+          </span>
         </ul>
         </form>
       </div>
