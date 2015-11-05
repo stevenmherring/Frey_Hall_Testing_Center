@@ -1,4 +1,4 @@
-<div id="adminContent" class="facultyScheduleExamFormContainer" style="padding: 75px">
+<div id="importContent" class="facultyScheduleExamFormContainer">
      <div >
          <form action="handle_forms.php" method="POST">
             Submit a User CSV <input type="file" id="user_form" name="user_form" accept=".csv"><br><br>

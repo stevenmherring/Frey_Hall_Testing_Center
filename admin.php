@@ -43,52 +43,12 @@ $db = Database::getDatabase();
 Authentication::sec_session_start();
 if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['auth'] == 0) : ?>
 <body>
-  <nav class="navbar navbar-student " role="navigation">
-    <div class="container-fluid">
-      <div class="collapse navbar-collapse collapse-buttons">
-        <a class="navbar-brand" href="#" rel="home" title="Stony Brook Testing Center" >
-          <b>Welcome, Admin!</b>
-        </a>
-        <form class="navbar-form pull-right" role="search">
-          <span class='btn-group'>
-          <ul id="anav" class="navbar-right ">
-
-            <li><a href="student-exams.php" class="btn btn-danger">Pending Exams</a></li>
-            <li><a href="superfluous.php" class="btn btn-danger">Superfluous Appointments</a></li>
-            <li><a href="student-exams.php" class="btn btn-danger">View Appt</a></li>
-            <li><a href="adminScheduleAppt.php" class="btn btn-danger">Schedule Appt</a></li>
-            <li><a href="admin-editCenter.php" class="btn btn-danger">Edit Center</a></li>
-            <li><a href="importdata.php" class="btn btn-danger">Import Data</a></li>
-            <li><a href="student-pref.html" class="btn btn-danger">Utilization</a></li>
-            <li><a href="reports.php" class="btn btn-danger">Generate Reports</a></li>
-
-        </ul>
-      </span>
-        </form>
-    </div>
-  </nav>
   <div class="container">
     <div class="row">
       <div class="filler"></div>
     </div>
   </div>
 
-   <div id="adminContent" class="content container">
-   <?php include('admin-landing.php'); ?>
-   </div>
-
-   <?php else : header('Location: access-error.php'); ?>
-   <?php endif; ?>
-<!-- Bootstrap Core JavaScript -->
-  <script src="js/bootstrap.min.js"></script>
-<script src='js/loader.js'></script>
-  <!-- Footer -->
-  <?php include("includes/footer.html");?>
-  <!-- END FOOTER-->
-
-  <!-- MODALS -->
-  <?php include("includes/modals.php");?>
-  <!-- END MODALS -->
 </body>
 
 </html>

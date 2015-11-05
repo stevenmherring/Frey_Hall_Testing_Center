@@ -71,7 +71,7 @@ ul#fnav li {
   color: #f4edfb;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 767px) {
   .navbar-student .navbar-nav .open .dropdown-menu > li > a {
     color: #000000;
   }
