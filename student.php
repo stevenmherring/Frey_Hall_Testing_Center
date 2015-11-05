@@ -1,3 +1,9 @@
+<?php
+  include_once('classes/Authentication.php');
+  include_once('classes/Database.php');
+  $db = Database::getDatabase();
+  Authentication::sec_session_start();
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
@@ -34,44 +40,18 @@ Shi Lin Lu -->
 
    <!-- INTRO PAGE -->
 </head>
+<?php   if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['auth'] == 2) : ?>
 <body>
-<?php
-  include_once('classes/Authentication.php');
-  include_once('classes/Database.php');
-  $db = Database::getDatabase();
-  Authentication::sec_session_start();
-  if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['auth'] == 2) :
-?>
-  <nav class="navbar navbar-student" role="navigation">
-    <div class="container">
-      <a class="navbar-brand" href="#" rel="home" title="Stony Brook Testing Center" >
-        <b>Welcome, Student!</b>
-      </a>
-      <div class="collapse navbar-collapse collapse-buttons">
-        <form class="navbar-form navbar-right" role="search">
-        <ul id="snav" class="navbar-right">
-          <li><a href="student-exams-backup.php" class="btn btn-danger">Schedule Exam</a></li>
-          <li><a href="student-myexams.php" class="btn btn-danger">View Scheduled Exams</a></li>
-          <li><a href="student-availableexams.php" class="btn btn-danger">View Available Exams</a></li>
-          <li><a href="student-pref.html" class="btn btn-danger">Preferences</a></li>
-        </ul>
-        </form>
-      </div>
-    </div>
-  </nav>
   <div class="container">
     <div class="row">
       <div class="filler"></div>
     </div>
   </div>
 
- <div id="scontent" class="scontent container">
- <?php include('student-landing.php');?>
- </div>
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>
 <script src='js/loader.js'></script>
-<?php else : header('Location: access-error.php'); ?>
+<?php else : ?>
 <?php endif; ?>
     </body>
 </html>

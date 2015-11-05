@@ -41,36 +41,6 @@
   </div>
 </div>
 
-<!--admin modal-->
-<div id="admin" class="modal fade" tabindex="-1" role="dialog">
-  <div class="modal-dialog">
-  <div class="modal-content">
-      <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-          <h1 class="text-center">DoIT - Single Sign On - Admins</h1>
-      </div>
-      <div class="modal-body">
-          <form class="form col-md-12 center-block">
-            <div class="form-group">
-              <input type="text" class="form-control input-lg" placeholder="Netid">
-            </div>
-            <div class="form-group">
-              <input type="password" class="form-control input-lg" placeholder="Password">
-            </div>
-            <div class="form-group">
-              <button class="btn btn-danger btn-lg btn-block">Sign In</button>
-            </div>
-          </form>
-      </div>
-      <div class="modal-footer">
-          <div class="col-md-12">
-          <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-      </div>
-      </div>
-  </div>
-  </div>
-</div>
-
 <!-- student schedule exam-->
 <div id="student-schedule-exam" class="modal fade" tabindex="-1" role="dialog">
   <div class="modal-dialog">
@@ -167,4 +137,5 @@ include_once('classes/User.php'); ?>
           <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
     </div>
   </div>
+</div>
 </div>
