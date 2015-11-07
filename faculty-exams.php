@@ -9,7 +9,7 @@ if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['auth'] =
 <?php else : header('Location: access-error.php'); ?>
 <?php endif; ?>
   <?php
-    $userExams = User::getExams($_SESSION['username']);
+    $userExams = User::getExams($_SESSION['username'],$_SESSION['auth']);
   ?>
   <link rel="stylesheet" type="text/css" href="css/sortable_table.css">
   <div class="facultyScheduleExamFormContainer">

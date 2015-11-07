@@ -60,15 +60,15 @@ Steven Chin-->
       if($logged == 'in') {
         if($_SESSION['auth'] == 0) {
             echo ' <section id="adminContent"> ';
-            include("error.php");
+              include("admin-landing.php");
             echo '</section> ';
         } else if($_SESSION['auth'] == 1) {
           echo ' <section id="facultyContent"> ';
-          include("error.php");
+          include("faculty-landing.php");
           echo '</section> ';
         } else if($_SESSION['auth'] == 2) {
           echo ' <section id="studentContent"> ';
-          include("error.php");
+          include("student-landing.php");
           echo '</section> ';
         }
       } else {

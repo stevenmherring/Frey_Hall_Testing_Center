@@ -43,7 +43,7 @@ $db = Database::getDatabase();
 Authentication::sec_session_start();
 if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['auth'] == 0) : ?>
 <body>
-  <div class="container">
+    <div class="container">
     <div class="row">
       <div class="filler"></div>
     </div>

@@ -57,5 +57,25 @@
     $handle = null;
 
   }
+
+  /*
+   * Take in classid and return all the email addresses of the people on that class' roster
+   */
+  public static function mailUsers($classID){
+    $handle = self::getDatabase();
+    $handle->beginTransaction();
+    $emailArray = array();
+    // NOTE CLASSID MUST BE A STRING
+    $q_getmailinglist = "SELECT email FROM roster r1, user u1 WHERE r1.netID = u1.netID and r1.classID=?";
+    $handle->beginTransaction();
+    $statement = $handle->prepare($q_getmailinglist);
+    $statement->execute(array($classID));
+    $index = 0;
+    while($result = $statement->fetch(PDO::FETCH_ASSOC, PDO::FETCH_ORI_NEXT)){
+      $emailArray[$index] = $result;
+      $index++;
+    }
+    return $emailArray;
+  }
 }
 ?>

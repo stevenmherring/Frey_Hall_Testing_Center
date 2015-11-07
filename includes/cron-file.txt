@@ -1,0 +1,6 @@
+##Cron job format ##
+##MIN######HOUR#############DOM##################MON#################DOW################CMD###
+##Minutes##Hours##Day of month Range [1-31]##month field [1-12]##day of week [1-7]##Path bruh#
+##############################################################################################
+# So the cronjob specified is going to execute at the 0th min, of the 0th hour (midnight), on every day of the month, every month, monday-friday, script path given.
+00 00 * * 1-5 /home/sbu-chris/Desktop/cse308/Frey_Hall_Testing_Center/mailingfunction.php
