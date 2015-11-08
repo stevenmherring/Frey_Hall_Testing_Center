@@ -7,6 +7,7 @@ CREATE TABLE date
 (
 Date DATE NOT NULL,
 Term varchar(4) NOT NULL,
+Utilization int (3) NOT NULL default 0,
 centerIsOpen bool NOT NULL default TRUE,
 timeslot0 int(1) NOT NULL default 0,
 timeslot1 int(1) NOT NULL default 0,

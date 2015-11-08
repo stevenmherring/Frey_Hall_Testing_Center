@@ -66,14 +66,12 @@
               <div class="container">
                 <div class="collapse navbar-collapse collapse-buttons">
                   <a class="navbar-brand" href="#" rel="home" title="Stony Brook Testing Center" >
-                    <b>Welcome, <?php echo htmlentities($_SESSION["username"]); ?>!</b>
+                    <b>Welcome,'?> <?php echo htmlentities($_SESSION["username"]); echo '</b>
                   </a>
                   <form class="navbar-header navbar-right" role="search">
                     <ul id="anav" class="navbar-right ">
-
                       <li><a href="student-exams.php" class="btn btn-danger">Pending Exams</a></li>
                       <li><a href="superfluous.php" class="btn btn-danger">Superfluous Appointments</a></li>
-                      <li><a href="student-exams.php" class="btn btn-danger">View Appt</a></li>
                       <li><a href="adminScheduleAppt.php" class="btn btn-danger">Schedule Appt</a></li>
                       <li><a href="admin-editCenter.php" class="btn btn-danger">Edit Center</a></li>
                       <li><a href="importdata.php" class="btn btn-danger">Import Data</a></li>
@@ -90,7 +88,7 @@
             <nav class="navbar navbar-student" role="navigation">
             <div class="container">
               <a class="navbar-brand" href="#" rel="home" title="Stony Brook Testing Center" >
-                <b>Welcome, <?php echo htmlentities($_SESSION["username"]); ?>!</b>
+                <b>Welcome,'?> <?php echo htmlentities($_SESSION["username"]); echo '</b>
               </a>
               <div class="collapse navbar-collapse collapse-buttons">
                 <form class="navbar-header navbar-right" role="search">
@@ -112,7 +110,7 @@
             <nav class="navbar navbar-student" role="navigation">
               <div class="container">
                 <a class="navbar-brand" href="#" rel="home" title="Stony Brook Testing Center" >
-                  <b>Welcome, <?php echo htmlentities($_SESSION["username"]); ?>!</b>
+                  <b>Welcome,'?> <?php echo htmlentities($_SESSION["username"]); echo '</b>
                 </a>
                 <div class="collapse navbar-collapse collapse-buttons">
                   <form class="navbar-header navbar-right" role="search">

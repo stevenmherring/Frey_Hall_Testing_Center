@@ -126,15 +126,20 @@
 <!--view appt details modal-->
 <?php
 include_once('classes/User.php'); ?>
-<div id="view_attendance" class="modal" tabindex="-1" role="dialog">
+<div id="view_attendance" class="modal fade" tabindex="-1" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">View Appointment!</h4>
+      </div>
         <div class="modal-body">
           <form class="form col-md-12 center-block" action="faculty.php" method="post" name="view_exam_attendance" id="view_exam_attendance" >
           <div class="form-group">
-            <input type="text" id="examtoviewattendance" name="examtoviewattendance" class="hidden" >
+            <input type="text" id="examtoviewattendance" name="examtoviewattendance">
           </div>
           <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+        </form>
     </div>
   </div>
 </div>
