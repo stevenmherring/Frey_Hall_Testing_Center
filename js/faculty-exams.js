@@ -24,8 +24,10 @@ function handle_cancel_exam(form, exam) {
 function view_exam_appts(examIDforAppt) {
     //document.getElementById('examtoviewattendance').value = examIDforAppt;
 
-  jQuery(function(){
+  jQuery( function(){
     jQuery(".modal-content").html("<p>Loading Please wait...</p>");
     jQuery(".modal-content").load('../modalcontents.php', {examID : examIDforAppt});//url to contents.php
   });
+
+
 }

@@ -123,24 +123,44 @@
 </div>
 
 
-<!--view appt details modal-->
+<!--view attendance details modal-->
 <?php
 include_once('classes/User.php'); ?>
-<div id="view_attendance" class="modal fade" tabindex="-1" role="dialog">
+<div id="view_attendance" class="modal" tabindex="-1" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
         <h4 class="modal-title">View Appointment!</h4>
       </div>
-        <div class="modal-body">
+      <div class="modal-body">
           <form class="form col-md-12 center-block" action="faculty.php" method="post" name="view_exam_attendance" id="view_exam_attendance" >
           <div class="form-group">
             <input type="text" id="examtoviewattendance" name="examtoviewattendance">
           </div>
-          <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-        </form>
-    </div>
+          </form>
+      </div>
+      <div class="modal-footer">
+        <a href="#" data-dismiss="modal" class="btn">Cancel</a>
+      </div>
   </div>
 </div>
+</div>
+
+<div id="view_appointment" class="modal fade" tabindex="-1" role="dialog"  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h1 class="text-center"> View Student Appointments</h1>
+        </div>
+        <div class="modal-body">
+          <form class="form col-md-12 center-block" action="admin-getappts.php" method="post" name="admin_view_appointmnet" id="admin_view_appointmnet" >
+          <div class="form-group">
+            <input type="text" id="netid" name="netid">
+          </div>
+          <button class="close" data-dismiss="modal" aria-hidden="true">Cancel</button>
+      </div>
+    </div>
+  </div>
 </div>
