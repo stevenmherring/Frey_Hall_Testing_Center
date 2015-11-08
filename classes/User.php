@@ -22,11 +22,11 @@ class User {
     $handle->beginTransaction();
     $statement = $handle->prepare($q_getmyexams);
     if (!$statement){
-      echo "<script type='text/javascript'>alert($errFindExam);</script>";
     }
     $statement->execute(array($netid));
     $index = 0;
     while($result = $statement->fetch(PDO::FETCH_ASSOC, PDO::FETCH_ORI_NEXT)){
+    echo '<script type="text/javascript">alert('.$result.');</script>';
       $myExams[$index] = $result;
       $index++;
     }

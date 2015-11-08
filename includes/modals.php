@@ -157,10 +157,13 @@ include_once('classes/User.php'); ?>
         <div class="modal-body">
           <form class="form col-md-12 center-block" action="admin-getappts.php" method="post" name="admin_view_appointmnet" id="admin_view_appointmnet" >
           <div class="form-group">
-            <input type="text" id="netid" name="netid">
+            <input type="text" id="netID" name="netID">
           </div>
-          <button class="close" data-dismiss="modal" aria-hidden="true">Cancel</button>
+          <a href="#" onclick="view_student_appts(document.getElementById('netID').value);"  data-dismiss="modal"class="btn btn-primary">Submit</a>
+        </form>
       </div>
-    </div>
+      <div class="modal-footer">
+        <a href="#" data-dismiss="modal" class="btn">Cancel</a>
+      </div>
   </div>
 </div>

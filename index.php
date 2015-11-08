@@ -53,10 +53,22 @@ Steven Chin-->
    <!--END NAV-->
 </head>
 
+<script>
+function view_student_appts(netID) {
+
+jQuery( function(){
+  jQuery("#adminContent").load('../admin-getappts.php', {netID : netID});//url to contents.php
+});
+}
+</script>
 <body>
   <!-- END INTRO-->
   <div id="content" style="padding: 75px">
     <?php
+      if ( isset($_POST['netid']) ){
+        echo'<script type="text/javascript"< view_student_appts();</script>';
+
+      }
       if($logged == 'in') {
         if($_SESSION['auth'] == 0) {
             echo ' <section id="adminContent"> ';
