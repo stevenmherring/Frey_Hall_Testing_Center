@@ -26,7 +26,6 @@ class User {
     $statement->execute(array($netid));
     $index = 0;
     while($result = $statement->fetch(PDO::FETCH_ASSOC, PDO::FETCH_ORI_NEXT)){
-    echo '<script type="text/javascript">alert('.$result.');</script>';
       $myExams[$index] = $result;
       $index++;
     }
@@ -90,9 +89,6 @@ class User {
   }
   /* Call this method to select all exams where this netid is a involved */
   public static function deleteExam($examID){
-    echo '<script type="text/javascript">alert("Entered delete exam");</script>';
-    echo '<script type="text/javascript">alert('.$examID.');</script>';
-
     $q_deletemyexam = "DELETE from exam where examID=?";
     $db = Database::getDatabase();
     $handle = $db->getHandle();

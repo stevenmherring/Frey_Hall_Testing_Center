@@ -159,7 +159,7 @@ include_once('classes/User.php'); ?>
           <div class="form-group">
             <input type="text" id="netID" name="netID">
           </div>
-          <a href="#" onclick="view_student_appts(document.getElementById('netID').value);"  data-dismiss="modal"class="btn btn-primary">Submit</a>
+          <a href="#" onclick="view_student_appts(document.getElementById('netID').value);"  data-dismiss="modal" class="btn btn-primary">Submit</a>
         </form>
       </div>
       <div class="modal-footer">
