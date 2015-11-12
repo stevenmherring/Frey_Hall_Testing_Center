@@ -67,7 +67,6 @@
     $emailArray = array();
     // NOTE CLASSID MUST BE A STRING
     $q_getmailinglist = "SELECT email FROM roster r1, user u1 WHERE r1.netID = u1.netID and r1.classID=?";
-    $handle->beginTransaction();
     $statement = $handle->prepare($q_getmailinglist);
     $statement->execute(array($classID));
     $index = 0;

@@ -46,7 +46,7 @@ class TestingCenter {
     $q_getsetasideseats = "SELECT numsetasideseats FROM freyhalltestingcenterroom where daysFrom = ?";
     $handle->beginTransaction();
     $result = $handle->prepare($q_getsetasideseats);
-    if ($!result){
+    if (!$result){
       echo "<script type='text/javascript'>alert('errUpdate');</script>";
     }
     $result->execute(array($date));
@@ -60,7 +60,7 @@ class TestingCenter {
     $q_getgaptime = "SELECT gaptime FROM freyhalltestingcenterroom where daysFrom = ?";
     $handle->beginTransaction();
     $result = $handle->prepare($q_getgaptime);
-    if ($!result){
+    if (!$result){
       echo "<script type='text/javascript'>alert('errUpdate');</script>";
     }
     $result->execute(array($date));
@@ -74,7 +74,7 @@ class TestingCenter {
     $q_getreminderinterval = "SELECT reminderinterval FROM freyhalltestingcenterroom where daysFrom = ?";
     $handle->beginTransaction();
     $result = $handle->prepare($q_getreminderinterval);
-    if ($!result){
+    if (!$result){
       echo "<script type='text/javascript'>alert('errUpdate');</script>";
     }
     $result->execute(array($date));
@@ -88,7 +88,7 @@ class TestingCenter {
     $q_getclasssize = "SELECT * FROM roster WHERE classID = ?";
     $handle->beginTransaction();
     $result = $handle->prepare($q_getclasssize);
-    if ($!result){
+    if (!$result){
       echo "<script type='text/javascript'>alert('errUpdate');</script>";
     }
     $result->execute(array($classID));
@@ -112,7 +112,7 @@ class TestingCenter {
     $q_getExamsOnDate = "SELECT * FROM appointment WHERE dateOfExam = ?";
     $handle->beginTransaction();
     $result = $handle->prepare($q_getExamsOnDate);
-    if ($!result){
+    if (!$result){
       echo "<script type='text/javascript'>alert('errUpdate');</script>";
     }
     $result->execute(array($date));

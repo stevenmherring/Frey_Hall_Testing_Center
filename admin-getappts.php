@@ -44,12 +44,16 @@ if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['auth'] =
                       <a href="#cancel_pending" data-toggle="modal" data-target="#cancel_pending">Delete appt</a>
                       <?php endif; ?>
                     </td>
+                    <td>
+                      <button value="check_in" type="button" onclick="checkInStudent('<?php echo($_POST['netID']); ?>','<?php echo $exam['appointmentID'];?>');">Check in</button>
+                    </td>
                   </tr>
           <?php
               }
           ?>
           <!-- jQuery -->
           <script src="js/jquery.js"></script>
+          <script type="text/javascript" src="js/admin-functions.js"></script>
 
           <!-- Bootstrap Core JavaScript -->
           <script src="js/bootstrap.min.js"></script>
