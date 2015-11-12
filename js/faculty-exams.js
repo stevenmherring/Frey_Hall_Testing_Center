@@ -26,7 +26,7 @@ function view_exam_appts(examIDforAppt) {
 
   jQuery( function(){
     jQuery(".modal-attendance_details").html("<p>Loading Please wait...</p>");
-    jQuery(".modal-attendance_details").load('../modalcontents.php', {examID : examIDforAppt});//url to contents.php
+    jQuery(".modal-attendance_details").load('../modalcontentsTable.php', {examID : examIDforAppt});//url to contents.php
   });
 
 

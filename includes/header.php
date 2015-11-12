@@ -116,7 +116,7 @@
                 <div class="collapse navbar-collapse collapse-buttons">
                   <form class="navbar-header navbar-right" role="search">
                   <ul id="snav" class="navbar-right">
-                    <li><a href="student-exams-backup.php" class="btn btn-danger">Schedule Exam</a></li>
+                    <li><a href="student-exams-backup.php" class="btn btn-danger">Schedule Appt</a></li>
                     <li><a href="student-myexams.php" class="btn btn-danger">View Scheduled Exams</a></li>
                     <li><a href="student-availableexams.php" class="btn btn-danger">View Available Exams</a></li>
                     <li><a href="student-pref.html" class="btn btn-danger">Preferences</a></li>
