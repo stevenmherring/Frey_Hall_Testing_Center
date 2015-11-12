@@ -105,13 +105,41 @@ class TestingCenter {
     $result->execute(array($date));
     return $result;
   }
-
+  public static function getAppointmentsOnDate($date){
+    $db = Database::getDatabase();
+    $handle = $db->getHandle();
+    $q_getapptOnDate = "SELECT * FROM appointment WHERE dateOfExam = ?";
+    $handle->beginTransaction();
+    $result = $handle->prepare($q_getapptOnDate);
+    if (!$result){
+      echo "<script type='text/javascript'>alert('errUpdate');</script>";
+    }
+    $result->execute(array($date));
+    $apptOnDate = array();
+    $index = 0;
+    while($value = $result->fetch(PDO::FETCH_ASSOC, PDO::FETCH_ORI_NEXT)){
+      $apptOnDate[$index] = $value;
+      $index++;
+    }
+    return $apptOnDate;
+  }
   public static function getExamsOnDate ($date){
     $db = Database::getDatabase();
     $handle = $db->getHandle();
-    $q_getExamsOnDate = "SELECT * FROM appointment WHERE dateOfExam = ?";
+    $q_getExamStartDate = "SELECT * FROM appointment WHERE examStartDate = ?";
+    $q_getExamStopDate = "SELECT * FROM appointment WHERE examStopDate = ?";
     $handle->beginTransaction();
-    $result = $handle->prepare($q_getExamsOnDate);
+    $q_examsStartDate = $handle->prepare($q_getExamStartDate);
+    $q_examsStopDate = $handle->prepare($q_getExamStopDate);
+    $q_examsStartDate->execute(array($date));
+    $q_examsStopDate->execute(array($date));
+    $examsStartingOnDate = array();
+    $examsStoppingOnDate = array();
+    $index = 0;
+    while($result = $q_examsStartDate->fetch(PDO::FETCH_ASSOC, PDO::FETCH_ORI_NEXT)){
+      $examsStartingOnDate[$index] = $result;
+      $index++;
+    }
     if (!$result){
       echo "<script type='text/javascript'>alert('errUpdate');</script>";
     }
@@ -127,6 +155,36 @@ class TestingCenter {
 
   public function getTakenSeats($date){
 
+  }
+  private function getOpenFrom($date){
+    $db = Database::getDatabase();
+    $handle = $db->getHandle();
+    $q_getopenfrom = "SELECT hours_openfrom from freyhalltestingcenterroom where daysFrom=?";
+    $handle->beginTransaction();
+    $result_openfrom = $handle->prepare($q_getopenfrom);
+    if (!$result_openfrom){
+      echo "<script type='text/javascript'>alert('errUpdate');</script>";
+    }
+    $center_openfrom = $result_openfrom->execute(array($date));
+    return $center_openfrom;
+  }
+  private function getOpenUntil($date){
+    $db = Database::getDatabase();
+    $handle = $db->getHandle();
+    $q_getopenuntil = "SELECT hours_openuntil from freyhalltestingcenterroom where daysFrom=?";
+    $handle->beginTransaction();
+    $result_openuntil = $handle->prepare($q_getopenuntil);
+    if (!$result_openuntil){
+      echo "<script type='text/javascript'>alert('errUpdate');</script>";
+    }
+    $center_openuntil = $result_openuntil->execute(array($date));
+    return $center_openuntil;
+  }
+  public function getTotalOpenTime($date){
+    $center_openuntil = self::getOpenUntil($date);
+    $center_openfrom = self::getOpenFrom($date);
+    $center_hours = abs($center_openuntil - $center_openfrom);
+    return $center_hours;
   }
   public function isEnoughSeatsForExam($date){
 
@@ -161,4 +219,11 @@ class TestingCenter {
 
   }
 }
+
+  public function getUtilization($date){
+    // Utilization = the sum of all appointments, the appointment durations / number seats in the testing center * time the center is open
+    $setOfApptsOnDay;
+    $numberOfSeatsTotal = self::getNumSeats($date);
+    $openTime = self::getOpenTime($date);
+  }
 }

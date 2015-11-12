@@ -63,7 +63,7 @@ class Authentication {
       $stmt->execute();
       $stmt->store_result();
       $user_id;
-      $sername;
+      $username;
       $email;
       $db_password;
       $salt;
