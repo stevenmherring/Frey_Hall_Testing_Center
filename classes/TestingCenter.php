@@ -186,13 +186,13 @@ class TestingCenter {
     $center_hours = abs($center_openuntil - $center_openfrom);
     return $center_hours;
   }
-  public function isEnoughSeatsForExam($date){
+  public function isEnoughSeatsForExam($date,$examToSchedule){
 
       // Check to see if the center is open on this date
       if (self::isOpen($date) == true){
 
       // Figure out how many seats we have in the testing center on this day
-      $numberOfSeatsTotal = self::getNumseats($date);
+      $numberOfSeatsTotal = self::getNumseats($examToSchedule);
 
       // Figure out how many seats this exam takes
       $numberOfSeatsExamReq = self::getClassSize($classID);
@@ -202,7 +202,7 @@ class TestingCenter {
 
       foreach ($allExamsOnDate as $exam){
         // Get the seat count in an exam already scheduled on date
-        $seatsInExam = self::getClassSize($classID);
+        $seatsInExam = self::getClassSize($exam);
         // Take these seats away from number of total available
         $numberOfSeatsTotal = $numberOfSeatsTotal - $seatsInExam;
       }
