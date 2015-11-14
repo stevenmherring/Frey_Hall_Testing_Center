@@ -12,7 +12,6 @@ if (Authentication::login_check($db->getMysqli()) === true) {
     $logged = 'in';
 } else {
     $logged = 'out';
-    $_SESSION['auth'] = 5;
 }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"

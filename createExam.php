@@ -32,7 +32,7 @@ $examEndTime = $examEndHr . ":" . $examEndMin . ":" . "00";
 
 $sql = "INSERT INTO exam(examStartDate, examEndDate, examStartTime, examEndTime, examDuration, examName, classID) VALUES ('$examStartDate', '$examEndDate', '$examStartTime', '$examEndTime', $examDuration, '$examName', '$examClassID')";
         $result = $dbh->prepare($sql);
-        
+
         if (!$result){
           $prepareFail = "Information NOT updated.";
           echo "<script type='text/javascript'>alert('$prepareFail');</script>";
@@ -47,7 +47,7 @@ if ($result->execute() === TRUE){
                   $transactionContent = "examStartDate:" . $examStartDate . "," . "examEndDate:" . $examEndDate . "," . "examStartTime:" . $examStartTime .  "," . "examEndTime:" . $examEndTime .  "," . "ExamDuration:" . $examDuration  . "," . "ExamName:" . $examName  . "," . "ExamClassID:" . $examClassID  . ",";
                   $transactionType = "createExam";
                   $now = time();
-                  $userID = $_SESSION['username'];
+                  $userID = $_SESSION['netid'];
                   //"INSERT INTO transactionlog_tbl(userID,transactiontype,transactiontime,transactioncontent)VALUES(?,?,?,?)";
                   $stmtCSVquery->execute(array($userID,$transactionType,$now,$transactionContent));
                 }

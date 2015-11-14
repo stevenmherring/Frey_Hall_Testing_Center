@@ -55,15 +55,16 @@ class Authentication {
     if ($mysqli === null){
       throw new Exception ("Attempt_login passed a null mysqli.");
     }
-    $q_login_query_netid = "SELECT id, username, email, password, salt,
-      auth FROM members WHERE netid = ? LIMIT 1";
+    $q_login_query_netid = "SELECT id, firstName, lastName, email, password, salt,
+      auth FROM users WHERE netid = ? LIMIT 1";
     $stmt = $mysqli->prepare($q_login_query_netid);
     //if ($stmt != null){
       $stmt->bind_param('s', $netid);
       $stmt->execute();
       $stmt->store_result();
       $user_id;
-      $username;
+      $firstName;
+      $lastName;
       $email;
       $db_password;
       $salt;
@@ -72,7 +73,7 @@ class Authentication {
         // see what steve was checking here
       //}
       //mysqli_stmt::fetch -- mysqli_stmt_fetch — Fetch results from a prepared statement into the bound variables
-      $stmt->bind_result($user_id, $username, $email, $db_password, $salt, $auth);
+      $stmt->bind_result($user_id, $firstName, $lastName, $email, $db_password, $salt, $auth);
       $stmt->fetch();
       $password = hash('sha512', $password . $salt);
       if ($stmt->num_rows === 1) {
@@ -87,18 +88,23 @@ class Authentication {
                 //confirm login details
                 if ($db_password === $password) {
                     //password is good
-                    //TODO: understand XSS attacks - sherring
                     $user_browser = $_SERVER['HTTP_USER_AGENT'];
                     // XSS protection as we might print this value
                     $user_id = preg_replace("/[^0-9]+/", "", $user_id);
                     $_SESSION['user_id'] = $user_id;
                     // XSS protection as we might print this value
-                    $username = preg_replace("/[^a-zA-Z0-9_\-]+/",
+                    $firstName = preg_replace("[^a-zA-Z0-9]",
                                                                 "",
-                                                                $username);
-                    $_SESSION['username'] = $username;
+                                                                $firstName);
+                                                                // XSS protection as we might print this value
+                    $lastName = preg_replace("[^a-zA-Z0-9]",
+                                                                "",
+                                                                $lastName);
+                    $_SESSION['firstName'] = $firstName;
+                    $_SESSION['lastName'] = $lastName;
                     $_SESSION['auth'] = $auth;
                     $_SESSION['email'] = $email;
+                    $_SESSION['netid'] = $netid;
                     $_SESSION['login_string'] = hash('sha512',
                                                $password . $user_browser);
                     $now = time();
@@ -131,7 +137,6 @@ class Authentication {
   */
   public function checkBruteAttack($user_id, $mysqli) {
       $now = time();
-
       //count login attempts from last two hours.
       $valid_attempts = $now - (7200);
       //prepare sql statements
@@ -163,9 +168,11 @@ class Authentication {
 
           $user_id = $_SESSION['user_id'];
           $login_string = $_SESSION['login_string'];
-          $username = $_SESSION['username'];
+          $firstName = $_SESSION['firstName'];
+          $lastName = $_SESSION ['lastName'];
           $email = $_SESSION['email'];
           $auth = $_SESSION['auth'];
+          $netid = $_SESSION['netid'];
           // Get the user-agent string of the user.
           $user_browser = $_SERVER['HTTP_USER_AGENT'];
           $db = Database::getDatabase();
@@ -174,7 +181,7 @@ class Authentication {
           }
           $mysqli = $db->getMysqli();
           if ($stmt = $mysqli->prepare("SELECT password
-                                        FROM members
+                                        FROM users
                                         WHERE id = ? LIMIT 1")) {
               //bind userid to parameter
               $stmt->bind_param('i', $user_id);

@@ -13,7 +13,7 @@ try {
   echo "<script type='text/javascript'>alert('$message');</script>";
 }
 $dbh->beginTransaction();
-$userID = $_SESSION['username'];
+$userID = $_SESSION['netid'];
 $sql = "SELECT * FROM class WHERE InstructorNetID ='$userID'";
         $result = $dbh->prepare($sql);
         if (!$result){
@@ -26,7 +26,7 @@ $sql = "SELECT * FROM class WHERE InstructorNetID ='$userID'";
         //$conn->query($sql);
      $result->execute($var);
 $var = $result->fetchAll();
- 
+
 
 ?>
 <html lang="en">
@@ -38,7 +38,7 @@ $var = $result->fetchAll();
   <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
   <link rel="stylesheet" href="/resources/demos/style.css">
     <script type="text/javascript">
-    
+
     function check()
             {
                 var checkExamName = document.getElementById("examName").value;
@@ -57,7 +57,7 @@ $var = $result->fetchAll();
 //                var startMin = parseInt(checkStartMin);
 //                var endHr = parseInt(checkEndHr);
 //                var endMin = parseInt(checkEndMin);
-                
+
                 startSplit[0]= parseInt(startSplit[0]);
                 startSplit[1]= parseInt(startSplit[1]);
                 startSplit[2]= parseInt(startSplit[2]);
@@ -65,7 +65,7 @@ $var = $result->fetchAll();
                 endSplit[1]= parseInt(endSplit[1]);
                 endSplit[2]= parseInt(endSplit[2]);
                var state = false;
-                
+
                 if (startSplit[0]<endSplit[1])
                     {
                         state = true;
@@ -74,19 +74,19 @@ $var = $result->fetchAll();
                             {
                                 state = true;
                             }
-                
+
                 else if (startSplit[0]== endSplit[0] && startSplit[1]==endSplit[1] && startSplit[2]<endSplit[2])
                     {
                         state = true;
-                    }        
-                    
+                    }
+
                 else if (startSplit[0]== endSplit[0] && startSplit[1]==endSplit[1] && startSplit[2]==endSplit[2])
                     {
                         if (startTime + checkExamDuration < endTime){
                             state = true;
                         }
                     }
-                
+
                 if (state == true){
                     return true;
                 }
@@ -95,42 +95,42 @@ $var = $result->fetchAll();
 
 					return false;
                 }
-                
+
 			}
-        
+
         function classType()
             {
                 var checkRadioButton = document.getElementById("class");
                 var checkClassName = document.getElementById("className");
-                
+
                 if(checkRadioButton.checked == true){
                     checkClassName.toggle();
                 }
                 else{
-                    
+
                 }
             }
         </script>
-    
+
 </head>
 <body>
 
  <?php    if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['auth'] == 1) : ?>
-    
+
     <h3>Create Exam</h3>
     <div style="height: 500px">
         <form action="createExam.php" method="post" onSubmit="return check();">
-           
+
             <p>
                 <label> Exam Name: </label><input type="text" id="examName" name="examName" value="" maxlength="50" required/>
             </p>
-           
+
              <p>
                 <label> ClassID: </label>
                 <select class="combobox" name="className" id="className" required>
                     <option value="">Choose a class</option>
                     <?php foreach ($var as $vars) { ?>
-                    <option value="<?php echo $vars["classID"]; ?>"><?php  echo $vars["subj"] . $vars["catalogNumber"] . " Section: " . $vars["section"]; ?></option> 
+                    <option value="<?php echo $vars["classID"]; ?>"><?php  echo $vars["subj"] . $vars["catalogNumber"] . " Section: " . $vars["section"]; ?></option>
                     <?php } ?>
                 </select>
             </p>
@@ -152,7 +152,7 @@ $var = $result->fetchAll();
                       <option value="120">120</option>
                 </select>
             </p>
-            
+
           <script>
           $(function() {
             $( "#startdatepicker" ).datepicker({
@@ -209,7 +209,7 @@ $var = $result->fetchAll();
                 });
           });
           </script>
-    </p>  
+    </p>
         <p>End Date: <input type="text" name="endDate" id="enddatepicker"></p>
           <p>
     <label> End time:  </label>
@@ -251,7 +251,7 @@ $var = $result->fetchAll();
             <option value="PM">PM</option>
         </select>
 -->
-    </p> 
+    </p>
             <input type="submit" name="submit" value="Schedule exam" />
             </form>
          </div>

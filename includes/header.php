@@ -67,7 +67,10 @@
               <div class="container">
                 <div class="collapse navbar-collapse collapse-buttons">
                   <a class="navbar-brand" href="#" rel="home" title="Stony Brook Testing Center" >
-                    <b>Welcome,'?> <?php echo htmlentities($_SESSION["username"]); echo '</b>
+                    <b>Welcome,'?> <?php echo htmlentities($_SESSION["firstName"]);
+                                         echo ' ';
+                                         echo htmlentities($_SESSION["lastName"]);
+                    echo '</b>
                   </a>
                   <form class="navbar-header navbar-right" role="search">
                     <ul id="anav" class="navbar-right ">
@@ -89,7 +92,10 @@
             <nav class="navbar navbar-student" role="navigation">
             <div class="container">
               <a class="navbar-brand" href="#" rel="home" title="Stony Brook Testing Center" >
-                <b>Welcome,'?> <?php echo htmlentities($_SESSION["username"]); echo '</b>
+                <b>Welcome,'?> <?php echo htmlentities($_SESSION["firstName"]);
+                                     echo ' ';
+                                     echo htmlentities($_SESSION["lastName"]);
+                echo '</b>
               </a>
               <div class="collapse navbar-collapse collapse-buttons">
                 <form class="navbar-header navbar-right" role="search">
@@ -111,7 +117,10 @@
             <nav class="navbar navbar-student" role="navigation">
               <div class="container">
                 <a class="navbar-brand" href="#" rel="home" title="Stony Brook Testing Center" >
-                  <b>Welcome,'?> <?php echo htmlentities($_SESSION["username"]); echo '</b>
+                  <b>Welcome,'?> <?php echo htmlentities($_SESSION["firstName"]);
+                                       echo ' ';
+                                       echo htmlentities($_SESSION["lastName"]);
+                  echo '</b>
                 </a>
                 <div class="collapse navbar-collapse collapse-buttons">
                   <form class="navbar-header navbar-right" role="search">

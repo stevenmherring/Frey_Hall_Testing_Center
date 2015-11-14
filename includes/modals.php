@@ -28,7 +28,7 @@
             ?>
             <?php
               if (Authentication::login_check($db->getMysqli()) === true) {
-                echo '<p>Currently logged ' . $logged . ' as ' . htmlentities($_SESSION['username']) . '.</p>';
+                echo '<p>Currently logged ' . $logged . ' as ' . htmlentities($_SESSION['netid']) . '.</p>';
                 echo '<p>Do you want to change user? <a href="includes/perform_logout.php">Log out</a>.</p>';
               } else {
                 echo '<p>Currently logged ' . $logged . '.</p>';
