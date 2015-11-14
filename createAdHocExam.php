@@ -40,6 +40,7 @@ $sql = "SELECT max(adHocID) FROM adHoc";
      $result->execute($var);
 $var = $result->fetchAll();
 $newAdHocID = 0;
+    $sql2 = "INSERT INTO adHoc(adHocID, netID, firstName, lastName) VALUES ($newAdHocID, '$persons[0]', '$persons[1]', '$persons[2]')";
 foreach($var as $vars){
     $newAdHocID =$vars[0]+1;
 }
@@ -49,11 +50,10 @@ $examEndTime = $examEndHr . ":" . $examEndMin . ":" . "00";
 
 var_dump($examAdHocSplit);
 
-foreach($examAdHocSplit as $person){     
+foreach($examAdHocSplit as $person){
     var_dump($person);
     echo "<br>";
     $persons = explode(", ", $person);
-    $sql2 = "INSERT INTO adHoc(adHocID, netID, firstName, lastName) VALUES ($newAdHocID, '$persons[0]', '$persons[1]', '$persons[2]')";
     $result2 = $dbh->prepare($sql2);
     if (!$result2){
       $prepareFail = "Information NOT updated.";
@@ -69,13 +69,13 @@ foreach($examAdHocSplit as $person){
                   $transactionContent = "adHocID:" . $newAdHocID . "," . "netID:" . $persons[0] . "," . "firstName:" . $persons[1] .  "," . "lastName:" . $persons[2] .  ",";
                   $transactionType = "createAdHocMembers";
                   $now = time();
-                  $userID = $_SESSION['username'];
+                  $userID = $_SESSION['netid'];
                   //"INSERT INTO transactionlog_tbl(userID,transactiontype,transactiontime,transactioncontent)VALUES(?,?,?,?)";
                   $stmtCSVquery->execute(array($userID,$transactionType,$now,$transactionContent));
                 }
     $dbh->commit();
     $count=$count+1;
-    
+
 }
 $sql3 = "INSERT INTO exam(examStartDate, examEndDate, examStartTime, examEndTime, examDuration, examName, classID) VALUES ('$examStartDate', '$examEndDate', '$examStartTime', '$examEndTime', $examDuration, '$examName', '$newAdHocID')";
     $result3 = $dbh->prepare($sql3);
@@ -93,7 +93,7 @@ $sql3 = "INSERT INTO exam(examStartDate, examEndDate, examStartTime, examEndTime
                   $transactionContent = "adHocID:" . $newAdHocID . "," . "netID:" . $persons[0] . "," . "firstName:" . $persons[1] .  "," . "lastName:" . $persons[2] .  ",";
                   $transactionType = "createAdHocExam";
                   $now = time();
-                  $userID = $_SESSION['username'];
+                  $userID = $_SESSION['netid'];
                   //"INSERT INTO transactionlog_tbl(userID,transactiontype,transactiontime,transactioncontent)VALUES(?,?,?,?)";
                   $stmtCSVquery->execute(array($userID,$transactionType,$now,$transactionContent));
                 }

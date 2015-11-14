@@ -40,7 +40,7 @@ if ($result->execute() === TRUE){
                   $transactionContent = "netID:" . $examNetID . "," . "seatNum:" . '$examSeatNum' . "," . "examStartDate:" . $examStartDate .  "," . "examTime:" . $examTime .  "," . "Status:" . $examStatus  . "," . "ExamID:" . $examExamID  . ",";
                   $transactionType = "createApptByStudent";
                   $now = time();
-                  $userID = $_SESSION['username'];
+                  $userID = $_SESSION['netid'];
                   //"INSERT INTO transactionlog_tbl(userID,transactiontype,transactiontime,transactioncontent)VALUES(?,?,?,?)";
                   $stmtCSVquery->execute(array($userID,$transactionType,$now,$transactionContent));
                 }
