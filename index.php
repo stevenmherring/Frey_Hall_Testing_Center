@@ -45,10 +45,11 @@ Steven Chin-->
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script src='js/loader.js'></script>
     <script src='js/bootstrap.js'></script>
-    <!-- Navigation -->     <!-- Header -->
+    <!-- Navigation -->
+    <?php include("includes/header.php");?>
+    <!-- Header -->
     <script type="text/JavaScript" src="js/sha512.js"></script>
     <script type="text/JavaScript" src="js/forms.js"></script>
-<?php include("includes/header.php");?>
    <!--END NAV-->
 </head>
 
@@ -61,35 +62,33 @@ jQuery( function(){
 }
 </script>
 <body>
-  <!-- END INTRO-->
-  <div id="content" style="padding: 75px">
-    <?php
-      if ( isset($_POST['netid']) ){
-        echo'<script type="text/javascript"< view_student_appts();</script>';
+    <div id="content" style="height: 920px">
+      <?php
+        if ( isset($_POST['netid']) ){
+          echo'<script type="text/javascript"< view_student_appts();</script>';
 
-      }
-      if($logged == 'in') {
-        if($_SESSION['auth'] == 0) {
-            echo ' <section id="adminContent"> ';
-              include("admin-landing.php");
-            echo '</section> ';
-        } else if($_SESSION['auth'] == 1) {
-          echo ' <section id="facultyContent"> ';
-          include("faculty-landing.php");
-          echo '</section> ';
-        } else if($_SESSION['auth'] == 2) {
-          echo ' <section id="studentContent"> ';
-          include("student-landing.php");
-          echo '</section> ';
         }
-      } else {
-          include("includes/intro.php");
-      }
-    ?>
-  </div>
+        if($logged == 'in') {
+          if($_SESSION['auth'] == 0) {
+              echo ' <section id="adminContent" style="padding: 75px"> ';
+                include("admin-landing.php");
+              echo '</section> ';
+          } else if($_SESSION['auth'] == 1) {
+            echo ' <section id="facultyContent" style="padding: 75px"> ';
+            include("faculty-landing.php");
+            echo '</section> ';
+          } else if($_SESSION['auth'] == 2) {
+            echo ' <section id="studentContent" style="padding: 75px"> ';
+            include("student-landing.php");
+            echo '</section> ';
+          }
+        } else {
+            include("includes/intro.php");
+        }
+      ?>
+    </div>
     <!-- Footer -->
-<?php include("includes/footer.html");?>
-
+    <?php include("includes/footer.html");?>
     <!-- END FOOTER-->
 <!-- MODALS -->
 <?php include("includes/modals.php");?>

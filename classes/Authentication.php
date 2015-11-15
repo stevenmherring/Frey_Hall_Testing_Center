@@ -30,8 +30,6 @@ class Authentication {
     // This may need to change to a specific directory which
     // contains only the files needed for user methods as opposed
     // to the root of the server.
-
-    //Domain the cookie is available to, and higher (subdomains)
     //$domain = "www.snowlives.com";
     //$domain = "localhost:8085";
     session_set_cookie_params($cookieParams["lifetime"],
@@ -80,8 +78,7 @@ class Authentication {
             // in the case of locking user accounts we would check if the account is locked from too many login attempts
             // this is likely not an issue with our application, but the check is here as we defined the possibilty in database
             if (self::checkBruteAttack($user_id, $mysqli) === true) {
-                //account is locked, should probably handle
-
+                //account is locked, should probably handle this some way
                 //throw new Exception ("brute failed");
                 return false;
             } else {
@@ -134,6 +131,8 @@ class Authentication {
 
   /*
   *checks for unsuccessful login attempts in specified time period, im using 2 hours
+  *this needs to be rewritten slightly since we use the table to log successful attempts as well,
+  *due to this not being a key feature, its going on the back burner - herring
   */
   public function checkBruteAttack($user_id, $mysqli) {
       $now = time();
@@ -148,7 +147,7 @@ class Authentication {
           //execute and store
           $stmt->execute();
           $stmt->store_result();
-          // If there have been more than 3 failed logins
+          // loginattempts table is now being used to log the login transactions, because of this we need to just bypass this check
           if ($stmt->num_rows == -1) {
               return true;
           } else {
@@ -161,7 +160,7 @@ class Authentication {
   *check if user is logged in
   */
   public function login_check($mysqli) {
-      //check that variables are set
+      //check that variables are set, aka cookie was loaded/stored
       if (isset($_SESSION['user_id'],
                           $_SESSION['login_string'],
                           $_SESSION['auth'])) {
@@ -225,7 +224,9 @@ class Authentication {
   *this is a popular response to cross-site scripting attacks, so im going to employ it as well for more security.
   *there are other approaches but to be honest, it seems like every approach leaves itself vulnerbale to everything else
   *choosing the solution here is a a security version of russian roulette
-  */
+  *this is another security function, we're not actually using yet
+  ************PHP has it's own URL sanitizer....we can use that when the time comes.
+
   function esc_url($url) {
       if ('' == $url) {
           return $url;
@@ -242,12 +243,12 @@ class Authentication {
       $url = str_replace('&amp;', '&#038;', $url);
       $url = str_replace("'", '&#039;', $url);
       if ($url[0] !== '/') {
-          // We're only interested in relative links from $_SERVER['PHP_SELF']
+          // i only care for relative links from $_SERVER['PHP_SELF']
           return '';
       } else {
           return $url;
       }
   }//esc_url
-
+  */
   }
 ?>
