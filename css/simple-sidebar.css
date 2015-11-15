@@ -9,6 +9,11 @@ ul#fnav li {
     display: inline;
 }
 
+#footer {
+    position:fixed;
+    bottom:0;
+}
+
 .content {
   min-height: 795px;
   padding-top: 150px;

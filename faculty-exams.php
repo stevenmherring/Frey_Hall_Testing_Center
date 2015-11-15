@@ -46,10 +46,3 @@ if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['auth'] =
           <?php
               }
           ?>
-          <!-- jQuery -->
-          <script src="js/jquery.js"></script>
-
-          <!-- Bootstrap Core JavaScript -->
-          <script src="js/bootstrap.min.js"></script>
-          <script type="text/javascript"></script>
-          <script type="text/javascript" src="js/faculty-exams.js"></script>

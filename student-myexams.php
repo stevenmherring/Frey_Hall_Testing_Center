@@ -9,7 +9,7 @@ if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['auth'] =
 <?php else : header('Location: access-error.php'); ?>
 <?php endif; ?>
   <?php
-    $userExams = User::getAppointments($_SESSION['username']);
+    $userExams = User::getAppointments($_SESSION['netid']);
   ?>
   <link rel="stylesheet" type="text/css" href="css/sortable_table.css">
   <div class="facultyScheduleExamFormContainer">
@@ -45,10 +45,3 @@ if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['auth'] =
           <?php
               }
           ?>
-          <!-- jQuery -->
-          <script src="js/jquery.js"></script>
-
-          <!-- Bootstrap Core JavaScript -->
-          <script src="js/bootstrap.min.js"></script>
-          <script type="text/javascript"></script>
-          <script type="text/javascript" src="js/faculty-exams.js"></script>

@@ -34,7 +34,7 @@ if ($userForm!=null){
         while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
             $num = count($data);
             if ($data[2]!=null){
-                $sql = "INSERT INTO user(firstName, lastName, netID, email)
+                $sql = "INSERT INTO users(firstName, lastName, netID, email)
                 VALUES ('$data[0]', '$data[1]', '$data[2]', '$data[3]')";
                 $result = $dbh->prepare($sql);
                 /*if ($conn->query($sql) === TRUE) {}*/
@@ -71,7 +71,7 @@ if ($rosterForm!=null){
           $dbh = null;
           return;
         }
-        echo "use"; 
+        echo "use";
         //$conn->query($sql);
         $result->execute();
         while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {

@@ -50,21 +50,12 @@ Authentication::sec_session_start();
       </form>
   </div>
 
-  <!-- Bootstrap Core JavaScript -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
   <script>
 
   $(document).ready(function (){
     $('.datepicker').datepicker();
   });
   </script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src='js/formValidation.js'></script>
 
   <?php else : header('Location: access-error.php'); ?>
   <?php endif; ?>
