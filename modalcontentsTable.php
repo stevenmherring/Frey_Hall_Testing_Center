@@ -50,6 +50,6 @@ include_once('classes/User.php');
         }
         ?><button class="btn" data-dismiss="modal" data-target="#view_attendance"  aria-hidden="true">Cancel</button><?php
   } else {
-   echo "<script type='text/javascript'>alert('Something is wrong with this exam, contact an administrator');</script>";
+   echo "<script type='text/javascript'>alert('No appointments have been made for this exam.');</script>";
    ?><button class="btn" data-dismiss="modal" data-target="#view_attendance"  aria-hidden="true">Cancel</button></div><?php
   } ?>

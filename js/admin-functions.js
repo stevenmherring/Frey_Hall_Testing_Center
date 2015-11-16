@@ -7,8 +7,6 @@ jQuery( function(){
 }
 
 function checkInStudent(netID,apptID) {
-      alert(netID);
-      alert(apptID);
         $.ajax({
             type: 'POST',
             url: 'checkin.php',
@@ -17,8 +15,7 @@ function checkInStudent(netID,apptID) {
               'apptid' : apptID,
             },
             success: function(data) {
-                alert(data);
-
+                /* Do nothing */
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
                 if (textStatus == 'Unauthorized') {
