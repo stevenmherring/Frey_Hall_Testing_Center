@@ -46,3 +46,4 @@ if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['auth'] =
           <?php
               }
           ?>
+          <script type="text/javascript" src="js/faculty-exams.js"></script>

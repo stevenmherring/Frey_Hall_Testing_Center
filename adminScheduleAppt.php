@@ -1,14 +1,3 @@
-<?php
-  include_once 'includes/db_connect.php';
-  include_once 'includes/loginfunctions.php';
-  sec_session_start();
-
-  if (login_check($mysqli) == true) {
-      $logged = 'in';
-  } else {
-      $logged = 'out';
-  }
-?>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -20,8 +9,12 @@
     
 </head>
 <body>
-    
-     <?php if (login_check($mysqli) == true) : ?>
+    <?php
+    include_once('classes/Authentication.php');
+    include_once('classes/Database.php');
+    $db = Database::getDatabase();
+    Authentication::sec_session_start();
+    if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['auth'] == 0) : ?>
     
     <div id="adminContent" class="facultyScheduleExamFormContainer" >
         <h3>Create Appt</h3>
@@ -32,7 +25,6 @@
             <p>
                 <label> What is the student's Net ID: </label><input type="text" id="apptNetID" name="apptNetID" value="" maxlength="50" required/>
             </p>
-            
             <input type="submit" name="submit" value="Next" />
             </form>
     </div>

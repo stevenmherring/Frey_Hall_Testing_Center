@@ -70,6 +70,6 @@ $(document).ready(function (){
   $('.datepicker').datepicker();
 });
 </script>
-
+<script src='js/formValidation.js'></script>
 <?php else : header('Location: access-error.php'); ?>
 <?php endif; ?>

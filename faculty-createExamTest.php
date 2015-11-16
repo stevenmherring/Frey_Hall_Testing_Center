@@ -1,5 +1,7 @@
 <?php
 include("dbQueries.php");
+//error_reporting(E_ALL);
+//ini_set('display_errors', 'On');
 include_once('classes/Authentication.php');
 include_once('classes/Database.php');
 $db = Database::getDatabase();
@@ -22,12 +24,19 @@ $sql = "SELECT * FROM class WHERE InstructorNetID ='$userID'";
           return;
         }
         //$conn->query($sql);
-        //PHP ERROR HERE-----Not sure what you're trying to do, marking it.
      $result->execute($var);
-     $var = $result->fetchAll();
+$var = $result->fetchAll();
 
 
 ?>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Frey Hall Testing Center</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css">
     <script type="text/javascript">
 
     function check()
@@ -102,6 +111,8 @@ $sql = "SELECT * FROM class WHERE InstructorNetID ='$userID'";
                 }
             }
         </script>
+
+</head>
 <body>
 
  <?php    if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['auth'] == 1) : ?>
@@ -145,7 +156,9 @@ $sql = "SELECT * FROM class WHERE InstructorNetID ='$userID'";
           <script>
           $(function() {
             $( "#startdatepicker" ).datepicker({
-                dateFormat: "yy-mm-dd"
+                dateFormat: "yy-mm-dd",
+                minDate: 0,
+                beforeShowDay: $.datepicker.noWeekends
                 });
           });
           </script>
@@ -194,7 +207,8 @@ $sql = "SELECT * FROM class WHERE InstructorNetID ='$userID'";
         <script>
           $(function() {
             $( "#enddatepicker" ).datepicker({
-                dateFormat: "yy-mm-dd"
+                dateFormat: "yy-mm-dd",
+                minDate: 0
                 });
           });
           </script>
