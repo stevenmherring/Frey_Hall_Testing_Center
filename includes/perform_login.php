@@ -15,10 +15,12 @@ if (isset($_POST['netid'], $_POST['p'])) {
       //  header("Refresh:0");
     } else {
         //not in
-        header('Location: ../error.php?error=2');
+        echo "<script type='text/javascript'>alert('Invalid credentials');</script>";
+        header('Location: ../index.php');
     }
 } else {
     //invalid returns
-    header('Location: ../error.php');
+    echo "<script type='text/javascript'>alert('Invalid credentials');</script>";
+    header('Location: ../index.php');
 }
 ?>

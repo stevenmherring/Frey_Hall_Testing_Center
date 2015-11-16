@@ -123,7 +123,7 @@ class Authentication {
             }
         } else {
             // bad user
-              throw new Exception (" stmt num rows not 1");
+            //throw new Exception (" stmt num rows not 1");
             return false;
         }
 

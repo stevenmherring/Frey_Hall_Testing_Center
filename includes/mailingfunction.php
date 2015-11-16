@@ -33,7 +33,24 @@
 
   foreach ($arrayOfExams as $exam){
     // Email all of the class members that have an exam on todays date
-    Database::mailUsers($exam);
+    $emailArray = Database::mailUsers($exam);
+    foreach ($emaailArray as $email){
+      // Our email server is currently configured as a POSTFIX server which is authenticating through gmail services.
+      // The associated email address is duoqueueprogramming@gmail.com and this is where all of the emails will be sent through.
+      // Using the gmail interface allows for all of our emails to be logged in two places -- using rsyslog and gmails sent log.
+      // Information for the email server is stored in /etc/postfix/main.cf . The passwords and information are stored in sasl_passwd
+      // You can reconfigure the password by using $postmap sasl_passwd and then $service postmap restart $service postfix restart
+      // The mailing service itself can be run as a crontab job using $crontab -l
+
+      $to      =  $email;
+      $subject = 'Your scheduled exam reminder.';
+      $message = 'You have an exam scheduled today at the Frey Hall Testing Center';
+      $headers = 'From: duoqueueprogramming@gmail.com' . "\r\n" .
+          'Reply-To: duoqueueprogramming@gmail.com' . "\r\n" .
+          'X-Mailer: PHP/' . phpversion();
+
+      mail($to, $subject, $message, $headers);
+    }
   }
 
 ?>
