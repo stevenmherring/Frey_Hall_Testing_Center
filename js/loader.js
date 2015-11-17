@@ -4,21 +4,21 @@ $(document).ready(function (){
 
 $('ul#snav li#nm a').click(function(){
   var page = $(this).attr('href');
-  $('#studentContent').load(page)
+  $('#indexContent').load(page)
 
   return false;
 });
 
 $('ul#anav li#nm a').click(function(){
   var page = $(this).attr('href');
-  $('#adminContent').load(page)
+  $('#indexContent').load(page)
 
   return false;
 });
 
 $('ul#fnav li#nm a').click(function(){
   var page = $(this).attr('href');
-  $('#facultyContent').load(page)
+  $('#indexContent').load(page)
 
   return false;
 });

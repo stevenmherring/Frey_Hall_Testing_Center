@@ -3,7 +3,7 @@ include_once('classes/Authentication.php');
 include_once('classes/Database.php');
 $db = Database::getDatabase();
 Authentication::sec_session_start();
-  if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['auth'] == 0) : ?>
+  if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['admin'] == true) : ?>
 
   <div class="reportDiv">
   <link href="css/faculty-landing.css" rel="stylesheet">

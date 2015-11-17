@@ -4,7 +4,7 @@ include_once('classes/Database.php');
 include_once('classes/User.php');
 $db = Database::getDatabase();
 Authentication::sec_session_start();
-if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['auth'] == 0) : ?>
+if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['admin'] == true) : ?>
 
 <?php else : header('Location: access-error.php'); ?>
 <?php endif; ?>
