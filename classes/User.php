@@ -11,7 +11,7 @@ class User {
 
   /* Call this method to select all exams where this netid is a involved */
   public static function getExams($netid,$auth){
-    if ($auth == 1){
+    if ($auth == 1){ // faculty
       $q_getmyexams = "SELECT * FROM exam e1 INNER JOIN  class c1 ON c1.classID = e1.classID WHERE c1.instructorNetID=?";
     } else {
       $q_getmyexams = "SELECT * FROM roster r, user u, class c, exam e WHERE u.netID=r.netID AND u.netID=? AND c.classID = r.classID AND e.classID=c.classID";
