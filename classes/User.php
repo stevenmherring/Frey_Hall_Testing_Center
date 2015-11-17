@@ -11,7 +11,7 @@ class User {
 
   /* Call this method to select all exams where this netid is a involved */
   public static function getExams($netid,$auth){
-    if ($auth == 1){
+    if ($auth == 1){ // faculty
       $q_getmyexams = "SELECT * FROM exam e1 INNER JOIN  class c1 ON c1.classID = e1.classID WHERE c1.instructorNetID=?";
     } else {
       $q_getmyexams = "SELECT * FROM roster r, user u, class c, exam e WHERE u.netID=r.netID AND u.netID=? AND c.classID = r.classID AND e.classID=c.classID";
@@ -36,7 +36,7 @@ class User {
   /* This method takes no arguments, and returns an array populated with every exam that has a pending status in the database.
      Every index in this area that has a value will contain the a row result from the query */
   public static function getPendingExams(){
-    $q_getpendingexams = "SELECT * FROM exam WHERE processed = "pending"";
+    $q_getpendingexams = "SELECT * FROM exam WHERE processed ='pending'";
     $examList = array();
     $db = Database::getDatabase();
     $handle = $db->getHandle();
