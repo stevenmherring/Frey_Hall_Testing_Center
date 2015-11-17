@@ -36,7 +36,7 @@ class User {
   /* This method takes no arguments, and returns an array populated with every exam that has a pending status in the database.
      Every index in this area that has a value will contain the a row result from the query */
   public static function getPendingExams(){
-    $q_getpendingexams = "SELECT * FROM exam WHERE processed = "pending"";
+    $q_getpendingexams = "SELECT * FROM exam WHERE processed ='pending'";
     $examList = array();
     $db = Database::getDatabase();
     $handle = $db->getHandle();
