@@ -9,7 +9,7 @@ if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['auth'] =
 <?php else : header('Location: access-error.php'); ?>
 <?php endif; ?>
   <?php
-    $userExams = User::getExams($_SESSION['netid'],$_SESSION['auth']);
+    $pendingExams = User::getPendingExams();
   ?>
   <link rel="stylesheet" type="text/css" href="css/sortable_table.css">
   <div class="facultyScheduleExamFormContainer">
@@ -40,7 +40,7 @@ if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['auth'] =
                       <a href="#cancel_pending" data-toggle="modal" data-target="#cancel_pending">Delete Exam</a>
                       <?php endif; ?>
 
-                      <a href="#view_attendance" data-toggle="modal" data-target="#view_attendance" onclick="view_exam_appts(<?php echo $exam['examID']?>)" >View Attendance</a>
+                      <button> onclick="accept_exam(<?php echo $exam['examID']?>)" >Accept Exam</a>
                     </td>
                   </tr>
           <?php

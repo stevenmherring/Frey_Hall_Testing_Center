@@ -112,7 +112,7 @@
               <div class="form-group">
               <input type="text" name="examtodelete" id ="examtodelete" class="form-control input-lg" >
             </div>
-              <div class="form-group">
+              <div clas s="form-group">
               <a href="#" onclick="cancel_exam(document.getElementById('examtodelete').value);"  data-dismiss="modal" class="btn btn-primary">Submit</a>
 
               </div>

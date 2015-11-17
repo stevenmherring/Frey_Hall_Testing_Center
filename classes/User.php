@@ -22,6 +22,7 @@ class User {
     $handle->beginTransaction();
     $statement = $handle->prepare($q_getmyexams);
     if (!$statement){
+      echo "<script type='text/javascript'>alert($errFindExam);</script>";
     }
     $statement->execute(array($netid));
     $index = 0;
@@ -31,6 +32,28 @@ class User {
     }
     return $myExams;
   }
+
+  /* This method takes no arguments, and returns an array populated with every exam that has a pending status in the database.
+     Every index in this area that has a value will contain the a row result from the query */
+  public static function getPendingExams(){
+    $q_getpendingexams = "SELECT * FROM exam WHERE processed = "pending"";
+    $examList = array();
+    $db = Database::getDatabase();
+    $handle = $db->getHandle();
+    $handle->beginTransaction();
+    $statement = $handle->prepare($q_getpendingexams);
+    if (!$statement){
+      echo "<script type='text/javascript'>alert($errFindExam);</script>";
+    }
+    $statement->execute();
+    $index = 0;
+    while($result = $statement->fetch(PDO::FETCH_ASSOC, PDO::FETCH_ORI_NEXT)){
+      $examList[$index] = $result;
+      $index++;
+    }
+    return $myExams;
+  }
+
   /* Call this method to select all appointments where this netid is a involved */
   public static function getAppointments($netid){
     $q_getmyappointments =  "SELECT * FROM exam e, appointment a, class c WHERE a.examID=e.examID AND e.classID=c.classID AND a.netID=?";

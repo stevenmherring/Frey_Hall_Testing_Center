@@ -7,7 +7,7 @@ $db = Database::getDatabase();
 Authentication::sec_session_start();
 if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['auth'] == 0) :
 
-  $q_checkin = "update appointment set checkedin=1 where netID=? and appointmentID=?";
+  $q_checkin = "UPDATE exam SET processed="accepted" where examID=?";
   $handle = $db->getHandle();
   $handle->beginTransaction();
   $result = $handle->prepare($q_checkin);
@@ -15,12 +15,12 @@ if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['auth'] =
   if (!$result){
     echo "<script type='text/javascript'>alert('errUpdate');</script>";
   }
-  $result->execute(array($_POST['netid'],$_POST[apptid]));
+  $result->execute(array($_POST[examid]);
   $handle->commit();
   if ($result){
-    echo '<script type="text/javascript">alert("Checkin succeeded")</script>';
+    echo '<script type="text/javascript">alert("Exam acceptance succeeded")</script>';
   } else {
-    echo '<script type="text/javascript">alert("Checkin failed")</script>';
+    echo '<script type="text/javascript">alert("Exam acceptance failed")</script>';
   }
  ?>
 

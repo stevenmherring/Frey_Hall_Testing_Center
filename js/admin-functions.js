@@ -26,3 +26,23 @@ function checkInStudent(netID,apptID) {
             }
         });
 }
+
+function accept_exam(exam) {
+        $.ajax({
+            type: 'POST',
+            url: 'acceptExam.php',
+            data: {
+              'examid' : exam,
+            },
+            success: function(data) {
+                /* Do nothing */
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                if (textStatus == 'Unauthorized') {
+                    alert('Unauthorized page post. Error: ' + errorThrown);
+                } else {
+                    alert('Something went wrong. We dont have anything cool to show here. Error: ' + errorThrown);
+                }
+            }
+        });
+}
