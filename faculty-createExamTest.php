@@ -115,7 +115,7 @@ $var = $result->fetchAll();
 </head>
 <body>
 
- <?php    if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['faculty'] == true) : ?>
+ <?php    if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['auth'] == 1) : ?>
 
     <h3>Create Exam</h3>
     <div style="height: 500px">

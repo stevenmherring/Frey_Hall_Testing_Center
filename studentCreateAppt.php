@@ -54,7 +54,7 @@ $endTimeSplit = explode(":", $examEndTime);
   <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
   <link rel="stylesheet" href="/resources/demos/style.css">
     <script type="text/javascript">
-
+    
     function check()
             {
                 var checkStartHr= document.getElementById("apptHr").value;
@@ -66,15 +66,15 @@ $endTimeSplit = explode(":", $examEndTime);
 //                var startMin = parseInt(checkStartMin);
 //                var endHr = parseInt(checkEndHr);
 //                var endMin = parseInt(checkEndMin);
-
+                
                 startSplit[0]= parseInt(startSplit[0]);
                 startSplit[1]= parseInt(startSplit[1]);
                 startSplit[2]= parseInt(startSplit[2]);
-
+         
                 var state = true;
 //                if($startDateSplit[0]<=startSplit[0] && startSplit[0]<=$endDateSplit[0])
 //                    {}
-//
+//                
 //                if (state == true){
 //                    return false;
 //                }
@@ -84,23 +84,23 @@ $endTimeSplit = explode(":", $examEndTime);
 //					return false;
 //                }
 //                return false;
-//
+//                
 			}
         </script>
-
+    
 </head>
 <body>
-
-     <?php if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['student'] == true) : ?>
-
+    
+     <?php if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['auth'] == 2) : ?>
+    
     <div id="adminContent" class="facultyScheduleExamFormContainer"  >
         <h3>Create Appt</h3>
     <div style='height:500px'>
-
-
-
-
-
+        
+        
+        
+        
+        
             <form action="createStudentAppt.php" method="post" onsubmit="return check()">
                <script>
                       $(function() {
@@ -110,7 +110,7 @@ $endTimeSplit = explode(":", $examEndTime);
                       });
                       </script>
                     <p>Appointment Date: <input type="text" name="startDate" id="startdatepicker"></p>
-                <p>
+                <p>             
                 <label> Time:  </label>
                 <select class="combobox" name="apptHr" id="apptHr" required>
                     <option value="">Hr</option>
@@ -145,7 +145,7 @@ $endTimeSplit = explode(":", $examEndTime);
                     <option value="30">30</option>
                 </select>
             </p>
-
+                
                 <input type="hidden" id = "netID" name="netID" value="<?php echo $_SESSION['username'] ?>">
                 <input type="hidden" id="examID" name="examID" value="<?php echo $_POST['className']; ?>">
             <input type="submit" name="submit" value="Next" />

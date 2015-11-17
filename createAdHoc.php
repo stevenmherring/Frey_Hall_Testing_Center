@@ -16,7 +16,7 @@ Authentication::sec_session_start();
   <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
   <link rel="stylesheet" href="/resources/demos/style.css">
     <script type="text/javascript">
-
+    
     function check()
             {
                 var checkExamName = document.getElementById("examName").value;
@@ -35,7 +35,7 @@ Authentication::sec_session_start();
 //                var startMin = parseInt(checkStartMin);
 //                var endHr = parseInt(checkEndHr);
 //                var endMin = parseInt(checkEndMin);
-
+                
                 startSplit[0]= parseInt(startSplit[0]);
                 startSplit[1]= parseInt(startSplit[1]);
                 startSplit[2]= parseInt(startSplit[2]);
@@ -43,7 +43,7 @@ Authentication::sec_session_start();
                 endSplit[1]= parseInt(endSplit[1]);
                 endSplit[2]= parseInt(endSplit[2]);
                var state = false;
-
+                
                 if (startSplit[0]<endSplit[1])
                     {
                         state = true;
@@ -52,19 +52,19 @@ Authentication::sec_session_start();
                             {
                                 state = true;
                             }
-
+                
                 else if (startSplit[0]== endSplit[0] && startSplit[1]==endSplit[1] && startSplit[2]<endSplit[2])
                     {
                         state = true;
-                    }
-
+                    }        
+                    
                 else if (startSplit[0]== endSplit[0] && startSplit[1]==endSplit[1] && startSplit[2]==endSplit[2])
                     {
                         if (startTime + checkExamDuration < endTime){
                             state = true;
                         }
                     }
-
+                
                 if (state == true){
                     return true;
                 }
@@ -73,26 +73,26 @@ Authentication::sec_session_start();
 
 					return false;
                 }
-
+                
 			}
-
+        
 
         </script>
-
+    
 </head>
 <body>
 
-      <?php    if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['faculty'] == true) : ?>
-
+      <?php    if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['auth'] == 1) : ?>
+  
     <h3>Create An Ad Hoc Exam</h3>
     <div style="padding:10px">
         <form action="createAdHocExam.php" method="post" onSubmit="return check();">
-
+           
             <p>
                 <label> Exam Name: </label><input type="text" id="examName" name="examName" value="" maxlength="50" required/>
             </p>
-
-
+           
+             
 
              <p>
             <label> Exam Duration(Minutes): </label>
@@ -112,7 +112,7 @@ Authentication::sec_session_start();
                       <option value="120">120</option>
                 </select>
             </p>
-
+            
           <script>
           $(function() {
             $( "#startdatepicker" ).datepicker({
@@ -169,7 +169,7 @@ Authentication::sec_session_start();
                 });
           });
           </script>
-    </p>
+    </p>  
         <p>End Date: <input type="text" name="endDate" id="enddatepicker"></p>
           <p>
 
@@ -212,7 +212,7 @@ Authentication::sec_session_start();
             <option value="PM">PM</option>
         </select>
 -->
-    </p>
+    </p> 
         <p>
                 <label> Enter students separated by line (NetID, First Name, Last Name) </label><br>
                 <textarea rows="20" cols="50"  name="adhoc" id="adhoc"></textarea>

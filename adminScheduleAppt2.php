@@ -8,7 +8,7 @@ include_once('classes/Database.php');
 include_once('includes/TestingCenter.php');
 $db = Database::getDatabase();
 Authentication::sec_session_start();
-if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['admin'] == true) :
+if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['auth'] == 0) :
 try {
        $dbh=new PDO("mysql:host=mysql2.cs.stonybrook.edu;dbname=sachin","sachin","108610059");
 } catch(PDOException $e) {
@@ -31,7 +31,7 @@ $sql = "SELECT * FROM roster r, user u, class c, exam e WHERE u.netID=r.netID AN
         //$conn->query($sql);
      $result->execute();
 $var = $result->fetchAll();
-
+ 
 ?>
 
 <head>
@@ -41,26 +41,26 @@ $var = $result->fetchAll();
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
   <link rel="stylesheet" href="/resources/demos/style.css">
-
-
+    
+    
 </head>
 <body>
 
-
+    
     <div id="adminContent" class="facultyScheduleExamFormContainer" >
         <h3>Create Appt</h3>
     <div style='height:500px'>
-
+    
         <form action="adminScheduleAppt3.php" method="post" check= "return check()">
             <p>
                 <label> Exam Name : </label>
                 <select class="combobox" name="className" id="className" required>
                     <option value="">Choose an exam </option>
                     <?php foreach ($var as $vars) { ?>
-            <option value="<?php echo $vars["examID"]; ?>"><?php  echo $vars["subj"] . $vars["catalogNumber"] . ":" . $vars["section"] . " - " . $vars["examName"]; ?></option>
+            <option value="<?php echo $vars["examID"]; ?>"><?php  echo $vars["subj"] . $vars["catalogNumber"] . ":" . $vars["section"] . " - " . $vars["examName"]; ?></option> 
                     <?php } ?>
                 </select>
-            </p>
+            </p>        
            <input type="hidden" name="netID" value="<?php echo $_POST[apptNetID] ?>">
             <input type="submit" name="submit" value="Next" />
             </form>

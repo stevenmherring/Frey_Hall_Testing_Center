@@ -18,7 +18,7 @@
   <link href="css/simple-sidebar.css" rel="stylesheet">
   <?php include("includes/header.php");?>
 </head>
-<?php if (Authentication::login_check($db->getMysqli() == true && $faculty == true) : ?>
+<?php if (Authentication::login_check($db->getMysqli() == true && $auth == 1) : ?>
 <body>
 <?php
 $servername = "mysql2.cs.stonybrook.edu";

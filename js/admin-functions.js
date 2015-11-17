@@ -2,7 +2,7 @@
 function view_student_appts(netID) {
 
 jQuery( function(){
-  jQuery("#indexContent").load('../admin-getappts.php', {netID : netID});//url to contents.php
+  jQuery("#adminContent").load('../admin-getappts.php', {netID : netID});//url to contents.php
 });
 }
 

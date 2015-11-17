@@ -43,7 +43,7 @@ Steven Chin-->
 </head>
 
 <body>
-  <?php if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['faculty'] == true) : ?>
+  <?php if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['auth'] == 1) : ?>
   <div class="container">
     <div class="row">
       <div class="filler"></div>
