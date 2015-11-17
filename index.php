@@ -62,7 +62,7 @@ jQuery( function(){
 }
 </script>
 <body>
-    <div id="content" style="height: 920px">
+    <div id="content" style="height: 720px">
       <?php
         if ( isset($_POST['netid']) ){
           echo'<script type="text/javascript"< view_student_appts();</script>';
@@ -70,15 +70,15 @@ jQuery( function(){
         }
         if($logged == 'in') {
           if($_SESSION['auth'] == 0) {
-              echo ' <section id="adminContent" style="padding: 75px"> ';
+              echo ' <section id="indexContent" style="padding: 75px"> ';
                 include("admin-landing.php");
               echo '</section> ';
           } else if($_SESSION['auth'] == 1) {
-            echo ' <section id="facultyContent" style="padding: 75px"> ';
+            echo ' <section id="indexContent" style="padding: 75px"> ';
             include("faculty-landing.php");
             echo '</section> ';
           } else if($_SESSION['auth'] == 2) {
-            echo ' <section id="studentContent" style="padding: 75px"> ';
+            echo ' <section id="indexContent" style="padding: 75px"> ';
             include("student-landing.php");
             echo '</section> ';
           }

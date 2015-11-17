@@ -24,9 +24,9 @@ $sql = "SELECT firstName FROM user LIMIT 3";
      $result->execute($var);
 $var = $result->fetchAll();
 foreach ($var as $vars) {
-    echo $vars["firstName"]; 
-    echo "<br>"; 
-} 
+    echo $vars["firstName"];
+    echo "<br>";
+}
 
 $dbh->commit();
 $dbh=null;?>

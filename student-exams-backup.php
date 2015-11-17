@@ -29,7 +29,7 @@ $var = $result->fetchAll();
 ?>
 <body>
 
-     <?php if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['auth'] == 2) : ?>
+     <?php if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['student'] == true) : ?>
 
     <div id="adminContent" class="facultyScheduleExamFormContainer" >
         <h3>Create Appt</h3>

@@ -54,7 +54,7 @@ class Authentication {
       throw new Exception ("Attempt_login passed a null mysqli.");
     }
     $q_login_query_netid = "SELECT id, firstName, lastName, email, password, salt,
-      auth FROM users WHERE netid = ? LIMIT 1";
+      auth, admin, faculty, student FROM users WHERE netid = ? LIMIT 1";
     $stmt = $mysqli->prepare($q_login_query_netid);
     //if ($stmt != null){
       $stmt->bind_param('s', $netid);
@@ -64,6 +64,9 @@ class Authentication {
       $firstName;
       $lastName;
       $email;
+      $admin;
+      $faculty;
+      $student;
       $db_password;
       $salt;
       $auth;
@@ -71,7 +74,7 @@ class Authentication {
         // see what steve was checking here
       //}
       //mysqli_stmt::fetch -- mysqli_stmt_fetch — Fetch results from a prepared statement into the bound variables
-      $stmt->bind_result($user_id, $firstName, $lastName, $email, $db_password, $salt, $auth);
+      $stmt->bind_result($user_id, $firstName, $lastName, $email, $db_password, $salt, $auth, $admin, $faculty, $student);
       $stmt->fetch();
       $password = hash('sha512', $password . $salt);
       if ($stmt->num_rows === 1) {
@@ -102,6 +105,9 @@ class Authentication {
                     $_SESSION['auth'] = $auth;
                     $_SESSION['email'] = $email;
                     $_SESSION['netid'] = $netid;
+                    $_SESSION['admin'] = $admin;
+                    $_SESSION['faculty'] = $faculty;
+                    $_SESSION['student'] = $student;
                     $_SESSION['login_string'] = hash('sha512',
                                                $password . $user_browser);
                     $now = time();
@@ -172,6 +178,9 @@ class Authentication {
           $email = $_SESSION['email'];
           $auth = $_SESSION['auth'];
           $netid = $_SESSION['netid'];
+          $admin = $_SESSION['admin'];
+          $faculty = $_SESSION['faculty'];
+          $student = $_SESSION['student'];
           // Get the user-agent string of the user.
           $user_browser = $_SERVER['HTTP_USER_AGENT'];
           $db = Database::getDatabase();
