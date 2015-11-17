@@ -5,7 +5,7 @@ include_once('classes/User.php');
 include_once('classes/Error.php');
 $db = Database::getDatabase();
 Authentication::sec_session_start();
-if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['auth'] == 0) :
+if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['admin'] == true) :
 
   $q_checkin = "update appointment set checkedin=1 where netID=? and appointmentID=?";
   $handle = $db->getHandle();

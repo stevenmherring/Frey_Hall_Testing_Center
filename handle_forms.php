@@ -34,8 +34,8 @@ if ($userForm!=null){
         while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
             $num = count($data);
             if ($data[2]!=null){
-                $sql = "INSERT INTO users(firstName, lastName, netID, email)
-                VALUES ('$data[0]', '$data[1]', '$data[2]', '$data[3]')";
+                $sql = "INSERT INTO users(firstName, lastName, netID, email, student)
+                VALUES ('$data[0]', '$data[1]', '$data[2]', '$data[3]', 1)";
                 $result = $dbh->prepare($sql);
                 /*if ($conn->query($sql) === TRUE) {}*/
                 if ($result->execute() === TRUE){

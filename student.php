@@ -40,7 +40,7 @@ Shi Lin Lu -->
 
    <!-- INTRO PAGE -->
 </head>
-<?php   if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['auth'] == 2) : ?>
+<?php   if (Authentication::login_check($db->getMysqli()) == true && $_SESSION['student'] == true) : ?>
 <body>
   <div class="container">
     <div class="row">

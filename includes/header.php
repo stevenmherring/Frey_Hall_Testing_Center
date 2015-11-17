@@ -22,7 +22,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <?php
                         if (Authentication::login_check($db->getMysqli()) == true) {
-                          if($_SESSION['auth'] == 0) {
+                          if($_SESSION['admin'] == true) {
                             echo '
                             <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" data-toggle="tooltip" title="Admin"href="#">Admin Menu<span class="caret"></span></a>
                                 <ul class="dropdown-menu" id="anav">
@@ -34,7 +34,7 @@
                                 <li id="nm"><a href="reports.php">Generate Reports</a></li>
                               </ul>
                             </li> ';
-                          } else if($_SESSION['auth'] == 1) {
+                          } if($_SESSION['faculty'] == true) {
                             echo '
                             <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Faculty Menu<span class="caret"></span></a>
                                 <ul class="dropdown-menu" id="fnav">
@@ -43,7 +43,7 @@
                                 <li id="nm"><a href="faculty-exams.php">My Exams</a></li>
                               </ul>
                             </li> ';
-                          } else if($_SESSION['auth'] == 2) {
+                          } if($_SESSION['student'] == true) {
                             echo '
                             <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" data-toggle="tooltip" title="Student" href="#">Student Menu<span class="caret"></span></a>
                                 <ul class="dropdown-menu" id="snav">
